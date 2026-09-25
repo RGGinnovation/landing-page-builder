@@ -1466,3 +1466,75 @@
   color: var(--muted);
   text-align: center;
 }
+
+/* ============ THANK-YOU: PORTRAIT, LIGHT ============ */
+.lp .ty-portrait.is-light {
+  background: var(--alt);
+}
+.lp .ty-portrait.is-light .hero-rays,
+.lp .ty-portrait.is-light .hero-vig {
+  display: none;
+}
+.lp .ty-portrait.is-light .hero-figure img {
+  filter: drop-shadow(0 10px 24px rgba(20, 23, 38, 0.18));
+}
+.lp .ty-portrait.is-light h1 {
+  color: var(--ink);
+  text-shadow: none;
+}
+.lp .ty-portrait.is-light .ty-greet {
+  color: var(--accent);
+}
+.lp .ty-portrait.is-light .ty-sub {
+  color: var(--body);
+  text-shadow: none;
+}
+.lp .ty-portrait.is-light .sig {
+  color: var(--ink);
+}
+.lp .ty-portrait.is-light .sig-role,
+.lp .ty-portrait.is-light .ty-note {
+  color: var(--muted);
+}
+@media (max-width: 900px) {
+  .lp .ty-portrait.is-light .hero-figure {
+    background: none;
+  }
+}
+
+/* ============ FOOTER: ALWAYS CENTERED ============ */
+.lp .foot,
+.lp .foot .wrap {
+  text-align: center;
+}
+.lp .foot .wrap > a {
+  display: block;
+  width: fit-content;
+  margin: 0 auto;
+}
+.lp .foot .disclosure,
+.lp .foot .disclosure p,
+.lp .foot .legal-links {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  justify-content: center;
+}
+
+/* ============ DISCLAIMERS: SMALL, STILL CLEARLY READABLE ============
+   Kept at 10.5px or larger with readable contrast so they remain clear and conspicuous. */
+.lp .disclosure p {
+  font-size: 10.5px;
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+.lp .legal-links {
+  font-size: 11.5px;
+}
+.lp .offerterms,
+.lp .qsec .qfine,
+.lp .rsource,
+.lp .bnote {
+  font-size: 10.5px;
+  line-height: 1.55;
+}

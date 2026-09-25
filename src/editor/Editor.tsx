@@ -70,6 +70,7 @@ const SECTION_GROUP: Partial<Record<SectionType | "thankyou", GroupId>> = {
   hero: "photos",
   quote: "quote",
   why: "why",
+  reasons: "reasons",
   kit: "guide",
   thankyou: "thankyou",
 };

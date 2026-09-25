@@ -90,11 +90,12 @@ export interface ThankYouConfig {
   seoTitle: string;
   seoDescription: string;
   /**
-   * portrait: partner photo on the left, message on the right (same layout as the hero).
+   * portrait: partner photo on the left, message on the right (same layout as the hero), dark.
+   * portrait-light: same layout on a light background.
    * dark:     centered message on navy.
    * light:    centered message on white.
    */
-  style: "portrait" | "dark" | "light";
+  style: "portrait" | "portrait-light" | "dark" | "light";
   /** Portrait style photo. Blank = the hero photo. */
   photo: string;
   /** Script signature under the message (portrait style). Blank name/role = the quote's. */

@@ -63,7 +63,9 @@ export function ThankYouPage({
       )}
       {ty.showCallButton && (
         <a
-          className={ty.style === "light" ? "btn btn-navy" : "btn btn-ghost"}
+          className={
+            ty.style === "light" || ty.style === "portrait-light" ? "btn btn-navy" : "btn btn-ghost"
+          }
           href={telHref(brand)}
         >
           {f(ty.callLabel)}
@@ -75,8 +77,11 @@ export function ThankYouPage({
   return (
     <PageShell config={config} preview={preview} firstName={firstName}>
       {topbar && <RenderSection section={topbar} />}
-      {ty.style === "portrait" ? (
-        <section className="hero ty-portrait" data-sid="thankyou">
+      {ty.style === "portrait" || ty.style === "portrait-light" ? (
+        <section
+          className={"hero ty-portrait" + (ty.style === "portrait-light" ? " is-light" : "")}
+          data-sid="thankyou"
+        >
           <div className="hero-rays" aria-hidden="true"></div>
           <div className="hero-vig" aria-hidden="true"></div>
           <div className="wrap hero-grid">

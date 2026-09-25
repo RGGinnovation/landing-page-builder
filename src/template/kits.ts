@@ -53,14 +53,14 @@ export const KIT_OPTIONS: KitOption[] = [
     alt: "The Faithful Steward guide, with the 2026 Wealth Protection Guide as a bonus",
     width: 2000,
     height: 1125,
-    headline: "Get Your Free Faithful Steward Guide",
+    headline: "Get Started With This Biblical Stewardship Kit",
     lede: "Plain English. Rooted in Scripture. Read it at your kitchen table and decide for yourself.",
     points: [
       "What the Bible teaches about stewardship",
       "How to make money decisions in peace, not fear",
       "An honest look at gold and silver",
     ],
-    buttonLabel: "Get my free guide",
+    buttonLabel: "Get Your Free Kit",
     downloadUrl: "https://steward.revelationgoldgroup.com",
     thankYouBody:
       "Please check your inbox for The Faithful Steward guide. It can take a few minutes to arrive, and it sometimes lands in the promotions or spam folder.",

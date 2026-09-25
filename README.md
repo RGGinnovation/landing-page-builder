@@ -21,10 +21,11 @@ Every public page carries the Kiflo snippet and the HubSpot tracking code automa
 | Logo & photo | Top-left partner logo (+ size), hero photo |
 | Lead form & tracking | HubSpot embed code (paste as is), form style, Kiflo referral code |
 | Quote & signature | Quote under the hero, signature name (script font), title |
-| Why I Believe | Headline and paragraphs, each with **Regenerate** (light rewrite) |
+| Why I Believe | Headline and one paragraph, with **Regenerate** (light rewrite) |
+| 3 Reasons | Headline, each reason, and the source line |
 | Free guide | 2026 Wealth Protection Guide or The Faithful Steward. Sets the image, the copy beside it, and the thank-you download link (wealthguide. / steward.revelationgoldgroup.com) |
-| Theme | 8 partner presets or a custom accent + band color, hero background |
-| Thank-you page | Layout, photo, greeting, headline, message, button, signature, note |
+| Theme | 8 partner presets or a custom accent + band color, hero background (flag, sunrise, plain, or upload your own) |
+| Thank-you page | Layout (photo + message dark or light, centered dark or light), photo, greeting, headline, message, button, signature, note |
 | Advanced | SEO, section show/hide, all template copy, RGG phone |
 
 A launch checklist blocks **Publish now** until the page has a real partner name, logo, photo,

@@ -149,7 +149,7 @@ export const SECTIONS: Registry = {
     component: Why,
     fields: [
       rich("headline", "Headline", 2),
-      richList("paragraphs", "Paragraphs"),
+      richList("paragraphs", "Paragraph"),
       {
         key: "badges",
         label: "Badges",
@@ -179,9 +179,7 @@ export const SECTIONS: Registry = {
     defaults: () => ({
       headline: "Why I Believe in\nRevelation Gold Group",
       paragraphs: [
-        "If you are worried about your savings right now, you are not alone. That is why I partnered with **Revelation Gold Group**, a faith-driven firm that shows families how physical gold and silver may help protect retirement and savings.",
-        "I did my homework, I met the team, and I asked every question I would want you to ask. They answered all of them in plain English, and nobody pushed me toward a decision.",
-        "A **BBB Accredited Business with an A+ rating**, a **4.9 star Google rating across 256 reviews**, and verified reviews on Trustpilot. They have helped families all over the country. Now they want to help you.",
+        "If you are worried about your savings right now, you are not alone. That is why I partnered with **Revelation Gold Group**, a faith-driven firm that shows families how physical gold and silver may help protect retirement and savings. I did my homework, I met the team, and I asked every question I would want you to ask. They answered all of them in plain English, and nobody pushed me toward a decision. A **BBB Accredited Business with an A+ rating**, a **4.9 star Google rating across 256 reviews**, and verified reviews on Trustpilot. They have helped families all over the country. Now they want to help you.",
       ],
       badges: DEFAULT_BADGES.map((b) => ({ ...b })),
       note: "Ratings and review counts are current as of September 2026 and are published by the rating bodies named above.",
@@ -490,7 +488,12 @@ export const DEFAULT_BADGES = [
   { kind: "consumeraffairs" as const, url: "", label: "Listed on ConsumerAffairs", value: "" },
 ];
 
+/** Terms for the "up to 10% in free silver" offer. Shown in every footer. */
+export const SILVER_OFFER_DISCLAIMER =
+  "Valid on qualifying orders only with the purchase of $50,000 to $99,999 in Revelation Gold Group premium coins. Receive 10% back in FREE Silver with the purchase of $100,000 or more in Revelation Gold Group premium coins. This offer cannot be combined with other promotions. Additional terms and conditions may apply. Please speak with your representative to determine if your order qualifies. Review your customer agreement for full details. Revelation Gold Group does not provide financial or tax advice concerning the purchase of precious metals.";
+
 export const DEFAULT_DISCLOSURES = [
   "Not financial advice. Revelation Gold Group does not provide tax, legal, accounting, or investment advice. Nothing on this page is a recommendation to buy or sell any asset. Consult your own tax, legal, and financial advisors before entering into any transaction. Revelation Gold Group and its representatives are not registered or licensed by any government agency as investment advisors or broker dealers.",
   "The purchase of precious metals involves risk. Prices fluctuate and can decline substantially. Premiums vary by product. Past performance does not guarantee future results, and no return of any kind is promised or implied. Precious metals produce no income and are not insured by the FDIC, the SIPC, or any government agency. Direct investment in precious metals, whether held personally or through an individual retirement account, is not suitable for all investors. Revelation Gold Group views physical precious metals as a long term holding with a recommended minimum horizon of three to five years or more. All decisions rest solely with the customer.",
+  SILVER_OFFER_DISCLAIMER,
 ];

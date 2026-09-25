@@ -12,7 +12,16 @@ export interface Issue {
 }
 
 export type GroupId =
-  "basic" | "photos" | "form" | "quote" | "why" | "guide" | "theme" | "thankyou" | "advanced";
+  | "basic"
+  | "photos"
+  | "form"
+  | "quote"
+  | "why"
+  | "reasons"
+  | "guide"
+  | "theme"
+  | "thankyou"
+  | "advanced";
 
 /** Launch checklist. Errors block "Publish now". */
 export function checkPage(c: PageConfig): Issue[] {
@@ -61,7 +70,7 @@ export function checkPage(c: PageConfig): Issue[] {
     );
 
   const ty = c.thankYou;
-  if (ty.style === "portrait" && ty.showSignature && /partner name/i.test(ty.signatureName))
+  if (ty.style.startsWith("portrait") && ty.showSignature && /partner name/i.test(ty.signatureName))
     warn("Thank-you signature is still the placeholder.", "thankyou");
 
   const allText = JSON.stringify(c);

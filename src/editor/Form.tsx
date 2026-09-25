@@ -151,6 +151,13 @@ export function Form(p: Props) {
         "why",
       )}
       {g(
+        "reasons",
+        "3 Reasons",
+        "Why the partner chooses gold and silver",
+        <ReasonsGroup {...p} />,
+        "reasons",
+      )}
+      {g(
         "guide",
         "Free guide",
         "Image, matching copy and the thank-you download link",
@@ -636,18 +643,20 @@ function WhyGroup({ cfg, update }: Props) {
       <div className="flex items-center justify-between rounded-lg bg-[#f5f5f5] px-3 py-2">
         <div className="flex items-center gap-2 text-[12px] text-[#1a1a1a]">
           <Sparkles className="size-3.5 text-[#072b4e]" />
-          Lightly rewrites the copy. Facts and ratings stay the same.
+          Regenerate lightly rewrites the copy. Facts and ratings stay the same.
         </div>
-        <RegenerateButton
-          busy={busy.size > 1}
-          label="Regenerate all"
-          onClick={() => void regenerate(paragraphs.map((_, i) => i))}
-        />
+        {paragraphs.length > 1 && (
+          <RegenerateButton
+            busy={busy.size > 1}
+            label="Regenerate all"
+            onClick={() => void regenerate(paragraphs.map((_, i) => i))}
+          />
+        )}
       </div>
       {paragraphs.map((text, i) => (
         <Field
           key={i}
-          label={`Paragraph ${i + 1}`}
+          label={paragraphs.length > 1 ? `Paragraph ${i + 1}` : "Paragraph"}
           aside={
             <span className="flex items-center gap-2">
               {source[i] && <span className="text-[11px] text-[#6b6b6b]">{source[i]}</span>}
@@ -661,7 +670,7 @@ function WhyGroup({ cfg, update }: Props) {
           }
         >
           <TextArea
-            rows={4}
+            rows={paragraphs.length > 1 ? 4 : 10}
             value={text}
             onChange={(v) =>
               update(
@@ -672,6 +681,70 @@ function WhyGroup({ cfg, update }: Props) {
           />
         </Field>
       ))}
+    </>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+
+function ReasonsGroup({ cfg, update }: Props) {
+  const ri = sectionIndex(cfg, "reasons");
+  const r = sectionOf(cfg, "reasons");
+  if (!r) return <p className="text-[12px] text-[#6b6b6b]">This page has no reasons section.</p>;
+  const items = r.props.items;
+  const set = (key: string, v: unknown) => update(["sections", ri, "props", key], v);
+  return (
+    <>
+      <Field label="Headline" help="Enter = line break.">
+        <TextArea rows={2} value={r.props.headline} onChange={(v) => set("headline", v)} />
+      </Field>
+      {items.map((text, i) => (
+        <Field
+          key={i}
+          label={`Reason ${i + 1}`}
+          aside={
+            items.length > 1 && (
+              <button
+                type="button"
+                className="text-[11.5px] font-medium text-[#5c5c5c] hover:text-[#1a1a1a]"
+                onClick={() =>
+                  set(
+                    "items",
+                    items.filter((_, j) => j !== i),
+                  )
+                }
+              >
+                Remove
+              </button>
+            )
+          }
+          help={
+            i === items.length - 1
+              ? "**bold** highlights a phrase, e.g. **$40 trillion**."
+              : undefined
+          }
+        >
+          <TextArea
+            rows={3}
+            value={text}
+            onChange={(v) =>
+              set(
+                "items",
+                items.map((x, j) => (j === i ? v : x)),
+              )
+            }
+          />
+        </Field>
+      ))}
+      {items.length < 5 && (
+        <SmallButton onClick={() => set("items", [...items, ""])}>Add a reason</SmallButton>
+      )}
+      <Field
+        label="Source line"
+        help="Cite the source and date of any figure above. Blank hides it."
+      >
+        <TextInput value={r.props.source} onChange={(v) => set("source", v)} />
+      </Field>
     </>
   );
 }
@@ -760,10 +833,17 @@ function ColorRow(p: { label: string; value: string; onChange: (v: string) => vo
   );
 }
 
+type BgChoice = "flag" | "sunrise" | "none" | "custom";
+
 function ThemeGroup({ cfg, replace }: Props) {
   const t = cfg.theme;
   const set = (patch: Partial<ThemeConfig>) => replace({ ...cfg, theme: { ...t, ...patch } });
-  const bg = HERO_BACKGROUNDS.find((b) => b.src === t.heroBg)?.id ?? "custom";
+  const [customOpen, setCustomOpen] = useState(false);
+  const isPresetBg = HERO_BACKGROUNDS.some((b) => b.src === t.heroBg);
+  const bgChoice: BgChoice =
+    customOpen || !isPresetBg
+      ? "custom"
+      : ((HERO_BACKGROUNDS.find((b) => b.src === t.heroBg)?.id ?? "none") as BgChoice);
   return (
     <>
       <div className="grid grid-cols-2 gap-2.5">
@@ -812,19 +892,39 @@ function ThemeGroup({ cfg, replace }: Props) {
           </p>
         )}
       </div>
-      <Field label="Hero background">
+      <Field
+        label="Hero background"
+        help="Faded in behind the partner photo. Custom: a wide image, at least 1600px across."
+      >
         <Segmented
-          value={bg as "flag" | "sunrise" | "none" | "custom"}
+          value={bgChoice}
           onChange={(id) => {
+            if (id === "custom") {
+              setCustomOpen(true);
+              return;
+            }
+            setCustomOpen(false);
             const b = HERO_BACKGROUNDS.find((x) => x.id === id);
             if (b) set({ heroBg: b.src });
           }}
-          options={HERO_BACKGROUNDS.map((b) => ({
-            value: b.id as "flag" | "sunrise" | "none",
-            label: b.label,
-          }))}
+          options={[
+            ...HERO_BACKGROUNDS.map((b) => ({ value: b.id as BgChoice, label: b.label })),
+            { value: "custom" as BgChoice, label: "Custom" },
+          ]}
         />
       </Field>
+      {bgChoice === "custom" && (
+        <ImageUpload
+          value={isPresetBg ? "" : t.heroBg}
+          hint="wide JPG or WebP"
+          onChange={(src) => set({ heroBg: src })}
+          onClear={() => {
+            setCustomOpen(false);
+            set({ heroBg: HERO_BACKGROUNDS[0]!.src });
+          }}
+          clearLabel="Remove"
+        />
+      )}
     </>
   );
 }
@@ -839,17 +939,18 @@ function ThankYouGroup({ cfg, update }: Props) {
   return (
     <>
       <Field label="Layout">
-        <Segmented
+        <Select
           value={ty.style}
           onChange={(v) => set("style", v)}
           options={[
-            { value: "portrait", label: "Photo + message" },
-            { value: "dark", label: "Centered dark" },
-            { value: "light", label: "Centered light" },
+            { value: "portrait", label: "Photo + message, dark" },
+            { value: "portrait-light", label: "Photo + message, light" },
+            { value: "dark", label: "Centered message, dark" },
+            { value: "light", label: "Centered message, light" },
           ]}
         />
       </Field>
-      {ty.style === "portrait" && (
+      {ty.style.startsWith("portrait") && (
         <Field
           label="Photo"
           help={ty.photo ? undefined : "Using the hero photo. Upload to use a different one."}
@@ -887,7 +988,7 @@ function ThankYouGroup({ cfg, update }: Props) {
         onChange={(v) => set("showCallButton", v)}
         label="Show call button"
       />
-      {ty.style === "portrait" && (
+      {ty.style.startsWith("portrait") && (
         <>
           <Toggle
             checked={ty.showSignature}
