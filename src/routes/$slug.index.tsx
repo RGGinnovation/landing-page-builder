@@ -6,7 +6,7 @@ import { LandingPage } from "@/template/LandingPage";
 import { trackingScripts } from "@/template/tracking-scripts";
 
 /**
- * THE PUBLIC PARTNER PAGE: <site>/<slug>, e.g. partners.revelationgoldgroup.com/smedley.
+ * THE PUBLIC PARTNER PAGE: <site>/<slug>, e.g. partner.revelationgoldgroup.com/smedley.
  * This is the link each partner's vanity domain redirects to.
  */
 export const Route = createFileRoute("/$slug/")({

@@ -8,16 +8,13 @@ export const KIFLO_API_KEY = "5c0ef1cb-8acb-4782-858e-42e2fc672de4";
 /** RGG's HubSpot portal (tracking code + form submissions). */
 export const HUBSPOT_PORTAL_ID = "44817109";
 
-/**
- * The public site that hosts every partner page, e.g. https://partners.revelationgoldgroup.com.
- * Pages live at <PUBLIC_SITE_URL>/<slug>. Set VITE_PUBLIC_SITE_URL in the project env.
- * Falls back to the current origin in the browser.
- */
+/** The public site that hosts every partner page. Pages live at <PUBLIC_SITE_URL>/<slug>. */
+export const DEFAULT_SITE_URL = "https://partner.revelationgoldgroup.com";
+
+/** Override with VITE_PUBLIC_SITE_URL (e.g. for a staging domain). */
 export function publicSiteUrl(): string {
   const env = import.meta.env["VITE_PUBLIC_SITE_URL"] as string | undefined;
-  if (env) return env.replace(/\/+$/, "");
-  if (typeof window !== "undefined") return window.location.origin;
-  return "";
+  return (env || DEFAULT_SITE_URL).replace(/\/+$/, "");
 }
 
 /** Where the bare site root sends visitors who are not on a partner domain. */

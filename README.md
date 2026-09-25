@@ -5,7 +5,7 @@ One template, one editor, every partner landing page, hosted from one Lovable pr
 | URL | What it is |
 | --- | --- |
 | `<site>/admin` | The editor. Team sign-in, partner list, field form, live preview, **Publish now**. |
-| `<site>/<slug>` | A partner's public landing page, e.g. `partners.revelationgoldgroup.com/smedley`. |
+| `<site>/<slug>` | A partner's public landing page, e.g. `partner.revelationgoldgroup.com/smedley`. |
 | `<site>/<slug>/thank-you` | Where that page's form lands after a submission. |
 | `LastNameMetals.com` | The partner's vanity domain. 301-redirects to `<site>/<slug>`. |
 
@@ -58,13 +58,16 @@ the contact. If it is missing the lead still goes through (the form retries with
 2. **Cloud.** Prompt Lovable: *"Enable Lovable Cloud and run the migration in
    supabase/migrations/20260925120000_partner_pages.sql."* This creates the `partner_pages` table,
    the editor check, the two public read functions and the `partner-assets` image bucket.
-3. **Auth.** In Cloud → Authentication, keep Email on. Set the Site URL to `<site>` and add
-   `<site>/admin` as a redirect URL. Anyone with an `@revelationgoldgroup.com` email can edit;
+3. **Auth.** In Cloud → Authentication, keep Email on. Set the Site URL to
+   `https://partner.revelationgoldgroup.com` and add `https://partner.revelationgoldgroup.com/admin`
+   as a redirect URL. Anyone with an `@revelationgoldgroup.com` email can edit;
    add other editors as rows in `partner_page_editors`.
 4. **AI.** Prompt Lovable: *"Enable Lovable AI."* That provides `LOVABLE_API_KEY` for Regenerate.
-5. **Domain.** Connect the hosting domain in Lovable (e.g. `partners.revelationgoldgroup.com`) and
-   set `VITE_PUBLIC_SITE_URL` to it. Optional: `VITE_ROOT_REDIRECT` (defaults to
-   revelationgoldgroup.com).
+5. **Domain.** In Lovable → Settings → Domains, connect `partner.revelationgoldgroup.com`. At the
+   DNS host for revelationgoldgroup.com, add the record Lovable shows for the `partner` subdomain.
+   The code already uses this domain for page links (override with `VITE_PUBLIC_SITE_URL` for
+   staging). The bare `partner.revelationgoldgroup.com/` redirects to revelationgoldgroup.com
+   (`VITE_ROOT_REDIRECT`).
 6. **Publish** the Lovable project, open `<site>/admin`, sign up with a company email, and load
    the two sample pages from the empty partner list to confirm everything.
 
