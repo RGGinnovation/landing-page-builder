@@ -51,6 +51,18 @@ the contact. If it is missing the lead still goes through (the form retries with
 
 ---
 
+## Live project
+
+| | |
+| --- | --- |
+| Lovable project | https://lovable.dev/projects/255b6b17-6650-4a36-9c39-0f05b8461fc4 |
+| Published | https://rgg-partner-pages.lovable.app (editor at `/admin`) |
+| Target domain | https://partner.revelationgoldgroup.com (connect in Lovable → Settings → Domains) |
+
+Already done on that project: code imported, Lovable Cloud on, migration applied (tables, RLS,
+RPCs, `partner-assets` bucket), Lovable AI key provisioned, email sign-in on with auto-confirm,
+project knowledge set from AGENTS.md, published.
+
 ## Hand-off to Lovable
 
 1. **Import.** In Lovable, create the project from this GitHub repo (it is Lovable's TanStack Start
