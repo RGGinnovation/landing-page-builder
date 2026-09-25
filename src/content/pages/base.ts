@@ -1,4 +1,5 @@
 import { HUBSPOT_PORTAL_ID } from "@/template/constants";
+import { DEFAULT_KIT } from "@/template/kits";
 import { createSection } from "@/template/registry";
 import { DEFAULT_PRESET } from "@/template/theme";
 import type { PageConfig, SectionType } from "@/template/types";
@@ -88,9 +89,9 @@ export function createBasePage(overrides?: Partial<Pick<PageConfig, "slug" | "na
       greetingNamed: "Thank you, {firstName}",
       greeting: "Thank you",
       headline: "Your kit is on its way.",
-      body: "Please check your inbox for the 2026 Wealth Protection Guide and Magazine. It can take a few minutes to arrive, and it sometimes lands in the promotions or spam folder.",
+      body: DEFAULT_KIT.thankYouBody,
       primaryLabel: "Download the guide",
-      primaryUrl: "https://wealthguide.revelationgoldgroup.com",
+      primaryUrl: DEFAULT_KIT.downloadUrl,
       showCallButton: true,
       callLabel: "Call {phone}",
       note: "Questions? A Revelation Gold Group specialist can walk you through it, with nothing to buy.",

@@ -22,13 +22,13 @@ Every public page carries the Kiflo snippet and the HubSpot tracking code automa
 | Lead form & tracking | HubSpot embed code (paste as is), form style, Kiflo referral code |
 | Quote & signature | Quote under the hero, signature name (script font), title |
 | Why I Believe | Headline and paragraphs, each with **Regenerate** (light rewrite) |
-| Free guide image | Dropdown of the guide images in `src/template/kits.ts` |
+| Free guide | 2026 Wealth Protection Guide or The Faithful Steward. Sets the image, the copy beside it, and the thank-you download link (wealthguide. / steward.revelationgoldgroup.com) |
 | Theme | 8 partner presets or a custom accent + band color, hero background |
 | Thank-you page | Layout, photo, greeting, headline, message, button, signature, note |
 | Advanced | SEO, section show/hide, all template copy, RGG phone |
 
 A launch checklist blocks **Publish now** until the page has a real partner name, logo, photo,
-quote, HubSpot form, Kiflo code, a guide image that exists, and a non-gold accent.
+quote, HubSpot form, Kiflo code, and a non-gold accent.
 
 ### Regenerate
 
@@ -96,7 +96,7 @@ src/template/               THE TEMPLATE (shared by the public site and the edit
   tracking-scripts.ts       Kiflo snippet + HubSpot tracking, on every public page
   constants.ts              Kiflo key, HubSpot portal, site URL, reserved slugs
   theme.ts                  Theme presets, color helpers, gold-hue guard
-  kits.ts                   Free guide images offered in the dropdown
+  kits.ts                   Free guides: image, kit copy, thank-you download link
   hubspot.ts                Embed-code parser
   styles/landing.css        Production CSS, scoped under .lp
 src/editor/                 The /admin editor (form, fields, store, auth, checklist, regenerate)
@@ -111,8 +111,6 @@ vars the editor runs in local mode (drafts in the browser, sample pages served p
 
 ## Open items
 
-- **Guide image 2**: the second dropdown option is a placeholder until the image is supplied.
-  Drop the file in `public/assets/rgg/` and update its `src` in `src/template/kits.ts`.
 - **Sample IBTV theme**: production faithmetals.com uses an amber accent. The sample uses the Ember
   preset instead (brand rule: no gold or amber).
 - **Silver offer**: the terms line is still the production placeholder. Replace it with approved

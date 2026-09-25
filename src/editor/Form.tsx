@@ -2,7 +2,7 @@ import { Check, Copy, Info, Monitor, Sparkles } from "lucide-react";
 import { useState, type ReactNode } from "react";
 import { toast } from "sonner";
 
-import { KIT_OPTIONS, kitOptionFor } from "@/template/kits";
+import { KIT_OPTIONS, applyGuide, kitOptionFor } from "@/template/kits";
 import { parseHubspotEmbed, isGuid } from "@/template/hubspot";
 import { SECTIONS } from "@/template/registry";
 import {
@@ -590,20 +590,21 @@ function WhyGroup({ cfg, update }: Props) {
 
 /* ------------------------------------------------------------------ */
 
-function GuideGroup({ cfg, update }: Props) {
-  const ki = sectionIndex(cfg, "kit");
+function GuideGroup({ cfg, replace }: Props) {
   const k = sectionOf(cfg, "kit");
   if (!k) return <p className="text-[12px] text-[#6b6b6b]">This page has no free guide section.</p>;
   const current = kitOptionFor(k.props.image);
   return (
     <>
-      <Field label="Guide" help="Swap or add guide images in src/template/kits.ts.">
+      <Field
+        label="Guide"
+        help="Sets the image, the copy beside it, and the thank-you page download link."
+      >
         <Select
           value={current?.id ?? "__custom"}
           onChange={(id) => {
             const opt = KIT_OPTIONS.find((o) => o.id === id);
-            if (opt)
-              update(["sections", ki, "props"], { ...k.props, image: opt.src, imageAlt: opt.alt });
+            if (opt) replace(applyGuide(cfg, opt));
           }}
           options={[
             ...KIT_OPTIONS.map((o) => ({ value: o.id, label: o.label })),
@@ -614,6 +615,21 @@ function GuideGroup({ cfg, update }: Props) {
       <div className="overflow-hidden rounded-xl border border-[#e3e3e3] bg-[#f7f7f7] p-3">
         <img src={k.props.image} alt="" className="mx-auto max-h-44 object-contain" />
       </div>
+      {current && (
+        <div className="space-y-1.5 rounded-lg bg-[#f5f5f5] px-3 py-2.5 text-[12px] text-[#1a1a1a]">
+          <div className="font-semibold">{current.headline}</div>
+          <div className="text-[#5c5c5c]">{current.lede}</div>
+          <ul className="list-disc pl-4 text-[#5c5c5c]">
+            {current.points.map((p) => (
+              <li key={p}>{p}</li>
+            ))}
+          </ul>
+          <div className="pt-1 text-[11.5px] text-[#6b6b6b]">
+            Thank-you download:{" "}
+            <b className="text-[#072b4e]">{current.downloadUrl.replace("https://", "")}</b>
+          </div>
+        </div>
+      )}
     </>
   );
 }

@@ -1,6 +1,7 @@
 import type { ComponentType } from "react";
 
 import { RICH_HELP, type Field } from "./fields";
+import { DEFAULT_KIT } from "./kits";
 import {
   Callband,
   Content,
@@ -200,7 +201,7 @@ export const SECTIONS: Registry = {
       { key: "points", label: "Checklist", type: "stringList", itemLabel: "Point" },
       txt("buttonLabel", "Button label"),
       { key: "buttonHref", label: "Button link", type: "url", placeholder: "#request" },
-      txt("footnote", "Small caps note"),
+      txt("footnote", "Small caps note under the button (blank = none)"),
       {
         key: "layout",
         label: "Layout",
@@ -212,18 +213,14 @@ export const SECTIONS: Registry = {
       },
     ],
     defaults: () => ({
-      image: "/assets/rgg/kit-wealth-guide.webp",
-      imageAlt: "The 2026 Wealth Protection Guide and Magazine",
-      headline: "Get Started With This Free Gold & Silver Kit",
-      lede: "Plain English. No jargon, no sales pitch. Read it at your kitchen table and decide for yourself.",
-      points: [
-        "How physical gold and silver actually work",
-        "What a tax-advantaged gold IRA is, in plain English",
-        "The 2026 Wealth Protection Magazine, included",
-      ],
-      buttonLabel: "Get started with this free kit",
+      image: DEFAULT_KIT.src,
+      imageAlt: DEFAULT_KIT.alt,
+      headline: DEFAULT_KIT.headline,
+      lede: DEFAULT_KIT.lede,
+      points: [...DEFAULT_KIT.points],
+      buttonLabel: DEFAULT_KIT.buttonLabel,
       buttonHref: "#request",
-      footnote: "Free to our audience · ships to your door · nothing to buy",
+      footnote: "",
       layout: "balanced",
     }),
   },

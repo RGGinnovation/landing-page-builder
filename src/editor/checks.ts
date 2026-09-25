@@ -1,5 +1,6 @@
 import { RESERVED_SLUGS } from "@/template/constants";
 import { isGuid } from "@/template/hubspot";
+import { kitOptionFor } from "@/template/kits";
 import { isGoldHue } from "@/template/theme";
 import type { PageConfig, SectionOf, SectionType } from "@/template/types";
 
@@ -45,8 +46,9 @@ export function checkPage(c: PageConfig): Issue[] {
     err("Quote and signature are placeholder copy.", "quote");
 
   const kit = find("kit");
-  if (kit && kit.props.image.includes("-pending"))
-    err("The selected guide image is not uploaded yet.", "guide");
+  const guide = kit ? kitOptionFor(kit.props.image) : undefined;
+  if (guide && c.thankYou.primaryLabel && c.thankYou.primaryUrl !== guide.downloadUrl)
+    warn(`Thank-you download button does not point to ${guide.downloadUrl}.`, "thankyou");
 
   const offer = find("offer");
   if (offer && !offer.props.terms.trim()) err("Silver offer has no terms.", "advanced");

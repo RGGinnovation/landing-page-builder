@@ -62,9 +62,6 @@ export default definePage(
       ],
     },
     kit: {
-      image: "/assets/rgg/kit-wealth-guide.webp",
-      imageAlt:
-        "The 2026 Wealth Protection Guide, the Wealth Protection Magazine, and the bonus Faithful Steward guide",
       layout: "balanced",
     },
     reasons: {

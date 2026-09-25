@@ -1,4 +1,5 @@
 import { CheckIcon, GoogleMark, PhoneIcon } from "../icons";
+import { kitOptionFor } from "../kits";
 import { R, telHref, useFill, useRender } from "../rich";
 import type {
   Badge,
@@ -149,7 +150,13 @@ export function Kit({ sid, props }: P<KitProps>) {
     >
       <div className="wrap kitsplit">
         <div className="kitshot">
-          <img src={props.image} alt={f(props.imageAlt)} width={1568} height={886} loading="lazy" />
+          <img
+            src={props.image}
+            alt={f(props.imageAlt)}
+            width={kitOptionFor(props.image)?.width ?? 2000}
+            height={kitOptionFor(props.image)?.height ?? 1333}
+            loading="lazy"
+          />
         </div>
 
         <div>
