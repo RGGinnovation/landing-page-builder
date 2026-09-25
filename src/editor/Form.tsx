@@ -145,8 +145,8 @@ export function Form(p: Props) {
       )}
       {g(
         "guide",
-        "Free guide image",
-        "Pick the magazine shown in the free kit section",
+        "Free guide",
+        "Image, matching copy and the thank-you download link",
         <GuideGroup {...p} />,
         "kit",
       )}
