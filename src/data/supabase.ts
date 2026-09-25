@@ -1,6 +1,9 @@
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 
 /**
+ * Our own client (not Lovable Cloud's generated src/integrations/supabase/client.ts, which may be
+ * regenerated). Same env vars.
+ *
  * Lovable Cloud (Supabase) client. Lovable sets these env vars when Cloud is enabled.
  * If they are missing the app runs in "local mode": drafts in this browser, public
  * routes serve the sample pages bundled in src/content/pages.

@@ -1,5 +1,5 @@
 import { getPage as getBundledPage } from "@/content/pages";
-import { supabase } from "@/integrations/supabase/client";
+import { supabase } from "@/data/supabase";
 import type { PageConfig } from "@/template/types";
 
 import { migrate } from "./migrate";

@@ -1,6 +1,6 @@
 import { PAGES } from "@/content/pages";
 import { migrate } from "@/data/migrate";
-import { ASSET_BUCKET, cloudEnabled, supabase } from "@/integrations/supabase/client";
+import { ASSET_BUCKET, cloudEnabled, supabase } from "@/data/supabase";
 import type { PageConfig } from "@/template/types";
 
 /**

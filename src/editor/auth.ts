@@ -1,7 +1,7 @@
 import type { Session } from "@supabase/supabase-js";
 import { useEffect, useState } from "react";
 
-import { cloudEnabled, supabase } from "@/integrations/supabase/client";
+import { cloudEnabled, supabase } from "@/data/supabase";
 
 export type AuthState =
   | { status: "local" }
