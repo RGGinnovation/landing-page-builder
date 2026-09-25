@@ -14,7 +14,9 @@ export const Route = createFileRoute("/thank-you")({
     throw redirect({ href: ROOT_REDIRECT });
   },
   head: ({ loaderData }) =>
-    loaderData ? { ...thankYouHead(loaderData), scripts: trackingScripts(loaderData) } : {},
+    loaderData
+      ? { ...thankYouHead(loaderData), scripts: trackingScripts(loaderData, { landing: false }) }
+      : {},
   component: DomainThankYou,
 });
 

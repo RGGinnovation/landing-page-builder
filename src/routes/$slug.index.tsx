@@ -16,7 +16,9 @@ export const Route = createFileRoute("/$slug/")({
     return page;
   },
   head: ({ loaderData }) =>
-    loaderData ? { ...landingHead(loaderData), scripts: trackingScripts(loaderData) } : {},
+    loaderData
+      ? { ...landingHead(loaderData), scripts: trackingScripts(loaderData, { landing: true }) }
+      : {},
   component: PartnerLanding,
 });
 

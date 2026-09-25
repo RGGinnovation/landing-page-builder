@@ -4,6 +4,13 @@ import { toast } from "sonner";
 
 import { KIT_OPTIONS, applyGuide, kitOptionFor } from "@/template/kits";
 import { parseHubspotEmbed, isGuid } from "@/template/hubspot";
+import { KIFLO_API_KEY, publicSiteUrl } from "@/template/constants";
+import {
+  checkKifloLink,
+  kifloReferralLink,
+  parseKifloCode,
+  type KifloLinkStatus,
+} from "@/template/kiflo";
 import { SECTIONS } from "@/template/registry";
 import {
   HERO_BACKGROUNDS,
@@ -253,7 +260,10 @@ function BasicInfo({ cfg, update, siteUrl, onSlugCommit, replace }: Props) {
         help={
           <>
             The domain we buy for the partner, e.g. <b>SmedleyMetals.com</b>. At the registrar, set
-            a 301 redirect from it (and www.) to <b className="break-all">{url}</b>.
+            a 301 redirect from it (and www.) to the partner referral link:{" "}
+            <b className="break-all">
+              {kifloReferralLink(cfg.slug, cfg.tracking.kifloPartnerCode, siteUrl)}
+            </b>
           </>
         }
       >
@@ -268,6 +278,83 @@ function BasicInfo({ cfg, update, siteUrl, onSlugCommit, replace }: Props) {
 }
 
 /* ------------------------------------------------------------------ */
+
+/** The partner's full Kiflo referral link, built from the page link + Kiflo code. */
+function ReferralLink({ cfg }: { cfg: PageConfig }) {
+  const code = parseKifloCode(cfg.tracking.kifloPartnerCode);
+  const link = kifloReferralLink(cfg.slug, code);
+  const target = `${publicSiteUrl()}/${cfg.slug}`;
+  const [check, setCheck] = useState<null | "busy" | KifloLinkStatus>(null);
+  const [checkedFor, setCheckedFor] = useState("");
+  if (checkedFor && checkedFor !== link) {
+    setCheckedFor("");
+    setCheck(null);
+  }
+  return (
+    <div className="space-y-2 rounded-lg bg-[#072b4e]/[0.06] px-3 py-2.5">
+      <div className="flex items-center justify-between gap-2">
+        <div className="text-[11px] font-semibold uppercase tracking-wider text-[#072b4e]">
+          Partner referral link
+        </div>
+        {code && (
+          <button
+            type="button"
+            className="inline-flex items-center gap-1 text-[11.5px] font-medium text-[#072b4e] hover:underline"
+            onClick={() => {
+              void navigator.clipboard.writeText(link);
+              toast.success("Referral link copied");
+            }}
+          >
+            <Copy className="size-3" /> Copy
+          </button>
+        )}
+      </div>
+      <div className="break-all font-mono text-[12px] text-[#1a1a1a]">
+        {code ? link : "Add the Kiflo code to build the link."}
+      </div>
+      {code && (
+        <>
+          <div className="text-[11.5px] leading-snug text-[#5c5c5c]">
+            In Kiflo, the partner&apos;s link with code <b className="font-mono">{code}</b> must
+            target <b className="break-all">{target}</b>. Visitors who arrive without the code are
+            tagged with it automatically, so every lead is credited to this partner.
+          </div>
+          <div className="flex flex-wrap items-center gap-2">
+            <SmallButton
+              disabled={check === "busy"}
+              onClick={async () => {
+                setCheck("busy");
+                setCheckedFor(link);
+                setCheck(await checkKifloLink(KIFLO_API_KEY, cfg.slug, code));
+              }}
+            >
+              {check === "busy" ? "Checking…" : "Check in Kiflo"}
+            </SmallButton>
+            {check && check !== "busy" && (
+              <span className="text-[11.5px] font-medium text-[#1a1a1a]">
+                {check.ok
+                  ? "Connected. Kiflo recognizes this link."
+                  : check.reason === "not-registered"
+                    ? "Not connected. Kiflo has no link for this page yet."
+                    : check.reason === "network"
+                      ? "Could not reach Kiflo. Try again."
+                      : "Kiflo rejected the check."}
+              </span>
+            )}
+          </div>
+          {check && check !== "busy" && !check.ok && check.reason === "not-registered" && (
+            <div className="rounded-md bg-white px-2.5 py-2 text-[11.5px] leading-snug text-[#1a1a1a]">
+              Fix in Kiflo: open the partner, edit (or create) the referral link with code{" "}
+              <b className="font-mono">{code}</b> and set its target URL to{" "}
+              <b className="break-all">{target}</b>. Then check again. Until then Kiflo will not
+              record this page&apos;s visits or leads.
+            </div>
+          )}
+        </>
+      )}
+    </div>
+  );
+}
 
 function Photos({ cfg, update, replace }: Props) {
   const hi = sectionIndex(cfg, "hero");
@@ -433,15 +520,16 @@ function FormTracking({ cfg, replace, update }: Props) {
       <Field
         label="Kiflo referral code"
         required
-        help="The partner's referral code in Kiflo. Vanity-domain visitors have no ?kfl_ln= link, so this code is what credits the lead to the partner. The Kiflo tracking script loads on every page automatically."
+        help="Type the partner's Kiflo code, or paste their full Kiflo link. The referral link below is built automatically."
       >
         <TextInput
           value={t.kifloPartnerCode}
-          onChange={(v) => update(["tracking", "kifloPartnerCode"], v.trim())}
-          placeholder="e.g. karon-smedley"
+          onChange={(v) => update(["tracking", "kifloPartnerCode"], parseKifloCode(v))}
+          placeholder="e.g. the-mike-church-show"
           mono
         />
       </Field>
+      <ReferralLink cfg={cfg} />
       <Toggle
         checked={t.debug}
         onChange={(v) => update(["tracking", "debug"], v)}

@@ -13,7 +13,9 @@ export const Route = createFileRoute("/$slug/thank-you")({
     return page;
   },
   head: ({ loaderData }) =>
-    loaderData ? { ...thankYouHead(loaderData), scripts: trackingScripts(loaderData) } : {},
+    loaderData
+      ? { ...thankYouHead(loaderData), scripts: trackingScripts(loaderData, { landing: false }) }
+      : {},
   component: PartnerThankYou,
 });
 

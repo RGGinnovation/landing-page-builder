@@ -37,6 +37,18 @@ Uses Lovable AI when it is on; every rewrite is checked (same numbers and rating
 no guarantees or return language, similar length). If AI is off or a rewrite fails the check, it
 swaps in pre-approved alternate sentences from `src/editor/rephrase.ts`. Undo reverts it.
 
+### Kiflo
+
+- Every partner page (landing and thank-you) carries Kiflo's snippet verbatim.
+- Enter the partner's Kiflo code (or paste their Kiflo link) and the editor builds the referral
+  link: `https://partner.revelationgoldgroup.com/<slug>?kfl_ln=<code>`, e.g.
+  `https://partner.revelationgoldgroup.com/king-dude?kfl_ln=the-mike-church-show`.
+- Visitors who arrive without `?kfl_ln=` (typed the vanity domain, QR code) get the page's code
+  added automatically before Kiflo loads, so Kiflo records the visit and sets its cookie.
+- **Required in Kiflo, once per partner:** the partner's link with that code must target
+  `https://partner.revelationgoldgroup.com/<slug>`. Kiflo rejects visits and leads for any page URL
+  it has no link for. Use **Check in Kiflo** in the editor to confirm.
+
 ### HubSpot form
 
 Paste the embed code HubSpot gives you. The editor reads the portal and form id out of it.

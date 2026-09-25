@@ -19,7 +19,9 @@ export const Route = createFileRoute("/")({
     throw redirect({ href: ROOT_REDIRECT });
   },
   head: ({ loaderData }) =>
-    loaderData ? { ...landingHead(loaderData), scripts: trackingScripts(loaderData) } : {},
+    loaderData
+      ? { ...landingHead(loaderData), scripts: trackingScripts(loaderData, { landing: true }) }
+      : {},
   component: DomainLanding,
 });
 

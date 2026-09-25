@@ -8,8 +8,11 @@ RGG Partner Pages: one template, one editor, every partner landing page. Read RE
   src/template/sections/. New styles go at the end of landing.css in the same design language.
 - The lead form markup in src/template/sections/hero.tsx (ids rggForm, rggSubmit, rggNote,
   f_kiflo, input names) and src/template/lead-form.ts must stay compatible with HubSpot and Kiflo.
-- The Kiflo snippet (src/template/tracking-scripts.ts, key in src/template/constants.ts) must stay
-  on every public page. Do not remove it or make it conditional.
+- The Kiflo snippet (KIFLO_SNIPPET in src/template/tracking-scripts.ts) is Kiflo's code verbatim and
+  must stay on every public partner page (landing and thank-you). Do not edit, remove, defer or make
+  it conditional. The referral auto-link script (src/template/kiflo.ts) must run before it.
+- Kiflo credits a visit or lead only when the partner's Kiflo link targets the page URL
+  (<site>/<slug>). The referral link is <site>/<slug>?kfl_ln=<code>.
 - Public routes: /$slug and /$slug/thank-you. Reserved slugs live in RESERVED_SLUGS. Any new
   top-level route must be added there.
 - Visitors read pages only through the get_published_page* RPCs. Never grant anon access to the

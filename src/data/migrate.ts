@@ -1,4 +1,5 @@
 import { createBasePage } from "@/content/pages/base";
+import { parseKifloCode } from "@/template/kiflo";
 import { SECTIONS } from "@/template/registry";
 import type { PageConfig, Section } from "@/template/types";
 
@@ -17,6 +18,7 @@ export function migrate(input: PageConfig): PageConfig {
         ({ ...s, props: { ...SECTIONS[s.type].defaults(), ...(s.props as object) } }) as Section,
     );
   const tracking = { ...base.tracking, ...p.tracking };
+  tracking.kifloPartnerCode = parseKifloCode(tracking.kifloPartnerCode);
   // Pages saved before the Kiflo key became a constant carry a now-unused field.
   delete (tracking as Record<string, unknown>)["kifloApiKey"];
   return {
