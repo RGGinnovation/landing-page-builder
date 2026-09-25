@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { sendMagicLink, signIn, signOut, signUp } from "./auth";
+import { signIn, signOut } from "./auth";
 
 function Shell({ children }: { children: React.ReactNode }) {
   return (
@@ -25,7 +25,6 @@ const input =
   "h-11 w-full rounded-lg border border-[#d6d6d6] px-3 text-[14px] outline-none focus:border-[#072b4e] focus:ring-2 focus:ring-[#072b4e]/15";
 
 export function Login() {
-  const [mode, setMode] = useState<"signin" | "signup" | "link">("signin");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [busy, setBusy] = useState(false);
@@ -36,15 +35,7 @@ export function Login() {
     setBusy(true);
     setMsg(null);
     try {
-      if (mode === "signin") await signIn(email, password);
-      else if (mode === "signup") {
-        const r = await signUp(email, password);
-        if (r.needsConfirmation)
-          setMsg({ kind: "ok", text: "Check your inbox to confirm your email, then sign in." });
-      } else {
-        await sendMagicLink(email);
-        setMsg({ kind: "ok", text: "Sign-in link sent. Open it on this device." });
-      }
+      await signIn(email, password);
     } catch (err) {
       setMsg({ kind: "err", text: (err as Error).message });
     } finally {
@@ -54,9 +45,7 @@ export function Login() {
 
   return (
     <Shell>
-      <h1 className="text-[20px] font-semibold tracking-tight text-[#1a1a1a]">
-        {mode === "signup" ? "Create your account" : "Sign in"}
-      </h1>
+      <h1 className="text-[20px] font-semibold tracking-tight text-[#1a1a1a]">Sign in</h1>
       <p className="mt-1 text-[12.5px] text-[#6b6b6b]">Use your @revelationgoldgroup.com email.</p>
       <form onSubmit={submit} className="mt-6 space-y-3">
         <input
@@ -68,30 +57,22 @@ export function Login() {
           onChange={(e) => setEmail(e.target.value)}
           required
         />
-        {mode !== "link" && (
-          <input
-            className={input}
-            type="password"
-            autoComplete={mode === "signup" ? "new-password" : "current-password"}
-            placeholder="Password"
-            minLength={8}
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        )}
+        <input
+          className={input}
+          type="password"
+          autoComplete="current-password"
+          placeholder="Password"
+          minLength={8}
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
         <button
           type="submit"
           disabled={busy}
           className="h-11 w-full rounded-lg bg-[#072b4e] text-[14px] font-semibold text-white hover:bg-[#0a3a66] disabled:opacity-60"
         >
-          {busy
-            ? "One moment…"
-            : mode === "signin"
-              ? "Sign in"
-              : mode === "signup"
-                ? "Create account"
-                : "Email me a sign-in link"}
+          {busy ? "One moment…" : "Sign in"}
         </button>
       </form>
       {msg && (
@@ -103,35 +84,6 @@ export function Login() {
           {msg.text}
         </p>
       )}
-      <div className="mt-6 flex flex-wrap justify-between gap-2 text-[12.5px]">
-        {mode !== "signin" && (
-          <button
-            type="button"
-            className="font-medium text-[#072b4e] hover:underline"
-            onClick={() => setMode("signin")}
-          >
-            Sign in with password
-          </button>
-        )}
-        {mode !== "link" && (
-          <button
-            type="button"
-            className="font-medium text-[#072b4e] hover:underline"
-            onClick={() => setMode("link")}
-          >
-            Email me a link instead
-          </button>
-        )}
-        {mode !== "signup" && (
-          <button
-            type="button"
-            className="font-medium text-[#072b4e] hover:underline"
-            onClick={() => setMode("signup")}
-          >
-            Create account
-          </button>
-        )}
-      </div>
     </Shell>
   );
 }
