@@ -1,0 +1,252 @@
+{
+  "version": 1,
+  "slug": "new-partner",
+  "name": "New partner",
+  "vanityDomain": "",
+  "brand": {
+    "partnerName": "Partner Name",
+    "partnerLogo": "/assets/partners/_base/partner-logo.svg",
+    "partnerLogoWidth": 520,
+    "partnerLogoHeight": 119,
+    "rggName": "Revelation Gold Group",
+    "rggLogo": "/assets/rgg/rgg-wordmark.webp",
+    "rggFooterLogo": "/assets/rgg/rgg-wordmark-footer.webp",
+    "phoneDisplay": "(888) 465-3049",
+    "phoneE164": "+18884653049",
+    "email": "Info@RevelationGoldGroup.com",
+    "address": "9440 Santa Monica Blvd, Suite 301, Beverly Hills, CA 90210",
+    "addressMapUrl": "https://maps.google.com/?q=9440+Santa+Monica+Blvd+Suite+301+Beverly+Hills+CA+90210",
+    "privacyUrl": "https://revelationgoldgroup.com/policy",
+    "termsUrl": "https://revelationgoldgroup.com/terms-of-service",
+    "amlUrl": "https://www.taxfreegoldira.com/aml-policy-anti-money-laundering",
+    "copyrightYear": "2026"
+  },
+  "theme": {
+    "preset": "revelation-navy",
+    "ink": "#141726",
+    "body": "#3D4254",
+    "muted": "#6A7186",
+    "paper": "#FFFFFF",
+    "alt": "#EDEEF1",
+    "line": "#DCDEE5",
+    "accent": "#2C66A8",
+    "accentLight": "#3F7CC2",
+    "accentDark": "#1F4E85",
+    "navy": "#072B4E",
+    "navyDeep": "#041A30",
+    "navyMid": "#0A3560",
+    "heroBg": "/assets/rgg/hero-bg-flag.webp",
+    "partnerLogoHeight": 34,
+    "partnerLogoHeightMobile": 25
+  },
+  "tracking": {
+    "hubspotEmbed": "",
+    "hubspotPortalId": "44817109",
+    "hubspotFormGuid": "",
+    "hubspotRegion": "na1",
+    "formMode": "styled",
+    "kifloPartnerCode": "",
+    "debug": false
+  },
+  "seo": {
+    "title": "Free 2026 Gold & Silver Kit | Partner Name & Revelation Gold Group",
+    "description": "Partner Name readers and listeners can request the free 2026 Wealth Protection Guide and Magazine from Revelation Gold Group. A plain English look at owning physical gold and silver. Nothing to buy.",
+    "siteName": "Partner Name x Revelation Gold Group",
+    "ogTitle": "Free 2026 Gold & Silver Kit",
+    "ogDescription": "A plain English guide to owning physical gold and silver, free for the Partner Name audience. Nothing to buy.",
+    "canonicalUrl": "",
+    "ogImage": "",
+    "robots": "index,follow"
+  },
+  "thankYou": {
+    "seoTitle": "Your Kit Is On Its Way | Partner Name & Revelation Gold Group",
+    "seoDescription": "Thank you for requesting the free 2026 Wealth Protection Guide and Magazine. Check your inbox for the download, or call Revelation Gold Group at {phone}.",
+    "style": "portrait",
+    "photo": "",
+    "showSignature": true,
+    "signatureName": "",
+    "signatureRole": "",
+    "greetingNamed": "Thank you, {firstName}",
+    "greeting": "Thank you",
+    "headline": "Your kit is on its way.",
+    "body": "Please check your inbox for the 2026 Wealth Protection Guide and Magazine. It can take a few minutes to arrive, and it sometimes lands in the promotions or spam folder.",
+    "primaryLabel": "Download the guide",
+    "primaryUrl": "https://wealthguide.revelationgoldgroup.com",
+    "showCallButton": true,
+    "callLabel": "Call {phone}",
+    "note": "Questions? A Revelation Gold Group specialist can walk you through it, with nothing to buy."
+  },
+  "sections": [
+    {
+      "id": "topbar-0",
+      "type": "topbar",
+      "props": {
+        "callLabel": "Questions? Call"
+      }
+    },
+    {
+      "id": "hero-1",
+      "type": "hero",
+      "props": {
+        "image": "/assets/partners/_base/hero-portrait.svg",
+        "imageAlt": "{partner}",
+        "imageWidth": 820,
+        "imageHeight": 986,
+        "headline": "Your First Step To Help Protect Your Savings",
+        "firstLabel": "First Name",
+        "lastLabel": "Last Name",
+        "phoneLabel": "Phone Number",
+        "emailLabel": "Email",
+        "submitLabel": "Get started with this free kit",
+        "consent": "By clicking the button above, you agree to our [Privacy Policy](https://revelationgoldgroup.com/policy) and [Terms & Conditions](https://revelationgoldgroup.com/terms-of-service) and authorize Revelation Gold Group, or someone acting on their behalf, to contact you by email, text message, and recorded and artificial voice message using automated telephone technology, including auto dialers, at the number you provided above. Consent is not a condition of any purchase. Message and data rates may apply. You may opt out at any time by replying STOP to any text message."
+      }
+    },
+    {
+      "id": "quote-2",
+      "type": "quote",
+      "props": {
+        "quote": "One or two sentences in the partner's own words about why they partnered with Revelation.",
+        "name": "Partner Name",
+        "role": "Title, Organization"
+      }
+    },
+    {
+      "id": "callband-3",
+      "type": "callband",
+      "props": {
+        "headline": "Have a question first?",
+        "subline": "Talk to a real person.",
+        "buttonLabel": "Call {phone}"
+      }
+    },
+    {
+      "id": "why-4",
+      "type": "why",
+      "props": {
+        "headline": "Why I Believe in\nRevelation Gold Group",
+        "paragraphs": [
+          "If you are worried about your savings right now, you are not alone. That is why I partnered with **Revelation Gold Group**, a faith-driven firm that shows families how physical gold and silver may help protect retirement and savings. I did my homework, I met the team, and I asked every question I would want you to ask. They answered all of them in plain English, and nobody pushed me toward a decision. A **BBB Accredited Business with an A+ rating**, a **4.9 star Google rating across 256 reviews**, and verified reviews on Trustpilot. They have helped families all over the country. Now they want to help you."
+        ],
+        "badges": [
+          {
+            "kind": "bbb",
+            "url": "https://www.bbb.org/us/ca/beverly-hills/profile/gold-sellers/revelation-gold-group-1216-1000029316",
+            "label": "Accredited Business",
+            "value": "A+ Rating"
+          },
+          {
+            "kind": "google",
+            "url": "https://www.google.com/maps/search/?api=1&query=Revelation%20Gold%20Group%20Beverly%20Hills",
+            "label": "256 Google Reviews",
+            "value": "4.9"
+          },
+          {
+            "kind": "trustpilot",
+            "url": "https://www.trustpilot.com/review/revelationgoldgroup.com",
+            "label": "Verified Client Reviews",
+            "value": ""
+          },
+          {
+            "kind": "consumeraffairs",
+            "url": "",
+            "label": "Listed on ConsumerAffairs",
+            "value": ""
+          }
+        ],
+        "note": "Ratings and review counts are current as of September 2026 and are published by the rating bodies named above."
+      }
+    },
+    {
+      "id": "kit-5",
+      "type": "kit",
+      "props": {
+        "image": "/assets/rgg/kit-wealth-guide.webp",
+        "imageAlt": "The 2026 Wealth Protection Guide and Magazine, with The Faithful Steward guide as a bonus",
+        "headline": "Get Started With This Free Gold & Silver Kit",
+        "lede": "Plain English. No jargon, no sales pitch. Read it at your kitchen table and decide for yourself.",
+        "points": [
+          "How physical gold and silver actually work",
+          "What a tax-advantaged gold IRA is, in plain English",
+          "The 2026 Wealth Protection Magazine, included"
+        ],
+        "buttonLabel": "Get started with this free kit",
+        "buttonHref": "#request",
+        "footnote": "",
+        "layout": "balanced"
+      }
+    },
+    {
+      "id": "reasons-6",
+      "type": "reasons",
+      "props": {
+        "headline": "3 Reasons I Choose\nGold & Silver",
+        "items": [
+          "The national debt has blown past **$40 trillion**, and nobody in Washington has a plan to pay it down.",
+          "Inflation has quietly taken a bite out of what every dollar saved will actually buy.",
+          "Gold and silver are real, physical assets. They are not somebody else’s promise to pay later."
+        ],
+        "source": "Source: U.S. Treasury, Debt to the Penny, September 2026.",
+        "sourceAlign": "left",
+        "image": "/assets/rgg/coin-pair.webp",
+        "imageAlt": "American Gold Buffalo one ounce .9999 fine gold coins, obverse and reverse"
+      }
+    },
+    {
+      "id": "question-7",
+      "type": "question",
+      "props": {
+        "eyebrow": "A question worth asking",
+        "headline": "Do you have a 401(k) sitting with a job you left?",
+        "paragraphs": [
+          "If you have a 401(k) still sitting with an employer you left years ago, or an IRA you rarely look at, those funds are not locked into the choices you made the day you opened the account. They can hold physical gold and silver."
+        ],
+        "lead": "Moved directly from one custodian to another, the funds stay tax deferred. No taxes, and no early withdrawal penalty.",
+        "accounts": [
+          "Old 401(k)",
+          "Traditional or Roth IRA",
+          "403(b)",
+          "Thrift Savings Plan",
+          "457(b)",
+          "SEP or SIMPLE IRA"
+        ],
+        "ask": "Have questions about a retirement account?\nSpeak with a representative now.",
+        "buttonLabel": "Call {phone}",
+        "altPrefix": "Or",
+        "altLinkLabel": "request the guide first",
+        "fine": "Eligibility depends on your plan and your custodian. Revelation Gold Group does not provide tax, legal, or investment advice. Consult your own advisors before any transfer."
+      }
+    },
+    {
+      "id": "offer-8",
+      "type": "offer",
+      "props": {
+        "image": "/assets/rgg/coin-trio.webp",
+        "imageAlt": "Peace Dollar silver coins, obverse and reverse",
+        "eyebrow": "Plus! If you take action now…",
+        "headline": "Get Up To 10%\nIn Free Silver",
+        "asterisk": true,
+        "buttonLabel": "Get started with this free kit",
+        "terms": "*Bonus silver applies to qualifying purchases only. Minimum purchase, eligible products, and expiration terms apply. Ask your Revelation Gold Group specialist for full details. Not financial advice."
+      }
+    },
+    {
+      "id": "footer-9",
+      "type": "footer",
+      "props": {
+        "partnerDisclosure": "{partner} is a marketing partner of Revelation Gold Group and may be compensated for referrals made through this page. {partner} does not provide financial, tax, or investment advice. All products and services on this page are offered by Revelation Gold Group.",
+        "disclosures": [
+          "Not financial advice. Revelation Gold Group does not provide tax, legal, accounting, or investment advice. Nothing on this page is a recommendation to buy or sell any asset. Consult your own tax, legal, and financial advisors before entering into any transaction. Revelation Gold Group and its representatives are not registered or licensed by any government agency as investment advisors or broker dealers.",
+          "The purchase of precious metals involves risk. Prices fluctuate and can decline substantially. Premiums vary by product. Past performance does not guarantee future results, and no return of any kind is promised or implied. Precious metals produce no income and are not insured by the FDIC, the SIPC, or any government agency. Direct investment in precious metals, whether held personally or through an individual retirement account, is not suitable for all investors. Revelation Gold Group views physical precious metals as a long term holding with a recommended minimum horizon of three to five years or more. All decisions rest solely with the customer.",
+          "Valid on qualifying orders only with the purchase of $50,000 to $99,999 in Revelation Gold Group premium coins. Receive 10% back in FREE Silver with the purchase of $100,000 or more in Revelation Gold Group premium coins. This offer cannot be combined with other promotions. Additional terms and conditions may apply. Please speak with your representative to determine if your order qualifies. Review your customer agreement for full details. Revelation Gold Group does not provide financial or tax advice concerning the purchase of precious metals."
+        ]
+      }
+    },
+    {
+      "id": "callbar-10",
+      "type": "callbar",
+      "props": {
+        "label": "Call {phone}"
+      }
+    }
+  ]
+}

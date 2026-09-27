@@ -1,0 +1,181 @@
+{
+  "presets": [
+    {
+      "id": "revelation-navy",
+      "name": "Revelation Navy",
+      "vibe": "RGG house style",
+      "colors": {
+        "ink": "#141726",
+        "body": "#3D4254",
+        "muted": "#6A7186",
+        "paper": "#FFFFFF",
+        "alt": "#EDEEF1",
+        "line": "#DCDEE5",
+        "accent": "#2C66A8",
+        "accentLight": "#3F7CC2",
+        "accentDark": "#1F4E85",
+        "navy": "#072B4E",
+        "navyDeep": "#041A30",
+        "navyMid": "#0A3560",
+        "heroBg": "/assets/rgg/hero-bg-flag.webp"
+      }
+    },
+    {
+      "id": "patriot-red",
+      "name": "Patriot Red",
+      "vibe": "Conservative voices, policy",
+      "colors": {
+        "ink": "#141726",
+        "body": "#3D4254",
+        "muted": "#6A7186",
+        "paper": "#FFFFFF",
+        "alt": "#EDEEF1",
+        "line": "#DCDEE5",
+        "accent": "#C4162C",
+        "accentLight": "#DE2A40",
+        "accentDark": "#9E0F22",
+        "navy": "#0F1531",
+        "navyDeep": "#080C20",
+        "navyMid": "#141C3A",
+        "heroBg": "/assets/rgg/hero-bg-flag.webp"
+      }
+    },
+    {
+      "id": "ember",
+      "name": "Ember",
+      "vibe": "Ministry, revival, faith media",
+      "colors": {
+        "ink": "#141726",
+        "body": "#3D4254",
+        "muted": "#6A7186",
+        "paper": "#FFFFFF",
+        "alt": "#EDEEF1",
+        "line": "#DCDEE5",
+        "accent": "#C2381C",
+        "accentLight": "#DA4F31",
+        "accentDark": "#982912",
+        "navy": "#10142E",
+        "navyDeep": "#080B1E",
+        "navyMid": "#161A3C",
+        "heroBg": "/assets/rgg/hero-bg-sunrise.webp"
+      }
+    },
+    {
+      "id": "royal-purple",
+      "name": "Royal Purple",
+      "vibe": "Churches, ministry leaders",
+      "colors": {
+        "ink": "#141726",
+        "body": "#3D4254",
+        "muted": "#6A7186",
+        "paper": "#FFFFFF",
+        "alt": "#EDEEF1",
+        "line": "#DCDEE5",
+        "accent": "#6541B5",
+        "accentLight": "#7B58CC",
+        "accentDark": "#4D2F8F",
+        "navy": "#141130",
+        "navyDeep": "#0B0920",
+        "navyMid": "#1B173F",
+        "heroBg": "/assets/rgg/hero-bg-sunrise.webp"
+      }
+    },
+    {
+      "id": "liberty-blue",
+      "name": "Liberty Blue",
+      "vibe": "Freedom-first, veterans",
+      "colors": {
+        "ink": "#141726",
+        "body": "#3D4254",
+        "muted": "#6A7186",
+        "paper": "#FFFFFF",
+        "alt": "#EDEEF1",
+        "line": "#DCDEE5",
+        "accent": "#2457C5",
+        "accentLight": "#3C71E0",
+        "accentDark": "#1A3F93",
+        "navy": "#0C1530",
+        "navyDeep": "#060C1F",
+        "navyMid": "#121D3D",
+        "heroBg": "/assets/rgg/hero-bg-flag.webp"
+      }
+    },
+    {
+      "id": "frontier-green",
+      "name": "Frontier Green",
+      "vibe": "Homesteaders, preppers, outdoors",
+      "colors": {
+        "ink": "#141726",
+        "body": "#3D4254",
+        "muted": "#6A7186",
+        "paper": "#FFFFFF",
+        "alt": "#EDEEF1",
+        "line": "#DCDEE5",
+        "accent": "#2E7D4F",
+        "accentLight": "#3F9A65",
+        "accentDark": "#1F5A38",
+        "navy": "#0F1A17",
+        "navyDeep": "#08110E",
+        "navyMid": "#15241F",
+        "heroBg": "/assets/rgg/hero-bg-flag.webp"
+      }
+    },
+    {
+      "id": "crimson",
+      "name": "Crimson",
+      "vibe": "Second Amendment, talk radio",
+      "colors": {
+        "ink": "#141726",
+        "body": "#3D4254",
+        "muted": "#6A7186",
+        "paper": "#FFFFFF",
+        "alt": "#EDEEF1",
+        "line": "#DCDEE5",
+        "accent": "#8F1D33",
+        "accentLight": "#AC2C44",
+        "accentDark": "#6E1426",
+        "navy": "#161216",
+        "navyDeep": "#0D0A0D",
+        "navyMid": "#1F191F",
+        "heroBg": "/assets/rgg/hero-bg-flag.webp"
+      }
+    },
+    {
+      "id": "charcoal-steel",
+      "name": "Charcoal Steel",
+      "vibe": "Retirement educators, finance",
+      "colors": {
+        "ink": "#141726",
+        "body": "#3D4254",
+        "muted": "#6A7186",
+        "paper": "#FFFFFF",
+        "alt": "#EDEEF1",
+        "line": "#DCDEE5",
+        "accent": "#3E6A96",
+        "accentLight": "#5283B3",
+        "accentDark": "#2D5075",
+        "navy": "#1A1A1A",
+        "navyDeep": "#111111",
+        "navyMid": "#242424",
+        "heroBg": ""
+      }
+    }
+  ],
+  "heroBackgrounds": [
+    {
+      "id": "flag",
+      "label": "American flag",
+      "src": "/assets/rgg/hero-bg-flag.webp"
+    },
+    {
+      "id": "sunrise",
+      "label": "Sunrise",
+      "src": "/assets/rgg/hero-bg-sunrise.webp"
+    },
+    {
+      "id": "none",
+      "label": "Plain",
+      "src": ""
+    }
+  ]
+}

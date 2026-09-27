@@ -1,0 +1,38 @@
+[
+  {
+    "id": "wealth-guide",
+    "label": "2026 Wealth Protection Guide (Faithful Steward bonus)",
+    "src": "/assets/rgg/kit-wealth-guide.webp",
+    "alt": "The 2026 Wealth Protection Guide and Magazine, with The Faithful Steward guide as a bonus",
+    "width": 2000,
+    "height": 1333,
+    "headline": "Get Started With This Free Gold & Silver Kit",
+    "lede": "Plain English. No jargon, no sales pitch. Read it at your kitchen table and decide for yourself.",
+    "points": [
+      "How physical gold and silver actually work",
+      "What a tax-advantaged gold IRA is, in plain English",
+      "The 2026 Wealth Protection Magazine, included"
+    ],
+    "buttonLabel": "Get started with this free kit",
+    "downloadUrl": "https://wealthguide.revelationgoldgroup.com",
+    "thankYouBody": "Please check your inbox for the 2026 Wealth Protection Guide and Magazine. It can take a few minutes to arrive, and it sometimes lands in the promotions or spam folder."
+  },
+  {
+    "id": "faithful-steward",
+    "label": "The Faithful Steward (Wealth Guide bonus)",
+    "src": "/assets/rgg/kit-faithful-steward.webp",
+    "alt": "The Faithful Steward guide, with the 2026 Wealth Protection Guide as a bonus",
+    "width": 2000,
+    "height": 1125,
+    "headline": "Get Started With This Biblical Stewardship Kit",
+    "lede": "Plain English. Rooted in Scripture. Read it at your kitchen table and decide for yourself.",
+    "points": [
+      "What the Bible teaches about stewardship",
+      "How to make money decisions in peace, not fear",
+      "An honest look at gold and silver"
+    ],
+    "buttonLabel": "Get Your Free Kit",
+    "downloadUrl": "https://steward.revelationgoldgroup.com",
+    "thankYouBody": "Please check your inbox for The Faithful Steward guide. It can take a few minutes to arrive, and it sometimes lands in the promotions or spam folder."
+  }
+]
