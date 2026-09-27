@@ -32,7 +32,11 @@ gradient. Rank candidates by:
 4. Background: plain or easily removed. Busy backgrounds need a cut-out.
 5. Expression and attire that fit a trusted financial and faith audience.
 
-Give the top 3 with direct image URLs and one line each on why. Say whether it needs a
+Give the top 3 with direct image URLs and one line each on why. When only the pages can be
+found (image URLs cannot be opened or verified), list the page URLs where the photo lives, best
+first, and name who to ask for an official headshot (the partner or their assistant, from
+HubSpot). HubSpot notes that are only attachments (launch decks) may hold an approved photo:
+point to them. Say whether it needs a
 background removal (transparent PNG is required for the final page). If the Canva connector is
 available, offer to run its background removal on the winner.
 
@@ -42,7 +46,7 @@ available, offer to run its background removal on the winner.
 | --- | --- | --- |
 | HubSpot form embed code | `hubspotEmbed` | The partner's own HubSpot form embed (portal 44817109). HubSpot tools here cannot list forms, so search HubSpot notes for a form link or id. If none, output: "Create in HubSpot: Marketing > Forms > clone the latest partner form, name it '<Partner> Landing Page', then Share > Embed code." |
 | Form style | (fixed) | RGG styled form. Do not change. |
-| Kiflo referral code | `kifloCode` | The partner's code in Kiflo. Look in HubSpot notes and company `kiflo_*` properties. If not found, propose the slugified show or partner name (e.g. `the-mike-church-show`) and mark "confirm in Kiflo". |
+| Kiflo referral code | `kifloCode` | The partner's code in Kiflo. Look in HubSpot notes and, if a company record exists, its `kiflo_*` properties (many partners have no company record; that is normal, rely on notes). If not found, propose the slugified show or partner name and label it **PROPOSED, NOT CONFIRMED**: confirm in Kiflo. Never take a code from examples in this skill or the repo README; those are illustrations, not data. |
 
 Always print the two links the team needs:
 - Referral link: `https://partner.revelationgoldgroup.com/<slug>?kfl_ln=<code>`
@@ -101,11 +105,15 @@ without the number rather than publish an unverified figure.
 | Preset | `themePreset` | Match the partner's brand colors to the nearest preset in `assets/theme-presets.json`: `revelation-navy`, `patriot-red`, `ember`, `royal-purple`, `liberty-blue`, `frontier-green`, `crimson`, `charcoal-steel`. Never gold, yellow, amber, bronze or brass. A gold or orange brand maps to `ember` or `revelation-navy`. |
 | Hero background | `heroBackground` | `flag` (patriot, policy, 2A, veterans), `sunrise` (faith, ministry, hope), `none` (finance, minimal). |
 
+When a partner is both faith and patriot, decide by how they introduce themselves first (the
+tagline or first line of their bio). Faith-first: `sunrise`. Country or politics first: `flag`.
+The guide follows the audience: any meaningfully faith-based audience gets `faithful-steward`.
+
 ## 9. Thank-you page
 
 | Field | key | Rule |
 | --- | --- | --- |
-| Layout | `thankYouStyle` | `portrait` (dark, default), `portrait-light`, `dark`, `light`. |
+| Layout | `thankYouStyle` | `portrait` (dark, default), `portrait-light`, `dark`, `light`. The photo and signature default to the hero photo and the quote signature, so they need no separate values. |
 | Greeting with first name | `thankYouGreetingNamed` | Keep `Thank you, {firstName}` unless the partner has a signature greeting. |
 | Greeting without a name | `thankYouGreeting` | "Thank you". |
 | Headline | `thankYouHeadline` | Short, in voice. "Your kit is on its way." |

@@ -134,6 +134,13 @@ def build(f):
     ty = page["thankYou"]
     ty["primaryUrl"] = guide["downloadUrl"]
     ty["body"] = guide["thankYouBody"]
+    steward = guide["id"] == "faithful-steward"
+    kit_name = "Biblical Stewardship Kit" if steward else "Gold & Silver Kit"
+    guide_name = "The Faithful Steward guide" if steward else "the 2026 Wealth Protection Guide and Magazine"
+    ty["seoDescription"] = (
+        f"Thank you for requesting {guide_name}. Check your inbox for the download, "
+        "or call Revelation Gold Group at {phone}."
+    )
     mapping = {
         "thankYouStyle": "style",
         "thankYouGreetingNamed": "greetingNamed",
@@ -149,6 +156,7 @@ def build(f):
         ty["seoTitle"] = f"Your Kit Is On Its Way | {name} & Revelation Gold Group"
 
     seo = page["seo"]
+    seo["ogTitle"] = f"Free {kit_name}"
     if f.get("seoTitle"):
         seo["title"] = f["seoTitle"]
     if f.get("seoDescription"):
@@ -157,7 +165,7 @@ def build(f):
     if name:
         seo["siteName"] = f"{name} x Revelation Gold Group"
         if "Partner Name" in seo["title"]:
-            seo["title"] = f"Free Gold & Silver Kit | {name} & Revelation Gold Group"
+            seo["title"] = f"Free {kit_name} | {name} & Revelation Gold Group"
         if "Partner Name" in seo["description"]:
             seo["description"] = seo["description"].replace("Partner Name", name)
         seo["ogDescription"] = seo["ogDescription"].replace("Partner Name", name)

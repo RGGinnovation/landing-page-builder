@@ -29,7 +29,8 @@ Run steps 1 and 2 in parallel when you can. They are independent.
   Pull `firstname`, `lastname`, `jobtitle`, `company`, `website`, `email`, `hs_lead_status`.
   `website` often holds the vanity domain already (e.g. kingdudemetals.com).
 - Find the company (COMPANY, by name or domain) and read its `kiflo_*` properties
-  (`kiflo_partner_id`, `kiflo_status`, `kiflo_program`).
+  (`kiflo_partner_id`, `kiflo_status`, `kiflo_program`). Many partners have no company record:
+  one search is enough, then move on.
 - Read the notes: NOTE objects associated with the contact, newest first, `hs_note_body`.
   Look for: how they describe themselves, audience, what they care about, agreed page details,
   Kiflo code, HubSpot form links, vanity domain, anything the partner asked for or objected to.
@@ -49,7 +50,9 @@ Only read HubSpot. Do not create or update records.
 - Logo: find a light or white version for a dark header (site header SVG/PNG, press kit).
 - Brand colors: note the site's dominant colors to choose the theme preset.
 
-If the domain is unreachable, keep going with search results and HubSpot, and say so once.
+If pages will not load, do not keep retrying: after two failed fetches on a host, work from
+search results and HubSpot, say so once in the sheet, and for the photo and logo list the page
+URLs to take them from plus who to ask (partner or assistant from HubSpot).
 
 ### 3. Verify perishable figures
 

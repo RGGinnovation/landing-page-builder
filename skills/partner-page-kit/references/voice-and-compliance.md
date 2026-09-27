@@ -8,7 +8,10 @@ The copy only works if the partner's audience hears the partner. Before writing 
    - Show or ministry "About" and host bio (their own words, not a third party's).
    - Episode titles and descriptions, YouTube channel description, Substack or blog intros.
    - Their social posts (X, Facebook, Instagram captions).
-   - HubSpot call notes that quote them.
+   - HubSpot call notes that quote them directly.
+
+   Leave out anything RGG wrote for them (notes like "we supplied blog posts for his Substack",
+   ghost-written columns, our decks). That is our voice, not theirs.
 2. From the samples, write a 5-line voice profile and keep it in the output:
    - Signature phrases or nicknames (e.g. Mike Church: "King Dude").
    - Sentence length and rhythm (punchy and blunt, or warm and pastoral).
