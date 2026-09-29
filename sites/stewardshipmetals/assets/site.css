@@ -299,3 +299,6 @@ a.btn:hover,button.btn:hover{background:var(--navy-alt);}
   .banner{height:420px;background:#EDE2C2;}
   .banner img.art{top:auto;height:290px;object-position:66% 100%;-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 60px);mask-image:linear-gradient(to bottom,transparent 0,#000 60px);}
 }
+
+.badge svg.gmark{width:18px;height:18px;}
+@media (max-width:960px){.badges{flex-wrap:wrap;}}
