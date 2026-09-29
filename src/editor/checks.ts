@@ -55,8 +55,18 @@ export function checkPage(c: PageConfig): Issue[] {
   )
     err("Quote and signature are placeholder copy.", "quote");
 
+  if (/partner name/i.test(JSON.stringify([c.seo, c.thankYou.seoTitle, c.thankYou.seoDescription])))
+    err("Page title or search description still says “Partner Name”.", "advanced");
+
   // Partner voice copy is personal opinion and belief only (see template/compliance.ts).
+  // The hero headline and the 401(k) section follow the same rule.
   const voice: [string, string, GroupId][] = [];
+  if (hero) voice.push(["Hero headline", hero.props.headline, "advanced"]);
+  const question = find("question");
+  if (question)
+    [question.props.lead, ...question.props.paragraphs].forEach((q) =>
+      voice.push(["401(k) section", q, "advanced"]),
+    );
   if (quote) voice.push(["Quote", quote.props.quote, "quote"]);
   const why = find("why");
   if (why) why.props.paragraphs.forEach((p) => voice.push(["Why I Believe", p, "why"]));

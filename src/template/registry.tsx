@@ -97,7 +97,7 @@ export const SECTIONS: Registry = {
       imageAlt: "{partner}",
       imageWidth: 820,
       imageHeight: 986,
-      headline: "Your First Step To Help Protect Your Savings",
+      headline: "Your First Step Toward Owning Physical Gold & Silver",
       firstLabel: "First Name",
       lastLabel: "Last Name",
       phoneLabel: "Phone Number",
@@ -279,9 +279,9 @@ export const SECTIONS: Registry = {
       eyebrow: "A question worth asking",
       headline: "Do you have a 401(k) sitting with a job you left?",
       paragraphs: [
-        "If you have a 401(k) still sitting with an employer you left years ago, or an IRA you rarely look at, those funds are not locked into the choices you made the day you opened the account. They can hold physical gold and silver.",
+        "If you have a 401(k) still sitting with an employer you left years ago, or an IRA you rarely look at, you may have more options than you think, including a tax-advantaged gold IRA that holds physical gold and silver.",
       ],
-      lead: "Moved directly from one custodian to another, the funds stay tax deferred. No taxes, and no early withdrawal penalty.",
+      lead: "Ask how a direct custodian-to-custodian transfer works before you decide anything.",
       accounts: [
         "Old 401(k)",
         "Traditional or Roth IRA",

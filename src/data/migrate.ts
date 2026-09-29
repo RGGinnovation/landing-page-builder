@@ -31,8 +31,8 @@ export function migrate(input: PageConfig): PageConfig {
     brand: { ...base.brand, ...p.brand },
     theme: { ...base.theme, ...p.theme, preset: p.theme?.preset ?? "custom" },
     tracking,
-    seo: { ...base.seo, ...p.seo },
-    thankYou: { ...base.thankYou, ...p.thankYou },
+    seo: tokenizeAll({ ...base.seo, ...p.seo }),
+    thankYou: tokenizeAll({ ...base.thankYou, ...p.thankYou }),
     sections,
   };
 }
@@ -47,6 +47,26 @@ const OLD_WHY_SENTENCES = [
 ];
 const NEW_WHY_SENTENCE =
   "Owning physical gold and silver is a personal choice I made for my own family, and when I looked for a company to work with, I chose **Revelation Gold Group**, a faith-driven firm.";
+
+/** Retired template copy that implied a benefit or gave tax guidance, and its replacement. */
+const RETIRED_COPY: Record<string, string> = {
+  "Your First Step To Help Protect Your Savings":
+    "Your First Step Toward Owning Physical Gold & Silver",
+  "If you have a 401(k) still sitting with an employer you left years ago, or an IRA you rarely look at, those funds are not locked into the choices you made the day you opened the account. They can hold physical gold and silver.":
+    "If you have a 401(k) still sitting with an employer you left years ago, or an IRA you rarely look at, you may have more options than you think, including a tax-advantaged gold IRA that holds physical gold and silver.",
+  "Moved directly from one custodian to another, the funds stay tax deferred. No taxes, and no early withdrawal penalty.":
+    "Ask how a direct custodian-to-custodian transfer works before you decide anything.",
+};
+const upgradeText = (t: string) => RETIRED_COPY[t.trim()] ?? t;
+
+/** Early pages stored the literal placeholder in SEO text instead of the {partner} token. */
+const tokenize = (t: string) => t.replace(/Partner Name/g, "{partner}");
+
+function tokenizeAll<T extends object>(o: T): T {
+  const out = { ...o } as Record<string, unknown>;
+  for (const [k, v] of Object.entries(out)) if (typeof v === "string") out[k] = tokenize(v);
+  return out as T;
+}
 
 const STEWARD = KIT_OPTIONS.find((k) => k.id === "faithful-steward")!;
 const OLD_STEWARD_HEADLINES = new Set(["Get Your Free Faithful Steward Guide"]);
@@ -77,6 +97,17 @@ function upgradeSection(s: Section): Section {
         props.buttonLabel = STEWARD.buttonLabel;
       return { ...s, props };
     }
+    case "hero":
+      return { ...s, props: { ...s.props, headline: upgradeText(s.props.headline) } };
+    case "question":
+      return {
+        ...s,
+        props: {
+          ...s.props,
+          lead: upgradeText(s.props.lead),
+          paragraphs: s.props.paragraphs.map(upgradeText),
+        },
+      };
     case "footer": {
       // One short disclaimer paragraph replaces the old stock footer copy. Custom text is kept.
       const parts = [s.props.partnerDisclosure, ...s.props.disclosures]

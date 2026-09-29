@@ -66,19 +66,19 @@ export function createBasePage(overrides?: Partial<Pick<PageConfig, "slug" | "na
       debug: false,
     },
     seo: {
-      title: "Free 2026 Gold & Silver Kit | Partner Name & Revelation Gold Group",
+      title: "Free Gold & Silver Kit | {partner} & Revelation Gold Group",
       description:
-        "Partner Name readers and listeners can request the free 2026 Wealth Protection Guide and Magazine from Revelation Gold Group. A plain English look at owning physical gold and silver. Nothing to buy.",
-      siteName: "Partner Name x Revelation Gold Group",
-      ogTitle: "Free 2026 Gold & Silver Kit",
+        "{partner} readers and listeners can request the free 2026 Wealth Protection Guide and Magazine from Revelation Gold Group. A plain English look at owning physical gold and silver. Nothing to buy.",
+      siteName: "{partner} x Revelation Gold Group",
+      ogTitle: "Free Gold & Silver Kit",
       ogDescription:
-        "A plain English guide to owning physical gold and silver, free for the Partner Name audience. Nothing to buy.",
+        "A plain English guide to owning physical gold and silver, free for the {partner} audience. Nothing to buy.",
       canonicalUrl: "",
       ogImage: "",
       robots: "index,follow",
     },
     thankYou: {
-      seoTitle: "Your Kit Is On Its Way | Partner Name & Revelation Gold Group",
+      seoTitle: "Your Kit Is On Its Way | {partner} & Revelation Gold Group",
       seoDescription:
         "Thank you for requesting the free 2026 Wealth Protection Guide and Magazine. Check your inbox for the download, or call Revelation Gold Group at {phone}.",
       style: "portrait",

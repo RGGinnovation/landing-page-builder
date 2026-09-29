@@ -168,8 +168,7 @@ def build(f):
     for k_in, k_out in mapping.items():
         if f.get(k_in):
             ty[k_out] = f[k_in]
-    if name:
-        ty["seoTitle"] = f"Your Kit Is On Its Way | {name} & Revelation Gold Group"
+    ty["seoTitle"] = "Your Kit Is On Its Way | {partner} & Revelation Gold Group"
 
     seo = page["seo"]
     seo["ogTitle"] = f"Free {kit_name}"
@@ -178,13 +177,11 @@ def build(f):
     if f.get("seoDescription"):
         seo["description"] = f["seoDescription"]
         seo["ogDescription"] = f["seoDescription"]
-    if name:
-        seo["siteName"] = f"{name} x Revelation Gold Group"
-        if "Partner Name" in seo["title"]:
-            seo["title"] = f"Free {kit_name} | {name} & Revelation Gold Group"
-        if "Partner Name" in seo["description"]:
-            seo["description"] = seo["description"].replace("Partner Name", name)
-        seo["ogDescription"] = seo["ogDescription"].replace("Partner Name", name)
+    if not f.get("seoTitle"):
+        seo["title"] = f"Free {kit_name} | {{partner}} & Revelation Gold Group"
+    seo["siteName"] = "{partner} x Revelation Gold Group"
+    for k in ("description", "ogDescription"):
+        seo[k] = seo[k].replace("Partner Name", "{partner}")
     return page
 
 
