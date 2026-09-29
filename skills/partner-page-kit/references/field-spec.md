@@ -10,8 +10,8 @@ Live pages already built with these rules include /petekaliner, /tonishuppe, /em
 | Field | key | Rule |
 | --- | --- | --- |
 | Partner name | `partnerName` | The name the audience knows: the person's name ("Pete Kaliner", "Toni Shuppe") or an on-air nickname they use ("King Dude"). It fills `{partner}` in titles and the footer. |
-| Page link | `slug` | Lowercase letters, digits and hyphens. Default: first and last name joined (`petekaliner`, `tonishuppe`). Use a brand or nickname slug only if the audience knows them by it (`king-dude`, `asor`). Never a reserved slug (assets/rules.json). |
-| Vanity domain | `vanityDomain` | The HubSpot contact `website` if it is a *metals.com domain (e.g. kalinermetals.com), with `vanityDomainConfirmed: true`. Otherwise propose `lastnamemetals.com` and leave `vanityDomainConfirmed` false. |
+| Page link | `slug` | Lowercase letters, digits and hyphens. Default: first and last name joined with no hyphen (`petekaliner`, `tonishuppe`). Use a brand or nickname slug only if the audience knows them by it (`king-dude`, `asor`). Never a reserved slug (assets/rules.json). |
+| Vanity domain | `vanityDomain` | The HubSpot contact `website` if it is a *metals.com domain (e.g. kalinermetals.com), with `vanityDomainConfirmed: true`. If the contact's `website` is some other domain the partner owns, do not assume it redirects: propose `lastnamemetals.com` with `vanityDomainConfirmed` false and add a to-do to check the other domain first. |
 
 ## 2. Logo & photo
 
@@ -37,7 +37,7 @@ by:
 | --- | --- | --- |
 | HubSpot form embed code | `hubspotEmbed` | The partner's own form (portal 44817109). Use it only if HubSpot notes hold the embed or form id. Otherwise leave it blank: the kit adds the steps to create one to the to-do list. |
 | Form style | (fixed) | RGG styled form. |
-| Kiflo referral code | `kifloCode` (+ `kifloCodeConfirmed`) | Take it from HubSpot notes or the company's `kiflo_*` properties, and set confirmed to true only when a source states it. Otherwise propose the slugified show or partner name with confirmed false. Never copy a code from examples in this skill or the repo. |
+| Kiflo referral code | `kifloCode` (+ `kifloCodeConfirmed`) | Take it from HubSpot notes or the company's `kiflo_*` properties, and set confirmed to true only when a source states it. Otherwise propose the show or brand name in lowercase with hyphens (`the-mike-church-show`), with confirmed false. Never copy a code from examples in this skill or the repo. |
 
 ## 4. Quote & signature (draft for partner approval)
 
@@ -45,7 +45,7 @@ by:
 | --- | --- | --- |
 | Quote | `quote` | 1 or 2 sentences, 25 to 45 words, first person, no quote marks. Their own belief, ending on why they partnered with Revelation Gold Group. A personal fact in it (e.g. "buying silver since 2008") must be in `claims` with a source. |
 | Signature name | `signatureName` | Their personal name, which renders in a script font: "Pete Kaliner". |
-| Title under the signature | `signatureRole` | "Role, Organization": "Host, The Pete Kaliner Show", "Founder, A Sea of Red". Check it against the official source. |
+| Title under the signature | `signatureRole` | "Role, Organization": "Host, The Pete Kaliner Show", "Founder, A Sea of Red". Check it against the official source. If they hold several roles, use the public-facing one this audience knows them by (their show, book or brand), not an RGG title from HubSpot. Avoid a politically charged organization unless it is central to how they introduce themselves, and add a to-do when roles conflict. |
 
 ## 5. Why I Believe (draft for partner approval)
 
@@ -57,7 +57,7 @@ by:
 Write it in this order:
 1. **Opener:** in their register, addressed to their audience ("Dude Nation, ...", "If you're
    like most Flames fans I know, ..."). It names a feeling, never a promise.
-2. **Personal choice:** owning physical gold and silver is a choice they made, tied to their
+2. **Personal choice:** owning physical gold and silver is a choice they made (only if a source says they own metals; otherwise frame it as a belief, "I believe in owning something real", and add a to-do to confirm), tied to their
    own identity or mission. Never what metals do. Example: "I'm a lowercase-L libertarian,
    and I don't trust the people spending my money. I've bought silver since the 2008 crash
    ... I picked **Revelation Gold Group**."
@@ -93,7 +93,7 @@ Central bank buying can be referenced without a number ("buying gold at a record
 
 | Field | key | Rule |
 | --- | --- | --- |
-| Preset | `themePreset` | Pick the nearest to their brand colors: `revelation-navy`, `patriot-red`, `ember`, `royal-purple`, `liberty-blue`, `frontier-green`, `crimson` or `charcoal-steel`. A gold or orange brand maps to `ember` or `revelation-navy`. Never gold. |
+| Preset | `themePreset` | If brand colors are unknown, use `revelation-navy`. Otherwise pick the nearest to their brand colors: `revelation-navy`, `patriot-red`, `ember`, `royal-purple`, `liberty-blue`, `frontier-green`, `crimson` or `charcoal-steel`. A gold or orange brand maps to `ember` or `revelation-navy`. Never gold. |
 | Hero background | `heroBackground` | `flag` for patriot, policy, 2A or veterans. `sunrise` for faith, ministry or hope. `none` for finance or minimal. When they are both faith and patriot, follow how they introduce themselves first. |
 
 ## 9. Thank-you page

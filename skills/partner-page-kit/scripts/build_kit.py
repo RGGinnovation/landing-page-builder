@@ -252,6 +252,16 @@ def check(kit, page, guide):
         if not c.get("source"):
             E(f"Claim about the partner has no source: '{c.get('text')}'. Source it (web or HubSpot) or remove it from the copy.")
 
+    # Specific personal facts (years, counts) in the copy must appear in claims or figures.
+    ledger = " ".join(str(c.get("text", "")) for c in (kit.get("claims") or []) + (kit.get("figures") or []))
+    for key, text in (("quote", q), ("whyParagraph", why)):
+        for m in re.finditer(r"\b(19|20)\d{2}\b|\b(\d+|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|twenty|thirty)\s+(years?|decades?)\b", text or "", re.I):
+            token = m.group(0)
+            if token.lower() not in ledger.lower() and not (m.group(1) and token in ledger):
+                W(f"{key} states \"{token}\" but no claim or figure mentions it. Add the claim with its source, or remove it.")
+    if re.search(r"\bI(?:'ve| have)? (?:own|bought|buy|hold|have held|have owned)\b[^.]*\b(gold|silver|metal)", " ".join([q, why] + rs), re.I) and not re.search(r"\b(own|bought|buy|hold)\w*\b.*\b(gold|silver|metal)", ledger, re.I):
+        W("The copy says the partner owns or buys metals, but no claim sources it. Source it or frame it as a belief and add a to-do.")
+
     faith_forward = bool(partner.get("faithForward"))
     partner_voice = " ".join([q, why] + rs)
     if not faith_forward and FAITH_WORDS.search(partner_voice):

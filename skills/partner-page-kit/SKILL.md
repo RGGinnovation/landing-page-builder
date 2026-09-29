@@ -26,6 +26,10 @@ Read these before writing anything:
 ## Workflow
 
 ### 1. Identify the partner from the link
+First check whether they already have a page: open partner.revelationgoldgroup.com/<likely slug>.
+If one is live, the kit is an update. Read the page, keep its slug and keep lines compliance
+already approved, and say so in the reply.
+
 Open the link. Work out the person, their show, ministry or brand, and their role. Confirm who
 they are with at least two independent sources before you research further. Names and team
 nicknames are ambiguous: A Sea of Red covers the Liberty University Flames, not the Calgary
@@ -52,8 +56,10 @@ what to get and from whom.
 - **Claims:** every fact about the partner that appears in the copy goes in `claims`, with its
   source (a URL, or a HubSpot note and its date). A claim with no source comes out of the copy.
 - **Figures:** every number in 3 Reasons goes in `figures`, checked today against the named
-  source (national debt: fiscaldata.treasury.gov, Debt to the Penny). If you cannot verify a
-  number, write the reason without it.
+  source (national debt: fiscaldata.treasury.gov, Debt to the Penny). If the primary source
+  will not load, a major outlet reporting the Treasury figure this month may stand in: put it in
+  `figures` with that outlet as the source and add a to-do to check fiscaldata before launch.
+  If you cannot verify a number at all, write the reason without it.
 - **Names:** check company names, titles and show names against the official source. If
   sources disagree (for example a company name that differs between HubSpot and the website),
   add a to-do.

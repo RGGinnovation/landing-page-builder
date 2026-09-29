@@ -1,0 +1,431 @@
+{
+  "format": "rgg-partner-page-kit",
+  "formatVersion": 2,
+  "generatedAt": "2026-09-29T16:32:22Z",
+  "input": {
+    "link": "https://thepetekalinershow.com",
+    "name": "Pete Kaliner"
+  },
+  "links": {
+    "page": "https://partner.revelationgoldgroup.com/petekaliner",
+    "thankYou": "https://partner.revelationgoldgroup.com/petekaliner/thank-you",
+    "referral": "",
+    "kifloLinkTarget": "https://partner.revelationgoldgroup.com/petekaliner",
+    "vanityDomain": "kalinermetals.com"
+  },
+  "status": {
+    "copyReady": true,
+    "publishReady": false,
+    "errors": [],
+    "warnings": [],
+    "todo": [
+      "HubSpot form embed: clone the latest partner form in HubSpot (Marketing > Forms), name it '<Partner> Landing Page', then Share > Embed code, and paste it in Lead form & tracking.",
+      "Hero photo: upload the chosen photo (transparent PNG cut-out) in Logo & photo.",
+      "Partner logo: upload a light or white logo in Logo & photo.",
+      "Kiflo referral code: find the partner's code in Kiflo and enter it.",
+      "Kiflo: the partner's link must target https://partner.revelationgoldgroup.com/petekaliner or Kiflo drops every visit and lead.",
+      "Partner approval: the quote and Why I Believe paragraph are drafts in the partner's voice (FTC endorsement rules). Get written approval before publishing.",
+      "Perishable: verify the BBB rating, Google rating and review count, and any figure in 3 Reasons, before launch."
+    ]
+  },
+  "partner": {
+    "fullName": "Pete Kaliner",
+    "knownAs": "Pete Kaliner",
+    "role": "Host",
+    "organization": "The Pete Kaliner Show, WBT Charlotte",
+    "audience": "Charlotte and North Carolina news and talk listeners, mostly 35 and older, freedom-first",
+    "faithForward": false,
+    "faithNote": "No public faith frame. HubSpot guidance: let faith come from him.",
+    "bio": "Pete Kaliner hosts The Pete Kaliner Show on WBT in Charlotte, weekdays at noon, and runs his own podcast. A career radio journalist and self-described lowercase-L libertarian, he has bought silver since the 2008 crash.",
+    "identityCheck": [
+      {
+        "fact": "Host of The Pete Kaliner Show on WBT Charlotte",
+        "source": "https://thepetekalinershow.com/about"
+      },
+      {
+        "fact": "Returned to WBT in July 2021 in the noon to 3 PM slot",
+        "source": "https://radioinsight.com/headlines/210964"
+      }
+    ],
+    "voiceProfile": [
+      "Punchy and sardonic: quick setup, then a jab.",
+      "Short declarative sentences, conversational.",
+      "Anchors: smaller government, lowercase-L libertarian, North Carolina first.",
+      "Informal and self-deprecating, never salesy.",
+      "Never preachy or sentimental; no faith language unless he uses it."
+    ],
+    "voiceSamples": [
+      {
+        "text": "I talk about stuff.",
+        "source": "https://www.facebook.com/petekalinershow"
+      },
+      {
+        "text": "Dems & media (but I repeat myself)",
+        "source": "https://x.com/PeteKaliner/status/1755937018176000174"
+      },
+      {
+        "text": "All good things come to an end. All jobs have a shelf life.",
+        "source": "https://x.com/petekaliner/status/1217104073041891328"
+      },
+      {
+        "text": "creating conversations on the radio & podcast",
+        "source": "https://www.patreon.com/petekalinershow"
+      },
+      {
+        "text": "I knew right out of the gate that I was not going to ever be able to measure up to that.",
+        "source": "https://barrettmedia.com/2025/03/14/pete-kaliner-hosting-on-wbt-in-former-rush-limbaugh-timeslot-my-dream-job/"
+      }
+    ],
+    "socials": {
+      "x": "https://x.com/PeteKaliner",
+      "facebook": "https://www.facebook.com/petekalinershow/",
+      "instagram": "https://www.instagram.com/petekaliner"
+    }
+  },
+  "hubspot": {
+    "found": true,
+    "contactUrl": "https://app.hubspot.com/contacts/44817109/record/0-1/242971280648",
+    "leadStatus": "Partner",
+    "website": "https://KalinerMetals.com",
+    "keyNotes": [
+      {
+        "date": "2026-09-08",
+        "point": "Pete has bought silver himself since the 2008 crash."
+      },
+      {
+        "date": "2026-08-20",
+        "point": "Self-identifies as a lowercase-L libertarian. No public information on faith."
+      }
+    ],
+    "guidance": [
+      "Treat the audience as freedom-first rather than faith-first. Let faith come from him."
+    ]
+  },
+  "assets": {
+    "photo": {},
+    "photoAlternates": [],
+    "logo": {},
+    "brandColors": []
+  },
+  "rationale": {
+    "slug": "First and last name, the pattern used for existing partner pages.",
+    "guide": "Freedom-first audience, not faith-first: Wealth Guide.",
+    "themePreset": "Navy fits a news and talk brand; no gold.",
+    "heroBackground": "Politics and policy host: flag.",
+    "thankYouStyle": "Photo layout, dark, to match the hero."
+  },
+  "claims": [
+    {
+      "text": "Pete has bought silver since the 2008 crash",
+      "source": "HubSpot note, 2026-09-08"
+    },
+    {
+      "text": "Pete calls himself a lowercase-L libertarian",
+      "source": "HubSpot note, 2026-08-20; mountainx.com"
+    }
+  ],
+  "figures": [
+    {
+      "text": "National debt above $40 trillion",
+      "source": "U.S. Treasury, Debt to the Penny",
+      "checked": "2026-09-29"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://thepetekalinershow.com/about",
+      "usedFor": "bio, identity"
+    },
+    {
+      "url": "https://radioinsight.com/headlines/210964",
+      "usedFor": "WBT return date"
+    },
+    {
+      "url": "https://app.hubspot.com/contacts/44817109/record/0-1/242971280648",
+      "usedFor": "notes, vanity domain, guidance"
+    }
+  ],
+  "blocked": [
+    "thepetekalinershow.com (sandbox proxy)"
+  ],
+  "fields": {
+    "partnerName": "Pete Kaliner",
+    "slug": "petekaliner",
+    "vanityDomain": "kalinermetals.com",
+    "vanityDomainConfirmed": true,
+    "logoUrl": "",
+    "logoHeight": 34,
+    "photoUrl": "",
+    "photoAlt": "Pete Kaliner, host of The Pete Kaliner Show on WBT",
+    "hubspotEmbed": "",
+    "kifloCode": "",
+    "kifloCodeConfirmed": false,
+    "quote": "I've been buying silver since the 2008 crash, because I'd rather hold something real than trust the people spending my money. When I finally picked a gold and silver company, I picked Revelation Gold Group.",
+    "signatureName": "Pete Kaliner",
+    "signatureRole": "Host, The Pete Kaliner Show",
+    "whyParagraph": "I'm a lowercase-L libertarian, and I don't trust the people spending my money. I've bought silver since the 2008 crash because that's what I believe in, and when I picked a company to buy from, I picked **Revelation Gold Group**. I did my homework. I met the team and asked every question I'd want you to ask. They answered all of them in plain English, and nobody pushed me toward a decision. A **BBB Accredited Business with an A+ rating**, a **4.9 star Google rating across 256 reviews**, and verified reviews on **Trustpilot**. They have helped families all over the country. Now they want to help you.",
+    "reasonsHeadline": "3 Reasons I Choose\nGold & Silver",
+    "reasons": [
+      "The national debt has blown past **$40 trillion**, and I don't see anyone in Washington with a plan to pay it down.",
+      "I believe every dollar they print makes the ones in my wallet worth a little less. That's why I choose to keep part of what I've earned in physical metal.",
+      "I like things I can hold. A paper promise depends on somebody else keeping their word, and physical gold and silver don't."
+    ],
+    "reasonsSource": "Source: U.S. Treasury, Debt to the Penny, September 2026.",
+    "guide": "wealth-guide",
+    "themePreset": "revelation-navy",
+    "heroBackground": "flag",
+    "thankYouStyle": "portrait",
+    "thankYouHeadline": "Your kit is on its way.",
+    "seoDescription": "Pete Kaliner Show listeners can request the free 2026 Wealth Protection Guide from Revelation Gold Group. A plain English look at gold and silver. Nothing to buy."
+  },
+  "page": {
+    "version": 1,
+    "slug": "petekaliner",
+    "name": "Pete Kaliner",
+    "vanityDomain": "kalinermetals.com",
+    "brand": {
+      "partnerName": "Pete Kaliner",
+      "partnerLogo": "/assets/partners/_base/partner-logo.svg",
+      "partnerLogoWidth": 520,
+      "partnerLogoHeight": 119,
+      "rggName": "Revelation Gold Group",
+      "rggLogo": "/assets/rgg/rgg-wordmark.webp",
+      "rggFooterLogo": "/assets/rgg/rgg-wordmark-footer.webp",
+      "phoneDisplay": "(888) 465-3049",
+      "phoneE164": "+18884653049",
+      "email": "Info@RevelationGoldGroup.com",
+      "address": "9440 Santa Monica Blvd, Suite 301, Beverly Hills, CA 90210",
+      "addressMapUrl": "https://maps.google.com/?q=9440+Santa+Monica+Blvd+Suite+301+Beverly+Hills+CA+90210",
+      "privacyUrl": "https://revelationgoldgroup.com/policy",
+      "termsUrl": "https://revelationgoldgroup.com/terms-of-service",
+      "amlUrl": "https://www.taxfreegoldira.com/aml-policy-anti-money-laundering",
+      "copyrightYear": "2026"
+    },
+    "theme": {
+      "preset": "revelation-navy",
+      "ink": "#141726",
+      "body": "#3D4254",
+      "muted": "#6A7186",
+      "paper": "#FFFFFF",
+      "alt": "#EDEEF1",
+      "line": "#DCDEE5",
+      "accent": "#2C66A8",
+      "accentLight": "#3F7CC2",
+      "accentDark": "#1F4E85",
+      "navy": "#072B4E",
+      "navyDeep": "#041A30",
+      "navyMid": "#0A3560",
+      "heroBg": "/assets/rgg/hero-bg-flag.webp",
+      "partnerLogoHeight": 34,
+      "partnerLogoHeightMobile": 26
+    },
+    "tracking": {
+      "hubspotEmbed": "",
+      "hubspotPortalId": "44817109",
+      "hubspotFormGuid": "",
+      "hubspotRegion": "na1",
+      "formMode": "styled",
+      "kifloPartnerCode": "",
+      "debug": false
+    },
+    "seo": {
+      "title": "Free Gold & Silver Kit | {partner} & Revelation Gold Group",
+      "description": "Pete Kaliner Show listeners can request the free 2026 Wealth Protection Guide from Revelation Gold Group. A plain English look at gold and silver. Nothing to buy.",
+      "siteName": "{partner} x Revelation Gold Group",
+      "ogTitle": "Free Gold & Silver Kit",
+      "ogDescription": "Pete Kaliner Show listeners can request the free 2026 Wealth Protection Guide from Revelation Gold Group. A plain English look at gold and silver. Nothing to buy.",
+      "canonicalUrl": "",
+      "ogImage": "",
+      "robots": "index,follow"
+    },
+    "thankYou": {
+      "seoTitle": "Your Kit Is On Its Way | {partner} & Revelation Gold Group",
+      "seoDescription": "Thank you for requesting the free 2026 Wealth Protection Guide and Magazine. Check your inbox for the download, or call Revelation Gold Group at {phone}.",
+      "style": "portrait",
+      "photo": "",
+      "showSignature": true,
+      "signatureName": "",
+      "signatureRole": "",
+      "greetingNamed": "Thank you, {firstName}",
+      "greeting": "Thank you",
+      "headline": "Your kit is on its way.",
+      "body": "Please check your inbox for the 2026 Wealth Protection Guide and Magazine. It can take a few minutes to arrive, and it sometimes lands in the promotions or spam folder.",
+      "primaryLabel": "Download the guide",
+      "primaryUrl": "https://wealthguide.revelationgoldgroup.com",
+      "showCallButton": true,
+      "callLabel": "Call {phone}",
+      "note": "Questions? A Revelation Gold Group specialist can walk you through it, with nothing to buy."
+    },
+    "sections": [
+      {
+        "id": "topbar-0",
+        "type": "topbar",
+        "props": {
+          "callLabel": "Questions? Call"
+        }
+      },
+      {
+        "id": "hero-1",
+        "type": "hero",
+        "props": {
+          "image": "/assets/partners/_base/hero-portrait.svg",
+          "imageAlt": "Pete Kaliner, host of The Pete Kaliner Show on WBT",
+          "imageWidth": 820,
+          "imageHeight": 986,
+          "headline": "Your First Step Toward Owning Physical Gold & Silver",
+          "firstLabel": "First Name",
+          "lastLabel": "Last Name",
+          "phoneLabel": "Phone Number",
+          "emailLabel": "Email",
+          "submitLabel": "Get started with this free kit",
+          "consent": "By clicking the button above, you agree to our [Privacy Policy](https://revelationgoldgroup.com/policy) and [Terms & Conditions](https://revelationgoldgroup.com/terms-of-service) and authorize Revelation Gold Group, or someone acting on their behalf, to contact you by email, text message, and recorded and artificial voice message using automated telephone technology, including auto dialers, at the number you provided above. Consent is not a condition of any purchase. Message and data rates may apply. You may opt out at any time by replying STOP to any text message."
+        }
+      },
+      {
+        "id": "quote-2",
+        "type": "quote",
+        "props": {
+          "quote": "I've been buying silver since the 2008 crash, because I'd rather hold something real than trust the people spending my money. When I finally picked a gold and silver company, I picked Revelation Gold Group.",
+          "name": "Pete Kaliner",
+          "role": "Host, The Pete Kaliner Show"
+        }
+      },
+      {
+        "id": "callband-3",
+        "type": "callband",
+        "props": {
+          "headline": "Have a question first?",
+          "subline": "Talk to a real person.",
+          "buttonLabel": "Call {phone}"
+        }
+      },
+      {
+        "id": "why-4",
+        "type": "why",
+        "props": {
+          "headline": "Why I Believe in\nRevelation Gold Group",
+          "paragraphs": [
+            "I'm a lowercase-L libertarian, and I don't trust the people spending my money. I've bought silver since the 2008 crash because that's what I believe in, and when I picked a company to buy from, I picked **Revelation Gold Group**. I did my homework. I met the team and asked every question I'd want you to ask. They answered all of them in plain English, and nobody pushed me toward a decision. A **BBB Accredited Business with an A+ rating**, a **4.9 star Google rating across 256 reviews**, and verified reviews on **Trustpilot**. They have helped families all over the country. Now they want to help you."
+          ],
+          "badges": [
+            {
+              "kind": "bbb",
+              "url": "https://www.bbb.org/us/ca/beverly-hills/profile/gold-sellers/revelation-gold-group-1216-1000029316",
+              "label": "Accredited Business",
+              "value": "A+ Rating"
+            },
+            {
+              "kind": "google",
+              "url": "https://www.google.com/maps/search/?api=1&query=Revelation%20Gold%20Group%20Beverly%20Hills",
+              "label": "256 Google Reviews",
+              "value": "4.9"
+            },
+            {
+              "kind": "trustpilot",
+              "url": "https://www.trustpilot.com/review/revelationgoldgroup.com",
+              "label": "Verified Client Reviews",
+              "value": ""
+            },
+            {
+              "kind": "consumeraffairs",
+              "url": "",
+              "label": "Listed on ConsumerAffairs",
+              "value": ""
+            }
+          ],
+          "note": "Ratings and review counts are current as of September 2026 and are published by the rating bodies named above."
+        }
+      },
+      {
+        "id": "kit-5",
+        "type": "kit",
+        "props": {
+          "image": "/assets/rgg/kit-wealth-guide.webp",
+          "imageAlt": "The 2026 Wealth Protection Guide and Magazine, with The Faithful Steward guide as a bonus",
+          "headline": "Get Started With This Free Gold & Silver Kit",
+          "lede": "Plain English. No jargon, no sales pitch. Read it at your kitchen table and decide for yourself.",
+          "points": [
+            "How physical gold and silver actually work",
+            "What a tax-advantaged gold IRA is, in plain English",
+            "The 2026 Wealth Protection Magazine, included"
+          ],
+          "buttonLabel": "Get started with this free kit",
+          "buttonHref": "#request",
+          "footnote": "",
+          "layout": "balanced"
+        }
+      },
+      {
+        "id": "reasons-6",
+        "type": "reasons",
+        "props": {
+          "headline": "3 Reasons I Choose\nGold & Silver",
+          "items": [
+            "The national debt has blown past **$40 trillion**, and I don't see anyone in Washington with a plan to pay it down.",
+            "I believe every dollar they print makes the ones in my wallet worth a little less. That's why I choose to keep part of what I've earned in physical metal.",
+            "I like things I can hold. A paper promise depends on somebody else keeping their word, and physical gold and silver don't."
+          ],
+          "source": "Source: U.S. Treasury, Debt to the Penny, September 2026.",
+          "sourceAlign": "left",
+          "image": "/assets/rgg/coin-pair.webp",
+          "imageAlt": "American Gold Buffalo one ounce .9999 fine gold coins, obverse and reverse"
+        }
+      },
+      {
+        "id": "question-7",
+        "type": "question",
+        "props": {
+          "eyebrow": "A question worth asking",
+          "headline": "Do you have a 401(k) sitting with a job you left?",
+          "paragraphs": [
+            "If you have a 401(k) still sitting with an employer you left years ago, or an IRA you rarely look at, you may have more options than you think, including a tax-advantaged gold IRA that holds physical gold and silver."
+          ],
+          "lead": "Ask how a direct custodian-to-custodian transfer works before you decide anything.",
+          "accounts": [
+            "Old 401(k)",
+            "Traditional or Roth IRA",
+            "403(b)",
+            "Thrift Savings Plan",
+            "457(b)",
+            "SEP or SIMPLE IRA"
+          ],
+          "ask": "Have questions about a retirement account?\nSpeak with a representative now.",
+          "buttonLabel": "Call {phone}",
+          "altPrefix": "Or",
+          "altLinkLabel": "request the guide first",
+          "fine": "Eligibility depends on your plan and your custodian. Revelation Gold Group does not provide tax, legal, or investment advice. Consult your own advisors before any transfer."
+        }
+      },
+      {
+        "id": "offer-8",
+        "type": "offer",
+        "props": {
+          "image": "/assets/rgg/coin-trio.webp",
+          "imageAlt": "Peace Dollar silver coins, obverse and reverse",
+          "eyebrow": "Plus! If you take action now…",
+          "headline": "Get Up To 10%\nIn Free Silver",
+          "asterisk": true,
+          "buttonLabel": "Get started with this free kit",
+          "terms": "*Bonus silver applies to qualifying purchases only. Minimum purchase, eligible products, and expiration terms apply. Ask your Revelation Gold Group specialist for full details. Not financial advice."
+        }
+      },
+      {
+        "id": "footer-9",
+        "type": "footer",
+        "props": {
+          "partnerDisclosure": "",
+          "disclosures": [
+            "Not financial advice. {partner} is a marketing partner of Revelation Gold Group and may be compensated for referrals. Revelation Gold Group does not provide tax, legal or investment advice and is not a registered investment advisor or broker dealer. Precious metals involve risk, prices can go down, and no return is promised or implied. Metals are not FDIC or SIPC insured and are not suitable for everyone. Free silver offer valid only on qualifying purchases of $50,000 or more in Revelation Gold Group premium coins, with 10% back in silver at $100,000 or more. Cannot be combined with other offers. Terms apply; see your customer agreement."
+          ]
+        }
+      },
+      {
+        "id": "callbar-10",
+        "type": "callbar",
+        "props": {
+          "label": "Call {phone}"
+        }
+      }
+    ]
+  }
+}
