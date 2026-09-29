@@ -595,7 +595,7 @@ function Workspace({ email }: { email: string }) {
               <button
                 type="button"
                 onClick={() => fillRef.current?.click()}
-                className="inline-flex h-9 items-center gap-1.5 rounded-lg border border-[#d6d6d6] px-3 text-[12.5px] font-medium hover:bg-[#f5f5f5]"
+                className="inline-flex h-9 items-center gap-1.5 rounded-lg bg-[#1a1a1a] px-3.5 text-[12.5px] font-semibold text-white shadow-sm ring-2 ring-[#1a1a1a]/15 ring-offset-1 transition-colors hover:bg-[#072b4e]"
                 title="Upload a partner-landing-page JSON file to fill this page: text, colors, theme, guide, SEO and thank-you page. Photos and logo stay as they are."
               >
                 <FileJson className="size-4" /> Fill from JSON
