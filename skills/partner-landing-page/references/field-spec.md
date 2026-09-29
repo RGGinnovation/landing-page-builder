@@ -93,9 +93,9 @@ Central bank buying can be referenced without a number ("buying gold at a record
 
 | Field | key | Rule |
 | --- | --- | --- |
-| Brand accent | `brandAccent` | The partner's signature color as hex, from their logo, site buttons or artwork. It drives buttons, numbers, stars and rules, and it can never be gold, yellow, amber, bronze or brass. For a gold or orange brand, take their next brand color, or `#2C66A8` (RGG blue). |
+| Brand accent | `brandAccent` | The partner's signature color as hex, from their logo, site buttons or artwork. It drives buttons, numbers, stars and rules. Any color is allowed; the site keeps button labels and text readable. |
 | Brand band | `brandBand` | The partner's darkest brand color as hex, used for the top bar, hero, call band and footer, all with white text. If it is too light the site darkens it, and the script warns; prefer a truly dark brand shade. |
-| Preset (fallback) | `themePreset` | Only when no brand colors are found. Use `revelation-navy`, or pick the nearest of: `revelation-navy`, `patriot-red`, `ember`, `royal-purple`, `liberty-blue`, `frontier-green`, `crimson` or `charcoal-steel`. A gold or orange brand maps to `ember` or `revelation-navy`. Never gold. |
+| Preset (fallback) | `themePreset` | Only when no brand colors are found. Use `revelation-navy`, or pick the nearest of: `revelation-navy`, `patriot-red`, `ember`, `royal-purple`, `liberty-blue`, `frontier-green`, `crimson` or `charcoal-steel`. |
 | Hero background | `heroBackground` | `flag` for patriot, policy, 2A or veterans. `sunrise` for faith, ministry or hope. `none` for finance or minimal. When they are both faith and patriot, follow how they introduce themselves first. |
 
 ## 8b. Call band (tailored)

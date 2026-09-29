@@ -1,6 +1,6 @@
 ---
 name: partner-landing-page
-description: The one skill for Revelation Gold Group partner landing pages on partner.revelationgoldgroup.com. From a partner's link (website, show, author page or social profile), optionally with a name, it researches the partner in depth, reads their HubSpot record and notes, confirms who they are, captures their voice, takes their own brand colors (checked for readability and never gold), and writes every line of the page as the partner's personal opinion only. Delivers one downloadable JSON file (research, colors, review status and the import-ready page) plus a readable sheet with every field to paste and every line of the page top to bottom. Use it whenever someone shares a partner or prospect link, or says "/partner-landing-page", "build the landing page for tonishuppe.com", "prep Mike Church's page", "fill the fields for this new partner", "do the JSON for this link", even without naming the skill.
+description: The one skill for Revelation Gold Group partner landing pages on partner.revelationgoldgroup.com. From a partner's link (website, show, author page or social profile), optionally with a name, it researches the partner in depth, reads their HubSpot record and notes, confirms who they are, captures their voice, takes their own brand colors (checked for readability), and writes every line of the page as the partner's personal opinion only. Delivers one downloadable JSON file (research, colors, review status and the import-ready page) plus a readable sheet with every field to paste and every line of the page top to bottom. Use it whenever someone shares a partner or prospect link, or says "/partner-landing-page", "build the landing page for tonishuppe.com", "prep Mike Church's page", "fill the fields for this new partner", "do the JSON for this link", even without naming the skill.
 ---
 
 
@@ -112,8 +112,6 @@ the rules in `field-spec.md`, with a one-line reason each in `rationale`.
 buttons or `theme-color`, or their show artwork.
 - Set `brandAccent`, their signature color, used for buttons, numbers and stars.
 - Set `brandBand`, their darkest brand color, used for the top bar, hero, call band and footer.
-- A gold, yellow, amber, bronze or brass brand color is never used. Take their nearest
-  non-gold color instead, or the navy house color.
 - Use a preset only when no brand colors can be found, and add a to-do to confirm the colors.
 - The script and the site check that every text and background pair is at least 4.5:1, so
   all text stays visible whatever colors are chosen.
@@ -155,7 +153,7 @@ Then reply in 3 to 5 lines:
 - Every metals sentence answers yes to one question: "Is this what the partner believes or
   chose?" Only then does it ship.
 - Nothing invented. Every personal fact is sourced, and every number is verified today.
-- House style: no em or en dashes, no gold, yellow, amber, bronze or brass, no exclamation
+- House style: no em or en dashes, no exclamation
   marks in page copy.
 - The page looks like the partner: their colors, their photo, their logo, their words.
 - Every text is readable, with every color pair at 4.5:1 or more (the readability table in the

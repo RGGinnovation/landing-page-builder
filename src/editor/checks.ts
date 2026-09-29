@@ -2,7 +2,7 @@ import { RESERVED_SLUGS } from "@/template/constants";
 import { isGuid } from "@/template/hubspot";
 import { kitOptionFor } from "@/template/kits";
 import { partnerCopyIssues } from "@/template/compliance";
-import { isGoldHue, readabilityAdjustments } from "@/template/theme";
+import { readabilityAdjustments } from "@/template/theme";
 import type { PageConfig, SectionOf, SectionType } from "@/template/types";
 
 export interface Issue {
@@ -95,13 +95,6 @@ export function checkPage(c: PageConfig): Issue[] {
 
   const offer = find("offer");
   if (offer && !offer.props.terms.trim()) err("Silver offer has no terms.", "advanced");
-
-  const accentFields = [c.theme.accent, c.theme.accentLight, c.theme.accentDark];
-  if (accentFields.some(isGoldHue))
-    err(
-      "Accent color is in the gold / amber range. Brand rule: no gold. Pick another shade.",
-      "theme",
-    );
 
   const adjusted = readabilityAdjustments(c.theme).filter((k) => k.startsWith("navy"));
   if (adjusted.length)

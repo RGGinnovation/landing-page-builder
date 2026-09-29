@@ -17,8 +17,9 @@ RGG Partner Pages: one template, one editor, every partner landing page. Read RE
   top-level route must be added there.
 - Visitors read pages only through the get_published_page* RPCs. Never grant anon access to the
   partner_pages table.
-- Brand: RGG palette only in the editor UI (#1a1a1a, #072b4e, #ebebeb, #ffffff). No gold, yellow,
-  amber, bronze or brass anywhere. No em dashes in any copy.
+- Brand: RGG palette in the editor UI (#1a1a1a, #072b4e, #ebebeb, #ffffff). Partner page themes
+  may use any color; readableTheme() in src/template/theme.ts keeps all text legible. No em dashes
+  in any copy.
 - Compliance: "Not financial advice" stays in the footer disclosures. No return promises,
   guarantees or price predictions in any default or generated copy.
 - Partner voice copy (endorsement quote, Why I Believe, 3 Reasons) is opinion and personal belief

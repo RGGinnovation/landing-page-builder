@@ -72,7 +72,7 @@ def hubspot_embed(guid, portal=None, region="na1"):
     )
 
 
-# ---- colors: mirrors src/template/theme.ts (accentShades, bandShades, isGoldHue, readableTheme)
+# ---- colors: mirrors src/template/theme.ts (accentShades, bandShades, readableTheme)
 
 def _rgb(h):
     m = re.fullmatch(r"#?([0-9a-fA-F]{6})", (h or "").strip())
@@ -97,26 +97,6 @@ def accent_shades(a):
 
 def band_shades(b):
     return {"navy": b.upper(), "navyDeep": mix(b, 0, 0.4), "navyMid": mix(b, 255, 0.06)}
-
-
-def is_gold_hue(h):
-    rgb = _rgb(h)
-    if not rgb:
-        return False
-    r, g, b = [c / 255 for c in rgb]
-    mx, mn = max(r, g, b), min(r, g, b)
-    d = mx - mn
-    if d < 0.12 or mx < 0.25:
-        return False
-    if mx == r:
-        hue = ((g - b) / d) % 6
-    elif mx == g:
-        hue = (b - r) / d + 2
-    else:
-        hue = (r - g) / d + 4
-    hue *= 60
-    hue = hue + 360 if hue < 0 else hue
-    return 24 <= hue <= 68
 
 
 def _lum(h):
@@ -411,16 +391,13 @@ def check(kit, page, guide):
     if not faith_forward and guide["id"] == "faithful-steward":
         W("Faithful Steward guide selected for a partner whose public frame is not faith. Confirm.")
 
-    # Colors: the partner's own, never gold, and readable everywhere.
+    # Colors: the partner's own, and readable everywhere.
     theme = page["theme"]
     if theme.get("preset") in (None, "", "custom") and not (_rgb(f.get("brandAccent") or "") and _rgb(f.get("brandBand") or "")):
         if not f.get("themePreset"):
             E("Colors: give brandAccent and brandBand (the partner's own colors) or a themePreset.")
         elif theme.get("preset") == "custom":
             W("Only one brand color given; the other comes from the preset. Give both for a fully custom theme.")
-    for k in ("accent", "accentLight", "accentDark"):
-        if is_gold_hue(theme[k]):
-            E(f"Colors: {k} {theme[k]} is in the gold, yellow, amber, bronze or brass range. Pick the partner's nearest non-gold color.")
     if not f.get("brandAccent") and not kit.get("assets", {}).get("brandColors"):
         W("No partner brand colors recorded. The theme is a preset, not tailored to the partner.")
     rep = color_report(theme)

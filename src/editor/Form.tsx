@@ -18,7 +18,6 @@ import {
   accentShades,
   applyPreset,
   bandShades,
-  isGoldHue,
 } from "@/template/theme";
 import type { PageConfig, Section, SectionOf, SectionType, ThemeConfig } from "@/template/types";
 
@@ -885,12 +884,6 @@ function ThemeGroup({ cfg, replace }: Props) {
           value={t.navy}
           onChange={(v) => set({ ...bandShades(v), preset: "custom" })}
         />
-        {isGoldHue(t.accent) && (
-          <p className="text-[11.5px] text-[#1a1a1a]">
-            That accent reads as gold or amber. Brand rule: no gold. Publishing is blocked until it
-            changes.
-          </p>
-        )}
       </div>
       <Field
         label="Hero background"

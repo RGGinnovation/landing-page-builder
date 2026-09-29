@@ -96,7 +96,6 @@ ERROR, and the editor will not publish a page that has one.
 ## RGG house style
 
 - Never use em dashes or en dashes. Use a period, comma or colon.
-- No gold, yellow, amber, bronze or brass colors in theme choices.
 - Plain, warm American English. No hype, no exclamation marks in page copy.
 - Trust facts as approved: BBB Accredited Business with an A+ rating (accredited since
   March 22, 2024), 4.9 star Google rating across 256 reviews, verified reviews on Trustpilot.

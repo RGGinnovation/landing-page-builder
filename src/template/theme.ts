@@ -55,8 +55,8 @@ const SURFACES = {
 
 /**
  * Partner themes. Each one sets the accent (buttons, rules, stars, glows) and the dark
- * band color (top bar, hero, call band, footer). Brand rule: no gold, yellow, amber,
- * bronze or brass accents, so none of these sit in that hue range (see isGoldHue).
+ * band color (top bar, hero, call band, footer). Any custom color is allowed; readableTheme()
+ * keeps every text legible whatever is chosen.
  */
 export const THEME_PRESETS: ThemePreset[] = [
   {
@@ -224,27 +224,6 @@ export function accentShades(accent: string) {
 /** Derive the three dark band shades from one base color. */
 export function bandShades(base: string) {
   return { navy: base.toUpperCase(), navyDeep: mix(base, 0, 0.4), navyMid: mix(base, 255, 0.06) };
-}
-
-/**
- * True when a color reads as gold, yellow, amber, bronze or brass.
- * Used by the launch checklist to hold custom colors to the brand rule.
- */
-export function isGoldHue(hex: string): boolean {
-  const rgb = hexToRgb(hex);
-  if (!rgb) return false;
-  const [r, g, b] = rgb.map((c) => c / 255) as [number, number, number];
-  const max = Math.max(r, g, b);
-  const min = Math.min(r, g, b);
-  const d = max - min;
-  if (d < 0.12 || max < 0.25) return false; // greys and near-blacks
-  let h = 0;
-  if (max === r) h = ((g - b) / d) % 6;
-  else if (max === g) h = (b - r) / d + 2;
-  else h = (r - g) / d + 4;
-  h *= 60;
-  if (h < 0) h += 360;
-  return h >= 24 && h <= 68;
 }
 
 /* ------------------------------------------------------------------ */

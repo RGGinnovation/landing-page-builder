@@ -95,8 +95,7 @@ Read them from, in order:
 2. The site's `<meta name="theme-color">`, header background and button colors in its CSS.
 3. Their show artwork or social banner.
 
-The darkest one becomes `brandBand` and the signature one `brandAccent`. Skip anything gold,
-yellow, amber, bronze or brass.
+The darkest one becomes `brandBand` and the signature one `brandAccent`.
 
 ## 7. When pages will not load
 

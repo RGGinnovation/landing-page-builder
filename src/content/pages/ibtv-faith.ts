@@ -5,7 +5,7 @@ import { definePage } from "./helpers";
 
 /**
  * faithmetals.com, rebuilt on the base template. Copy is verbatim from production.
- * Theme: production uses an amber accent; this sample uses the Ember preset (brand rule: no gold/amber).
+ * Theme: this sample uses the Ember preset.
  */
 export default applyGuide(
   definePage(

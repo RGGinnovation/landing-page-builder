@@ -29,7 +29,7 @@ Every public page carries the Kiflo snippet and the HubSpot tracking code automa
 | Advanced | SEO, section show/hide, all template copy, RGG phone |
 
 A launch checklist blocks **Publish now** until the page has a real partner name, logo, photo,
-quote, HubSpot form, Kiflo code, and a non-gold accent, and until the quote, Why I Believe and
+quote, HubSpot form and Kiflo code, and until the quote, Why I Believe and
 3 Reasons read as the partner's personal opinion and choice only (no benefit or return claims such
 as "may help protect" or "can help diversify", no advice). Rules: `src/template/compliance.ts`.
 
@@ -158,8 +158,6 @@ vars the editor runs in local mode (drafts in the browser, sample pages served p
 
 ## Open items
 
-- **Sample IBTV theme**: production faithmetals.com uses an amber accent. The sample uses the Ember
-  preset instead (brand rule: no gold or amber).
 - **Silver offer**: the terms line is still the production placeholder. Replace it with approved
   terms before running the "Up to 10% in free silver" headline.
 - **Perishable figures** in the template copy: the $40 trillion national debt line (source line
