@@ -142,7 +142,7 @@ src/template/               THE TEMPLATE (shared by the public site and the edit
   lead-form.ts              HubSpot Forms API + Kiflo lead, and the native-embed listener
   tracking-scripts.ts       Kiflo snippet + HubSpot tracking, on every public page
   constants.ts              Kiflo key, HubSpot portal, site URL, reserved slugs
-  theme.ts                  Theme presets, color helpers, gold-hue guard
+  theme.ts                  Theme presets, color helpers, readableTheme
   kits.ts                   Free guides: image, kit copy, thank-you download link
   hubspot.ts                Embed-code parser
   styles/landing.css        Production CSS, scoped under .lp
