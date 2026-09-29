@@ -15,6 +15,7 @@ imgs = {
     "/assets/rgg-logo-footer.png": uri("assets/rgg-logo-footer.png", "image/png"),
     "/assets/crosses-banner.webp": uri("assets/crosses-banner.webp", "image/webp"),
     "/assets/faithful-steward-cover.webp": uri("assets/faithful-steward-cover.webp", "image/webp"),
+    "/assets/faithful-steward-kit.webp": uri("assets/faithful-steward-kit.webp", "image/webp"),
 }
 tyblock = ty[ty.index("<!-- thank you -->"):ty.index("<!-- 11 footer -->")]
 tyblock = tyblock.replace('<div class="ty">', '<div class="ty" id="tyView" hidden>', 1)
