@@ -1,0 +1,82 @@
+{
+  "site": "https://partner.revelationgoldgroup.com",
+  "hubspotPortalId": "44817109",
+  "reservedSlugs": [
+    "admin",
+    "api",
+    "assets",
+    "builder",
+    "favicon.png",
+    "login",
+    "p",
+    "preview",
+    "robots.txt",
+    "thank-you"
+  ],
+  "partnerCopyRules": [
+    {
+      "pattern": "\\bprotect(s|ed|ing|ion)?\\b",
+      "why": "protection claim"
+    },
+    {
+      "pattern": "\\bpreserv(e|es|ed|ing|ation)\\b",
+      "why": "preservation claim"
+    },
+    {
+      "pattern": "\\bsafeguard|\\bshield(s|ed|ing)?\\b",
+      "why": "protection claim"
+    },
+    {
+      "pattern": "\\bhedg(e|es|ing)\\b",
+      "why": "hedge claim"
+    },
+    {
+      "pattern": "\\b(carr(y|ies|ied)|got|gets|see|sees|saw) (families|people|us|savers) through\\b|\\bthrough (hard|tough|bad|difficult) (times|seasons)\\b",
+      "why": "protection claim"
+    },
+    {
+      "pattern": "\\bsafe haven\\b|\\bsafe(ty|r|st)?\\b",
+      "why": "safety claim"
+    },
+    {
+      "pattern": "\\bsecur(e|es|ed|ing)\\b",
+      "why": "security claim"
+    },
+    {
+      "pattern": "\\b(can|may|will|could|might|would)\\s+help(s)?\\s+(you\\s+|to\\s+|families\\s+|your\\s+family\\s+)?(protect|preserve|diversify|grow|keep|guard|shield|hedge|secure|safeguard|build|save)\\b",
+      "why": "says metals help (a benefit claim)"
+    },
+    {
+      "pattern": "\\bgrow(s|th|ing)?\\b",
+      "why": "growth claim"
+    },
+    {
+      "pattern": "\\b(returns|return on|profits?|gains?|appreciat\\w*)\\b",
+      "why": "return claim"
+    },
+    {
+      "pattern": "\\bworth (more|over time)\\b|\\b(hold|holds|keep|keeps|kept|held) (its|their) (value|worth)\\b",
+      "why": "value claim"
+    },
+    {
+      "pattern": "\\bstore of (value|wealth)\\b|\\bbeat(s)? inflation\\b|\\boutpac\\w*|\\boutperform\\w*",
+      "why": "value claim"
+    },
+    {
+      "pattern": "\\bguarantee\\w*|\\brisk[- ]free\\b|\\bno risk\\b",
+      "why": "guarantee"
+    },
+    {
+      "pattern": "\\bwill (rise|go up|double|soar|climb|protect)\\b|\\bskyrocket\\w*|\\bprice (target|prediction)",
+      "why": "price prediction"
+    },
+    {
+      "pattern": "\\btax[- ]free\\b",
+      "why": "tax claim"
+    },
+    {
+      "pattern": "\\byou (should|need to|must|have to|ought to)\\b|\\bdiversify your\\b|\\b(move|roll over|rollover) your\\b",
+      "why": "advice to the reader"
+    }
+  ]
+}

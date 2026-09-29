@@ -56,7 +56,30 @@ Rewrite examples:
 | Gold and silver have carried families through hard seasons for generations. | For us, gold and silver are part of being good stewards. |
 | I help families protect their health and their wealth. | I help families make informed decisions about their health and their future. |
 
-Kept as is (approved): "I want my family holding something real too, not just paper."
+| Both taught me the same thing: play the long game. (reads as an investment horizon) | Both taught me the same thing: do your homework before you trust anyone. |
+| Moved directly from one custodian to another, the funds stay tax deferred. No taxes. | Ask how a direct custodian-to-custodian transfer works before you decide anything. |
+
+Approved by compliance and kept as is: "I want my family holding something real too, not just
+paper."
+
+The build script (`scripts/build_kit.py`) runs the same rule list the editor uses
+(`assets/rules.json`, generated from the app's `src/template/compliance.ts`). Any hit is an
+ERROR, and the editor will not publish a page that has one.
+
+### Truth and faith
+
+- Every personal fact in the copy is sourced in `claims` (a web URL, or a HubSpot note and its
+  date). Never invent a biography detail, a number or a quote. If it is not sourced, it is not
+  in the copy. Example: Pete Kaliner's "buying silver since the 2008 crash" is fine because a
+  HubSpot note from 2026-09-08 states it.
+- Let faith come from them. Use faith language (God, Scripture, steward, blessed, church),
+  "faith-driven firm" or the Faithful Steward guide only when the partner's own public frame
+  is faith, and set `partner.faithForward` accordingly. For a freedom-first host, write in
+  freedom-first terms.
+- Use their real titles and organization names, checked against the official source. If
+  HubSpot and the website disagree, flag it for review. Do not pick one silently.
+- Get the setting right. If the partner covers a team, a region or a denomination, name it
+  correctly (Liberty University Flames, not the Calgary Flames).
 
 ### Everything else
 

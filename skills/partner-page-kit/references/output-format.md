@@ -1,0 +1,84 @@
+# Output format
+
+You write **one** file, `kit-input.json`. `scripts/build_kit.py` turns it into the two
+deliverables. A complete worked example, with real verified data, is
+`assets/example-kit-input.json` (Pete Kaliner). Copy its shape, not its facts.
+
+## kit-input.json
+
+```jsonc
+{
+  "input": { "link": "https://...", "name": "optional" },
+
+  "partner": {
+    "fullName": "", "knownAs": "", "role": "", "organization": "",
+    "audience": "who they reach, in one line",
+    "faithForward": false,            // true only if their own public frame is faith
+    "faithNote": "why, with source",
+    "bio": "2 to 4 plain sentences, facts only",
+    "identityCheck": [{ "fact": "", "source": "url" }],   // at least 2 independent sources
+    "voiceProfile": ["5 short lines"],
+    "voiceSamples": [{ "text": "verbatim", "source": "url" }],  // 5 to 10
+    "socials": { "x": "", "youtube": "", "facebook": "", "instagram": "", "podcast": "" }
+  },
+
+  "hubspot": {
+    "found": true, "contactUrl": "", "leadStatus": "", "website": "",
+    "keyNotes": [{ "date": "YYYY-MM-DD", "point": "" }],
+    "guidance": ["binding guidance from notes, e.g. let faith come from him"]
+  },
+
+  "assets": {
+    "photo": { "url": "", "width": 0, "height": 0, "source": "", "needsCutout": true, "why": "" },
+    "photoAlternates": [{ "url": "", "why": "" }],
+    "logo": { "url": "", "width": 0, "height": 0, "source": "", "onDark": true, "why": "" },
+    "brandColors": ["#hex"]
+  },
+
+  "fields": { /* every key in field-spec.md */ },
+
+  "rationale": { "slug": "", "guide": "", "themePreset": "", "heroBackground": "", "thankYouStyle": "" },
+  "claims":  [{ "text": "personal fact used in the copy", "source": "url or HubSpot note + date" }],
+  "figures": [{ "text": "the number", "source": "named source", "checked": "YYYY-MM-DD" }],
+  "sources": [{ "url": "", "usedFor": "" }],
+  "blocked": ["hosts that would not load"],
+  "todo":    ["extra items only a person can do, e.g. confirm company name with the partner"]
+}
+```
+
+## The downloadable file: `<slug>.page-kit.json`
+
+```jsonc
+{
+  "format": "rgg-partner-page-kit",   // the editor's Import JSON recognizes this
+  "formatVersion": 2,
+  "generatedAt": "UTC timestamp",
+  "input": {...},
+  "links": { "page", "thankYou", "referral", "kifloLinkTarget", "vanityDomain" },
+  "status": {
+    "copyReady": true,      // no ERRORs: every field is written and compliant
+    "publishReady": false,  // also no TODOs left (form, Kiflo, approval, uploads)
+    "errors": [], "warnings": [], "todo": []
+  },
+  "partner": {...}, "hubspot": {...}, "assets": {...}, "rationale": {...},
+  "claims": [...], "figures": [...], "sources": [...], "blocked": [...],
+  "fields": {...},          // the flat field values, keyed as in field-spec.md
+  "page": { ... }           // the full PageConfig on the live template, import-ready
+}
+```
+
+- `page` is what the editor imports. It is built on `assets/page-template.json`, so the fixed
+  parts (hero headline, 401(k) section, silver offer, footer disclaimer) are always current.
+- `fields` plus `status` are what a future editor feature can read to prefill fields and show
+  the to-do list.
+- The sheet `<slug>-page-kit.md` is rendered from the same data, so the two never disagree.
+
+## Keeping the assets current
+
+The assets are generated from the app. After any change to the template, guides, themes,
+reserved slugs or `src/template/compliance.ts`, run this in the app repo, then repackage the
+skill:
+
+```bash
+bun skills/sync-skill-assets.ts
+```

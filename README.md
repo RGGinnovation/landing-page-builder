@@ -33,6 +33,15 @@ quote, HubSpot form, Kiflo code, and a non-gold accent, and until the quote, Why
 3 Reasons read as the partner's personal opinion and choice only (no benefit or return claims such
 as "may help protect" or "can help diversify", no advice). Rules: `src/template/compliance.ts`.
 
+### Partner page kit (skill) and Import JSON
+
+`skills/partner-page-kit` is a Claude skill: give it a partner's link and it researches them
+(site, public footprint, HubSpot notes), writes every field in their voice under the compliance
+rules, and returns `<slug>.page-kit.json` plus a copy-and-paste sheet. In the editor, **Publish
+menu > Import JSON** accepts that file directly (it reads the `page` inside) as well as a plain
+page export. After changing the template, guides, themes or `src/template/compliance.ts`, run
+`bun skills/sync-skill-assets.ts` and repackage the skill so it builds on the live template.
+
 ### Regenerate
 
 Rewrites a Why I Believe paragraph slightly so no two partner pages read the same.

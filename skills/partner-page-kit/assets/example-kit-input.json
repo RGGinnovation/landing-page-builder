@@ -1,0 +1,100 @@
+{
+  "input": { "link": "https://thepetekalinershow.com", "name": "Pete Kaliner" },
+  "partner": {
+    "fullName": "Pete Kaliner",
+    "knownAs": "Pete Kaliner",
+    "role": "Host",
+    "organization": "The Pete Kaliner Show, WBT Charlotte",
+    "audience": "Charlotte and North Carolina news and talk listeners, mostly 35 and older, freedom-first",
+    "faithForward": false,
+    "faithNote": "No public faith frame. HubSpot guidance: let faith come from him.",
+    "bio": "Pete Kaliner hosts The Pete Kaliner Show on WBT in Charlotte, weekdays at noon, and runs his own podcast. A career radio journalist and self-described lowercase-L libertarian, he has bought silver since the 2008 crash.",
+    "identityCheck": [
+      { "fact": "Host of The Pete Kaliner Show on WBT Charlotte", "source": "https://thepetekalinershow.com/about" },
+      { "fact": "Returned to WBT in July 2021 in the noon to 3 PM slot", "source": "https://radioinsight.com/headlines/210964" }
+    ],
+    "voiceProfile": [
+      "Punchy and sardonic: quick setup, then a jab.",
+      "Short declarative sentences, conversational.",
+      "Anchors: smaller government, lowercase-L libertarian, North Carolina first.",
+      "Informal and self-deprecating, never salesy.",
+      "Never preachy or sentimental; no faith language unless he uses it."
+    ],
+    "voiceSamples": [
+      { "text": "I talk about stuff.", "source": "https://www.facebook.com/petekalinershow" },
+      { "text": "Dems & media (but I repeat myself)", "source": "https://x.com/PeteKaliner/status/1755937018176000174" },
+      { "text": "All good things come to an end. All jobs have a shelf life.", "source": "https://x.com/petekaliner/status/1217104073041891328" },
+      { "text": "creating conversations on the radio & podcast", "source": "https://www.patreon.com/petekalinershow" },
+      { "text": "I knew right out of the gate that I was not going to ever be able to measure up to that.", "source": "https://barrettmedia.com/2025/03/14/pete-kaliner-hosting-on-wbt-in-former-rush-limbaugh-timeslot-my-dream-job/" }
+    ],
+    "socials": { "x": "https://x.com/PeteKaliner", "facebook": "https://www.facebook.com/petekalinershow/", "instagram": "https://www.instagram.com/petekaliner" }
+  },
+  "hubspot": {
+    "found": true,
+    "contactUrl": "https://app.hubspot.com/contacts/44817109/record/0-1/242971280648",
+    "leadStatus": "Partner",
+    "website": "https://KalinerMetals.com",
+    "keyNotes": [
+      { "date": "2026-09-08", "point": "Pete has bought silver himself since the 2008 crash." },
+      { "date": "2026-08-20", "point": "Self-identifies as a lowercase-L libertarian. No public information on faith." }
+    ],
+    "guidance": ["Treat the audience as freedom-first rather than faith-first. Let faith come from him."]
+  },
+  "assets": {
+    "photo": {},
+    "photoAlternates": [],
+    "logo": {},
+    "brandColors": []
+  },
+  "fields": {
+    "partnerName": "Pete Kaliner",
+    "slug": "petekaliner",
+    "vanityDomain": "kalinermetals.com",
+    "vanityDomainConfirmed": true,
+    "logoUrl": "",
+    "logoHeight": 34,
+    "photoUrl": "",
+    "photoAlt": "Pete Kaliner, host of The Pete Kaliner Show on WBT",
+    "hubspotEmbed": "",
+    "kifloCode": "",
+    "kifloCodeConfirmed": false,
+    "quote": "I've been buying silver since the 2008 crash, because I'd rather hold something real than trust the people spending my money. When I finally picked a gold and silver company, I picked Revelation Gold Group.",
+    "signatureName": "Pete Kaliner",
+    "signatureRole": "Host, The Pete Kaliner Show",
+    "whyParagraph": "I'm a lowercase-L libertarian, and I don't trust the people spending my money. I've bought silver since the 2008 crash because that's what I believe in, and when I picked a company to buy from, I picked **Revelation Gold Group**. I did my homework. I met the team and asked every question I'd want you to ask. They answered all of them in plain English, and nobody pushed me toward a decision. A **BBB Accredited Business with an A+ rating**, a **4.9 star Google rating across 256 reviews**, and verified reviews on **Trustpilot**. They have helped families all over the country. Now they want to help you.",
+    "reasonsHeadline": "3 Reasons I Choose\nGold & Silver",
+    "reasons": [
+      "The national debt has blown past **$40 trillion**, and I don't see anyone in Washington with a plan to pay it down.",
+      "I believe every dollar they print makes the ones in my wallet worth a little less. That's why I choose to keep part of what I've earned in physical metal.",
+      "I like things I can hold. A paper promise depends on somebody else keeping their word. Physical gold and silver don't."
+    ],
+    "reasonsSource": "Source: U.S. Treasury, Debt to the Penny, September 2026.",
+    "guide": "wealth-guide",
+    "themePreset": "revelation-navy",
+    "heroBackground": "flag",
+    "thankYouStyle": "portrait",
+    "thankYouHeadline": "Your kit is on its way.",
+    "seoDescription": "Pete Kaliner Show listeners can request the free 2026 Wealth Protection Guide from Revelation Gold Group. A plain English look at gold and silver. Nothing to buy."
+  },
+  "rationale": {
+    "slug": "First and last name, the pattern used for existing partner pages.",
+    "guide": "Freedom-first audience, not faith-first: Wealth Guide.",
+    "themePreset": "Navy fits a news and talk brand; no gold.",
+    "heroBackground": "Politics and policy host: flag.",
+    "thankYouStyle": "Photo layout, dark, to match the hero."
+  },
+  "claims": [
+    { "text": "Pete has bought silver since the 2008 crash", "source": "HubSpot note, 2026-09-08" },
+    { "text": "Pete calls himself a lowercase-L libertarian", "source": "HubSpot note, 2026-08-20; mountainx.com" }
+  ],
+  "figures": [
+    { "text": "National debt above $40 trillion", "source": "U.S. Treasury, Debt to the Penny", "checked": "2026-09-29" }
+  ],
+  "sources": [
+    { "url": "https://thepetekalinershow.com/about", "usedFor": "bio, identity" },
+    { "url": "https://radioinsight.com/headlines/210964", "usedFor": "WBT return date" },
+    { "url": "https://app.hubspot.com/contacts/44817109/record/0-1/242971280648", "usedFor": "notes, vanity domain, guidance" }
+  ],
+  "blocked": ["thepetekalinershow.com (sandbox proxy)"],
+  "todo": []
+}
