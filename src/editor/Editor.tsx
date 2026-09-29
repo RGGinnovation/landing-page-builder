@@ -6,6 +6,7 @@ import {
   Download,
   ExternalLink,
   Eye,
+  FileJson,
   LogOut,
   Monitor,
   MoreHorizontal,
@@ -46,6 +47,7 @@ import type { PageConfig, SectionType } from "@/template/types";
 import { signOut, useAuth } from "./auth";
 import { checkPage, type GroupId } from "./checks";
 import { Segmented, TextInput, UploadContext, Field } from "./fields";
+import { fillFromFile, pageFromFile } from "./fill";
 import { Form } from "./Form";
 import { Login, NoAccess } from "./Login";
 import { setAt, type Path } from "./path";
@@ -356,11 +358,8 @@ function Workspace({ email }: { email: string }) {
   async function importJson(file: File | undefined) {
     if (!file) return;
     try {
-      const raw = JSON.parse(await file.text()) as { format?: string; page?: unknown };
       // A partner-landing-page skill file carries the page under "page".
-      const kitFormats = ["rgg-partner-landing-page", "rgg-partner-page-kit"];
-      const data: unknown = kitFormats.includes(raw?.format ?? "") ? raw.page : raw;
-      if (!isPageConfig(data)) throw new Error("That file is not a partner page export.");
+      const data = pageFromFile(JSON.parse(await file.text()));
       let slug = data.slug;
       let n = 2;
       while (records.some((r) => r.slug === slug)) slug = `${data.slug}-${n++}`;
@@ -369,6 +368,28 @@ function Workspace({ email }: { email: string }) {
       setRecords(list);
       openPage(list.find((r) => r.slug === slug));
       toast.success(`Imported “${data.name}”`);
+    } catch (e) {
+      toast.error((e as Error).message);
+    }
+  }
+
+  /** Fills the open page from a partner-landing-page skill file. Photos and logo stay as they are. */
+  const fillRef = useRef<HTMLInputElement>(null);
+  async function fillJson(file: File | undefined) {
+    if (!file || !cfg) return;
+    try {
+      const r = fillFromFile(cfg, JSON.parse(await file.text()));
+      replace(r.page);
+      toast.success(`Filled from ${r.name}'s file. Upload the photo and logo yourself.`, {
+        description:
+          (r.suggestedSlug !== cfg.slug
+            ? `The page link stays /${cfg.slug} (the file suggests /${r.suggestedSlug}). `
+            : "") + "Undo reverts it.",
+      });
+      if (r.errors.length)
+        toast.warning(
+          `The file reports ${r.errors.length} unresolved issue(s). Review before publishing.`,
+        );
     } catch (e) {
       toast.error((e as Error).message);
     }
@@ -554,6 +575,25 @@ function Workspace({ email }: { email: string }) {
                   </ul>
                 </PopoverContent>
               </Popover>
+
+              <button
+                type="button"
+                onClick={() => fillRef.current?.click()}
+                className="inline-flex h-9 items-center gap-1.5 rounded-lg border border-[#d6d6d6] px-3 text-[12.5px] font-medium hover:bg-[#f5f5f5]"
+                title="Upload a partner-landing-page JSON file to fill this page: text, colors, theme, guide, SEO and thank-you page. Photos and logo stay as they are."
+              >
+                <FileJson className="size-4" /> Fill from JSON
+              </button>
+              <input
+                ref={fillRef}
+                type="file"
+                accept="application/json,.json"
+                className="hidden"
+                onChange={(e) => {
+                  void fillJson(e.target.files?.[0]);
+                  e.target.value = "";
+                }}
+              />
 
               <a
                 href={`/preview?slug=${encodeURIComponent(cfg.slug)}`}

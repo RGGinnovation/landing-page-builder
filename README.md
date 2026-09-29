@@ -39,8 +39,10 @@ as "may help protect" or "can help diversify", no advice). Rules: `src/template/
 Give it a partner's link and it researches them (site, public footprint, HubSpot notes), picks
 their own brand colors, writes every field in their voice under the compliance rules, and
 returns `<slug>.landing-page.json` plus a readable sheet with every line of the page. In the
-editor, **Publish menu > Import JSON** accepts that file directly (it reads the `page` inside)
-as well as a plain page export. After changing the template, guides, themes or
+editor, **Fill from JSON** (header button on every page) loads that file into the open page:
+text, colors, theme, guide, call band, thank-you page, SEO, HubSpot form and Kiflo code.
+The page link, photo and logo stay as they are (`src/editor/fill.ts`). **Publish menu > Import
+JSON** creates a new page from the same file or from a plain page export. After changing the template, guides, themes or
 `src/template/compliance.ts`, run `bun skills/sync-skill-assets.ts` and repackage the skill.
 
 ### Readable on any colors

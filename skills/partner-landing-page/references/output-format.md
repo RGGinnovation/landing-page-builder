@@ -71,7 +71,12 @@ deliverables. A complete worked example, with real verified data, is
 }
 ```
 
-- `page` is what the editor imports. It is built on `assets/page-template.json`, so the fixed
+- **Fill from JSON** (the button on every page in /admin) reads `page` and fills the open page:
+  - Filled: partner name, vanity domain, all colors and the theme, hero background, logo size,
+    HubSpot form and Kiflo code (if present), quote and signature, Why I Believe, 3 Reasons,
+    guide, call band, hero headline and photo description, thank-you page and SEO.
+  - Kept: the page link, photo, logo, thank-you photo and the fixed template sections.
+- `page` is also what Publish menu > Import JSON uses to create a new page. It is built on `assets/page-template.json`, so the fixed
   parts (hero headline, 401(k) section, silver offer, footer disclaimer) are always current.
 - `fields` plus `status` are what a future editor feature can read to prefill fields and show
   the to-do list.
