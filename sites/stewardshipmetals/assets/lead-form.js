@@ -3,7 +3,7 @@
 
   /* ------------------------------------------------------------------
      Revelation Gold Group - custom lead form -> HubSpot Forms API
-     Portal 44817109 / stewardshipmetals.com (theDove)
+     Portal 44817109 / Form 84d9c53b-f2c1-4500-9526-eb42106cc292 (stewardshipmetals.com, theDove)
 
      A native HubSpot form submission is posted to the Forms API, so the
      contact is created or updated on the same form, the submission shows
@@ -13,7 +13,7 @@
 
   var CONFIG = {
     PORTAL_ID: "44817109",
-    FORM_GUID: "PASTE_HUBSPOT_FORM_GUID",
+    FORM_GUID: "84d9c53b-f2c1-4500-9526-eb42106cc292",
     THANK_YOU_URL: "/thank-you/",
     KIFLO_FIELD: "kiflo_tracking_code",
 
