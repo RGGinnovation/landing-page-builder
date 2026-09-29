@@ -130,6 +130,8 @@ function Workspace({ email }: { email: string }) {
   const [scrollReq, setScrollReq] = useState<{ id: string; n: number } | null>(null);
   const [filter, setFilter] = useState("");
   const [newOpen, setNewOpen] = useState<null | { source: string }>(null);
+  const [delTarget, setDelTarget] = useState<PageRecord | null>(null);
+  const [deleting, setDeleting] = useState(false);
   const [publishing, setPublishing] = useState(false);
   const [blockers, setBlockers] = useState<string[] | null>(null);
   const loadedSlug = useRef<string | null>(null);
@@ -335,23 +337,37 @@ function Workspace({ email }: { email: string }) {
     toast.success("Unpublished");
   }
 
-  async function remove() {
-    if (!cfg || !window.confirm(`Delete “${cfg.name}”? This cannot be undone.`)) return;
-    await store.remove(cfg.slug);
-    const list = await store.list();
-    setRecords(list);
-    if (list[0]) openPage(list[0]);
-    else h.reset(null);
+  /** Deletes a partner page (draft and live) after the confirmation dialog. */
+  async function removePage(r: PageRecord) {
+    setDeleting(true);
+    try {
+      await store.remove(r.slug);
+      const list = await store.list();
+      setRecords(list);
+      if (r.slug === cfg?.slug) {
+        if (list[0]) openPage(list[0]);
+        else h.reset(null);
+      }
+      toast.success(`Deleted “${r.name}”`);
+      setDelTarget(null);
+    } catch (e) {
+      toast.error((e as Error).message);
+    } finally {
+      setDeleting(false);
+    }
+  }
+
+  function downloadJson(page: PageConfig) {
+    const blob = new Blob([JSON.stringify(page, null, 2)], { type: "application/json" });
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = `${page.slug}.json`;
+    a.click();
+    URL.revokeObjectURL(a.href);
   }
 
   function exportJson() {
-    if (!cfg) return;
-    const blob = new Blob([JSON.stringify(cfg, null, 2)], { type: "application/json" });
-    const a = document.createElement("a");
-    a.href = URL.createObjectURL(blob);
-    a.download = `${cfg.slug}.json`;
-    a.click();
-    URL.revokeObjectURL(a.href);
+    if (cfg) downloadJson(cfg);
   }
 
   const importRef = useRef<HTMLInputElement>(null);
@@ -663,7 +679,7 @@ function Workspace({ email }: { email: string }) {
                         <MoreHorizontal className="size-4" /> Unpublish
                       </DropdownMenuItem>
                     )}
-                    <DropdownMenuItem onClick={() => void remove()}>
+                    <DropdownMenuItem onClick={() => current && setDelTarget(current)}>
                       <Trash2 className="size-4" /> Delete page
                     </DropdownMenuItem>
                   </DropdownMenuContent>
@@ -715,23 +731,36 @@ function Workspace({ email }: { email: string }) {
                 const active = r.slug === cfg?.slug;
                 const st = statusOf(active && cfg ? { ...r, draft: cfg } : r);
                 return (
-                  <button
-                    key={r.slug}
-                    type="button"
-                    onClick={() => openPage(r)}
-                    className={
-                      "mb-0.5 flex w-full items-center gap-2.5 rounded-lg px-3 py-2 text-left transition-colors " +
-                      (active ? "bg-white shadow-sm" : "hover:bg-[#ebebeb]")
-                    }
-                  >
-                    <StatusDot status={st} />
-                    <span className="min-w-0 flex-1">
-                      <span className="block truncate text-[13px] font-medium">
-                        {active && cfg ? cfg.name : r.name}
+                  <div key={r.slug} className="group relative mb-0.5">
+                    <button
+                      type="button"
+                      onClick={() => openPage(r)}
+                      className={
+                        "flex w-full items-center gap-2.5 rounded-lg py-2 pl-3 pr-10 text-left transition-colors " +
+                        (active ? "bg-white shadow-sm" : "hover:bg-[#ebebeb]")
+                      }
+                    >
+                      <StatusDot status={st} />
+                      <span className="min-w-0 flex-1">
+                        <span className="block truncate text-[13px] font-medium">
+                          {active && cfg ? cfg.name : r.name}
+                        </span>
+                        <span className="block truncate text-[11px] text-[#9a9a9a]">/{r.slug}</span>
                       </span>
-                      <span className="block truncate text-[11px] text-[#9a9a9a]">/{r.slug}</span>
-                    </span>
-                  </button>
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setDelTarget(r)}
+                      className={
+                        "absolute right-1.5 top-1/2 inline-flex size-7 -translate-y-1/2 items-center justify-center rounded-md text-[#6b6b6b] transition-opacity hover:bg-[#e3e3e3] hover:text-[#1a1a1a] focus-visible:opacity-100 " +
+                        (active ? "opacity-100" : "opacity-0 group-hover:opacity-100")
+                      }
+                      title={`Delete ${r.name}`}
+                      aria-label={`Delete ${r.name}`}
+                    >
+                      <Trash2 className="size-4" />
+                    </button>
+                  </div>
                 );
               })}
               {records.length === 0 && (
@@ -863,6 +892,48 @@ function Workspace({ email }: { email: string }) {
             }
           }}
         />
+
+        <Dialog open={!!delTarget} onOpenChange={(o) => !o && !deleting && setDelTarget(null)}>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>Delete “{delTarget?.name}”?</DialogTitle>
+              <DialogDescription>
+                {delTarget?.published
+                  ? `The live page ${siteUrl}/${delTarget.slug} goes offline right away, and its referral and vanity links stop working.`
+                  : "This draft has never been published."}{" "}
+                This cannot be undone.
+              </DialogDescription>
+            </DialogHeader>
+            <button
+              type="button"
+              className="inline-flex w-fit items-center gap-1.5 text-[12.5px] font-medium text-[#072b4e] hover:underline"
+              onClick={() =>
+                delTarget &&
+                downloadJson(delTarget.slug === cfg?.slug && cfg ? cfg : delTarget.draft)
+              }
+            >
+              <Download className="size-4" /> Download a copy first
+            </button>
+            <DialogFooter>
+              <button
+                type="button"
+                className="h-9 rounded-lg px-4 text-[13px] font-medium hover:bg-[#f5f5f5]"
+                onClick={() => setDelTarget(null)}
+                disabled={deleting}
+              >
+                Cancel
+              </button>
+              <button
+                type="button"
+                className="h-9 rounded-lg bg-[#1a1a1a] px-4 text-[13px] font-semibold text-white disabled:opacity-50"
+                disabled={deleting}
+                onClick={() => delTarget && void removePage(delTarget)}
+              >
+                {deleting ? "Deleting…" : "Delete page"}
+              </button>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
 
         <Dialog open={!!blockers} onOpenChange={(o) => !o && setBlockers(null)}>
           <DialogContent>
