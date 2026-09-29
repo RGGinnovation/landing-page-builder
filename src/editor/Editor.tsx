@@ -389,18 +389,58 @@ function Workspace({ email }: { email: string }) {
     }
   }
 
-  /** Fills the open page from a partner-landing-page skill file. Photos and logo stay as they are. */
+  /**
+   * Fills the open page from a partner-landing-page skill file. A photo or logo from the file
+   * is used only while the page still shows the placeholder: it is copied into our image
+   * storage when the partner's site allows it, otherwise linked directly.
+   */
   const fillRef = useRef<HTMLInputElement>(null);
+  async function storeImage(url: string, name: string): Promise<string> {
+    try {
+      const res = await fetch(url, { mode: "cors" });
+      if (!res.ok) return url;
+      const blob = await res.blob();
+      if (!blob.type.startsWith("image/")) return url;
+      const ext = (blob.type.split("/")[1] ?? "png").replace("svg+xml", "svg");
+      return await uploader(new File([blob], `${name}.${ext}`, { type: blob.type }));
+    } catch {
+      return url;
+    }
+  }
   async function fillJson(file: File | undefined) {
     if (!file || !cfg) return;
     try {
       const r = fillFromFile(cfg, JSON.parse(await file.text()));
-      replace(r.page);
-      toast.success(`Filled from ${r.name}'s file. Upload the photo and logo yourself.`, {
+      let page = r.page;
+      if (r.images.logo) {
+        const src = await storeImage(r.images.logo, "partner-logo");
+        page = { ...page, brand: { ...page.brand, partnerLogo: src } };
+      }
+      if (r.images.photo) {
+        const src = await storeImage(r.images.photo, "partner-photo");
+        page = {
+          ...page,
+          sections: page.sections.map((s) =>
+            s.type === "hero" ? ({ ...s, props: { ...s.props, image: src } } as typeof s) : s,
+          ),
+        };
+      }
+      replace(page);
+      const missing = [
+        !page.tracking.kifloPartnerCode.trim() && "Kiflo referral code",
+        page.brand.partnerLogo.includes("/_base/") && "logo",
+        (
+          page.sections.find((s) => s.type === "hero")?.props as { image?: string } | undefined
+        )?.image?.includes("/_base/") && "photo",
+        !page.tracking.hubspotFormGuid.trim() && "HubSpot form",
+      ].filter(Boolean);
+      toast.success(`Filled from ${r.name}'s file.`, {
         description:
+          (missing.length ? `Still to add: ${missing.join(", ")}. ` : "") +
           (r.suggestedSlug !== cfg.slug
             ? `The page link stays /${cfg.slug} (the file suggests /${r.suggestedSlug}). `
-            : "") + "Undo reverts it.",
+            : "") +
+          "Undo reverts it.",
       });
       if (r.errors.length)
         toast.warning(
@@ -596,7 +636,7 @@ function Workspace({ email }: { email: string }) {
                 type="button"
                 onClick={() => fillRef.current?.click()}
                 className="inline-flex h-9 items-center gap-1.5 rounded-lg bg-[#1a1a1a] px-3.5 text-[12.5px] font-semibold text-white shadow-sm ring-2 ring-[#1a1a1a]/15 ring-offset-1 transition-colors hover:bg-[#072b4e]"
-                title="Upload a partner-landing-page JSON file to fill this page: text, colors, theme, guide, SEO and thank-you page. Photos and logo stay as they are."
+                title="Upload a partner-landing-page JSON file to fill this page: text, colors, theme, guide, HubSpot form, SEO and thank-you page. A photo or logo from the file is used only where the page has none yet."
               >
                 <FileJson className="size-4" /> Fill from JSON
               </button>

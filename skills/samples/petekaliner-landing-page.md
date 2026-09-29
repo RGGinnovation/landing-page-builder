@@ -1,6 +1,6 @@
 # Pete Kaliner: landing page
 
-Status: **READY TO PASTE**. Publish blockers left: 8.
+Status: **READY TO PASTE**. Publish blockers left: 7.
 
 - Page: https://partner.revelationgoldgroup.com/petekaliner
 - Referral link: (needs Kiflo code)
@@ -9,10 +9,9 @@ Status: **READY TO PASTE**. Publish blockers left: 8.
 - Researched from: https://thepetekalinershow.com
 
 ## To do before publishing
-- [ ] HubSpot form embed: clone the latest partner form in HubSpot (Marketing > Forms), name it '<Partner> Landing Page', then Share > Embed code, and paste it in Lead form & tracking.
-- [ ] Hero photo: upload the chosen photo (transparent PNG cut-out) in Logo & photo.
-- [ ] Partner logo: upload a light or white logo in Logo & photo.
-- [ ] Kiflo referral code: find the partner's code in Kiflo and enter it.
+- [ ] Hero photo: none found. Upload one (transparent PNG cut-out) in Logo & photo.
+- [ ] Partner logo: none found. Upload a light or white logo in Logo & photo.
+- [ ] Kiflo referral code: enter it in Lead form & tracking (the team adds this).
 - [ ] Kiflo: the partner's link must target https://partner.revelationgoldgroup.com/petekaliner or Kiflo drops every visit and lead.
 - [ ] Partner approval: the quote and Why I Believe paragraph are drafts in the partner's voice (FTC endorsement rules). Get written approval before publishing.
 - [ ] Perishable: verify the BBB rating, Google rating and review count, and any figure in 3 Reasons, before launch.
@@ -75,15 +74,16 @@ Pete Kaliner, host of The Pete Kaliner Show on WBT
 ```
 
 ## 3. Lead form & tracking
-**HubSpot form embed code**
+**HubSpot form embed code**  
+Form: Pete Kaliner Landing Page (afd0ae01-271d-4d04-a56e-460b83f43bc5), from the form already on his live page, partner.revelationgoldgroup.com/petekaliner
 ```
-HubSpot form embed: clone the latest partner form in HubSpot (Marketing > Forms), name it '<Partner> Landing Page', then Share > Embed code, and paste it in Lead form & tracking.
+<script src="https://js.hsforms.net/forms/embed/44817109.js" defer></script>
+<div class="hs-form-frame" data-region="na1" data-form-id="afd0ae01-271d-4d04-a56e-460b83f43bc5" data-portal-id="44817109"></div>
 ```
 
-**Kiflo referral code**  
-PROPOSED, NOT CONFIRMED
+**Kiflo referral code**
 ```
-(not found: see To do)
+(the team adds this)
 ```
 
 ## 4. Quote & signature (DRAFT FOR PARTNER APPROVAL)

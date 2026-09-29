@@ -5,8 +5,10 @@
  * Filled: partner name, vanity domain, colors and theme, hero background, logo size, HubSpot
  * form and Kiflo code (when the file has them), quote and signature, Why I Believe, 3 Reasons,
  * free guide, call band, hero headline and photo description, thank-you page and SEO.
- * Kept as they are: the page link (slug), photo, logo, thank-you photo, section visibility,
- * and the fixed template parts (401(k), offer, footer, top bar, call bar).
+ * Photo and logo: taken from the file only while the page still shows the template
+ * placeholders (see `images`); an uploaded photo or logo is never replaced.
+ * Kept as they are: the page link (slug), thank-you photo, section visibility, and the fixed
+ * template parts (401(k), offer, footer, top bar, call bar).
  */
 import { migrate } from "@/data/migrate";
 import type { PageConfig, Section, SectionType } from "@/template/types";
@@ -42,7 +44,15 @@ const COPY: Partial<Record<SectionType, string[]>> = {
 export function fillFromFile(
   current: PageConfig,
   raw: unknown,
-): { page: PageConfig; name: string; suggestedSlug: string; errors: string[]; todo: number } {
+): {
+  page: PageConfig;
+  name: string;
+  suggestedSlug: string;
+  errors: string[];
+  todo: number;
+  /** Image URLs from the file for slots that still hold the template placeholder. */
+  images: { logo?: string; photo?: string };
+} {
   const src = pageFromFile(raw);
   const kit = raw as KitFile;
   const nonEmpty = (a: string, b: string) => (a && a.trim() ? a : b);
@@ -91,7 +101,19 @@ export function fillFromFile(
     sections,
   };
 
+  const isPlaceholder = (u: string) => !u || u.includes("/_base/");
+  const srcHero = src.sections.find((x) => x.type === "hero")?.props as
+    { image?: string } | undefined;
+  const curHero = current.sections.find((x) => x.type === "hero")?.props as
+    { image?: string } | undefined;
+  const images: { logo?: string; photo?: string } = {};
+  if (isPlaceholder(current.brand.partnerLogo) && !isPlaceholder(src.brand.partnerLogo))
+    images.logo = src.brand.partnerLogo;
+  if (isPlaceholder(curHero?.image ?? "") && srcHero?.image && !isPlaceholder(srcHero.image))
+    images.photo = srcHero.image;
+
   return {
+    images,
     page: migrate(page),
     name: src.brand.partnerName || src.name,
     suggestedSlug: src.slug,

@@ -74,7 +74,12 @@
     ],
     "guidance": [
       "Treat the audience as freedom-first rather than faith-first. Let faith come from him."
-    ]
+    ],
+    "form": {
+      "guid": "afd0ae01-271d-4d04-a56e-460b83f43bc5",
+      "name": "Pete Kaliner Landing Page",
+      "source": "the form already on his live page, partner.revelationgoldgroup.com/petekaliner"
+    }
   },
   "assets": {
     "photo": {},
@@ -91,7 +96,6 @@
     "logoHeight": 34,
     "photoUrl": "",
     "photoAlt": "Pete Kaliner, host of The Pete Kaliner Show on WBT",
-    "hubspotEmbed": "",
     "kifloCode": "",
     "kifloCodeConfirmed": false,
     "quote": "I've been buying silver since the 2008 crash, because I'd rather hold something real than trust the people spending my money. When I finally picked a gold and silver company, I picked Revelation Gold Group.",
@@ -113,7 +117,8 @@
     "seoDescription": "Pete Kaliner Show listeners can request the free 2026 Wealth Protection Guide from Revelation Gold Group. A plain English look at gold and silver. Nothing to buy.",
     "callbandHeadline": "Got a question first?",
     "callbandSubline": "Talk to a real person, not a sales script.",
-    "thankYouNote": "Questions? A Revelation Gold Group specialist can walk you through it, with nothing to buy."
+    "thankYouNote": "Questions? A Revelation Gold Group specialist can walk you through it, with nothing to buy.",
+    "hubspotFormGuid": "afd0ae01-271d-4d04-a56e-460b83f43bc5"
   },
   "rationale": {
     "slug": "First and last name, the pattern used for existing partner pages.",

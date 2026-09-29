@@ -64,7 +64,11 @@ Capture:
    - Notes also hold guidance for us (e.g. "let faith come from him").
 4. Company record: search once. If it exists, read the `kiflo_*` properties. Many partners
    have none, and that is normal.
-5. Never create or update anything in HubSpot.
+5. **The partner's form.** List forms (`manage_landing_page` action `FORMS`, or
+   `manage_website_page` operation `FORMS`) and match the name to the partner. If the connector
+   lacks forms read access, search the notes for a form GUID or hsforms link. See SKILL.md,
+   HubSpot form.
+6. Never create or update anything in HubSpot.
 
 Put in the output: the contact URL, the notes that shaped the copy (`hubspot.keyNotes`) and any
 guidance (`hubspot.guidance`). Leave out anything RGG wrote for them, such as ghost-written

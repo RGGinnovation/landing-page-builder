@@ -25,7 +25,8 @@ deliverables. A complete worked example, with real verified data, is
   "hubspot": {
     "found": true, "contactUrl": "", "leadStatus": "", "website": "",
     "keyNotes": [{ "date": "YYYY-MM-DD", "point": "" }],
-    "guidance": ["binding guidance from notes, e.g. let faith come from him"]
+    "guidance": ["binding guidance from notes, e.g. let faith come from him"],
+    "form": { "guid": "", "name": "", "source": "forms list | HubSpot note + date" }
   },
 
   "assets": {
@@ -73,9 +74,11 @@ deliverables. A complete worked example, with real verified data, is
 
 - **Fill from JSON** (the button on every page in /admin) reads `page` and fills the open page:
   - Filled: partner name, vanity domain, all colors and the theme, hero background, logo size,
-    HubSpot form and Kiflo code (if present), quote and signature, Why I Believe, 3 Reasons,
-    guide, call band, hero headline and photo description, thank-you page and SEO.
-  - Kept: the page link, photo, logo, thank-you photo and the fixed template sections.
+    HubSpot form, quote and signature, Why I Believe, 3 Reasons, guide, call band, hero
+    headline and photo description, thank-you page and SEO.
+  - Photo and logo: copied from the file only when the page still has the placeholder images.
+  - Kept: the page link, any uploaded photo or logo, the Kiflo code (unless the file has a
+    confirmed one), the thank-you photo and the fixed template sections.
 - `page` is also what Publish menu > Import JSON uses to create a new page. It is built on `assets/page-template.json`, so the fixed
   parts (hero headline, 401(k) section, silver offer, footer disclaimer) are always current.
 - `fields` plus `status` are what a future editor feature can read to prefill fields and show

@@ -17,9 +17,9 @@ Live pages already built with these rules include /petekaliner, /tonishuppe, /em
 
 | Field | key | Rule |
 | --- | --- | --- |
-| Partner logo | `logoUrl` (+ `logoWidth`, `logoIntrinsicHeight`) | Sits top left on a dark navy bar beside the RGG wordmark, so it needs a light or white version (transparent PNG or SVG). Leave it blank rather than use an unverified URL. |
+| Partner logo | `logoUrl` (+ `logoWidth`, `logoIntrinsicHeight`) | A direct image URL. It sits top left on a dark navy bar beside the RGG wordmark, so it needs a light or white version (transparent PNG or SVG). Fill from JSON copies it onto the page when the page has no logo yet. Leave it blank rather than use an unverified URL. |
 | Logo size | `logoHeight` | Height in pixels on desktop, 28 to 48. Wide wordmarks 30 to 36; square or stacked marks 42 to 48. |
-| Partner photo | `photoUrl` (+ `photoWidth`, `photoHeight`) | See Photo standard below. Put the top pick here and the alternates in `assets.photoAlternates`. |
+| Partner photo | `photoUrl` (+ `photoWidth`, `photoHeight`) | A direct image URL, chosen by the Photo standard below. Fill from JSON copies it onto the page when the page has no photo yet. Put the alternates in `assets.photoAlternates`. |
 | Photo description | `photoAlt` | "Full Name, role at Organization". Plain description with no claims. |
 
 ### Photo standard
@@ -35,9 +35,9 @@ by:
 
 | Field | key | Rule |
 | --- | --- | --- |
-| HubSpot form embed code | `hubspotEmbed` | The partner's own form (portal 44817109). Use it only if HubSpot notes hold the embed or form id. Otherwise leave it blank: the kit adds the steps to create one to the to-do list. |
+| HubSpot form | `hubspotFormGuid` | The partner's own form GUID in portal 44817109. Find it from the HubSpot forms list, then from notes (see SKILL.md, HubSpot form). The script builds the standard embed code from it. Record `hubspot.form` as `{guid, name, source}`. You can put a full embed snippet in `hubspotEmbed` instead. Leave both blank when nothing is found. |
 | Form style | (fixed) | RGG styled form. |
-| Kiflo referral code | `kifloCode` (+ `kifloCodeConfirmed`) | Take it from HubSpot notes or the company's `kiflo_*` properties, and set confirmed to true only when a source states it. Otherwise propose the show or brand name in lowercase with hyphens (`the-mike-church-show`), with confirmed false. Never copy a code from examples in this skill or the repo. |
+| Kiflo referral code | `kifloCode` (+ `kifloCodeConfirmed`) | The team enters this by hand. Leave it blank unless a HubSpot note or the company's `kiflo_*` properties state the exact code: then set it with `kifloCodeConfirmed: true`. Never propose or guess a code, and never copy one from examples. |
 
 ## 4. Quote & signature (draft for partner approval)
 

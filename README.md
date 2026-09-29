@@ -40,8 +40,9 @@ Give it a partner's link and it researches them (site, public footprint, HubSpot
 their own brand colors, writes every field in their voice under the compliance rules, and
 returns `<slug>.landing-page.json` plus a readable sheet with every line of the page. In the
 editor, **Fill from JSON** (header button on every page) loads that file into the open page:
-text, colors, theme, guide, call band, thank-you page, SEO, HubSpot form and Kiflo code.
-The page link, photo and logo stay as they are (`src/editor/fill.ts`). **Publish menu > Import
+text, colors, theme, guide, call band, thank-you page, SEO and the partner's HubSpot form,
+plus the photo and logo while the page still has placeholders. The page link, uploaded images
+and the Kiflo code stay as they are; the team enters the Kiflo code (`src/editor/fill.ts`). **Publish menu > Import
 JSON** creates a new page from the same file or from a plain page export. After changing the template, guides, themes or
 `src/template/compliance.ts`, run `bun skills/sync-skill-assets.ts` and repackage the skill.
 

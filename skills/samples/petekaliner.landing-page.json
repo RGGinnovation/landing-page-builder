@@ -1,7 +1,7 @@
 {
   "format": "rgg-partner-landing-page",
   "formatVersion": 3,
-  "generatedAt": "2026-09-29T16:48:53Z",
+  "generatedAt": "2026-09-29T17:18:26Z",
   "input": {
     "link": "https://thepetekalinershow.com",
     "name": "Pete Kaliner"
@@ -21,10 +21,9 @@
       "No partner brand colors recorded. The theme is a preset, not tailored to the partner."
     ],
     "todo": [
-      "HubSpot form embed: clone the latest partner form in HubSpot (Marketing > Forms), name it '<Partner> Landing Page', then Share > Embed code, and paste it in Lead form & tracking.",
-      "Hero photo: upload the chosen photo (transparent PNG cut-out) in Logo & photo.",
-      "Partner logo: upload a light or white logo in Logo & photo.",
-      "Kiflo referral code: find the partner's code in Kiflo and enter it.",
+      "Hero photo: none found. Upload one (transparent PNG cut-out) in Logo & photo.",
+      "Partner logo: none found. Upload a light or white logo in Logo & photo.",
+      "Kiflo referral code: enter it in Lead form & tracking (the team adds this).",
       "Kiflo: the partner's link must target https://partner.revelationgoldgroup.com/petekaliner or Kiflo drops every visit and lead.",
       "Partner approval: the quote and Why I Believe paragraph are drafts in the partner's voice (FTC endorsement rules). Get written approval before publishing.",
       "Perishable: verify the BBB rating, Google rating and review count, and any figure in 3 Reasons, before launch.",
@@ -102,7 +101,12 @@
     ],
     "guidance": [
       "Treat the audience as freedom-first rather than faith-first. Let faith come from him."
-    ]
+    ],
+    "form": {
+      "guid": "afd0ae01-271d-4d04-a56e-460b83f43bc5",
+      "name": "Pete Kaliner Landing Page",
+      "source": "the form already on his live page, partner.revelationgoldgroup.com/petekaliner"
+    }
   },
   "assets": {
     "photo": {},
@@ -257,7 +261,6 @@
     "logoHeight": 34,
     "photoUrl": "",
     "photoAlt": "Pete Kaliner, host of The Pete Kaliner Show on WBT",
-    "hubspotEmbed": "",
     "kifloCode": "",
     "kifloCodeConfirmed": false,
     "quote": "I've been buying silver since the 2008 crash, because I'd rather hold something real than trust the people spending my money. When I finally picked a gold and silver company, I picked Revelation Gold Group.",
@@ -279,7 +282,8 @@
     "seoDescription": "Pete Kaliner Show listeners can request the free 2026 Wealth Protection Guide from Revelation Gold Group. A plain English look at gold and silver. Nothing to buy.",
     "callbandHeadline": "Got a question first?",
     "callbandSubline": "Talk to a real person, not a sales script.",
-    "thankYouNote": "Questions? A Revelation Gold Group specialist can walk you through it, with nothing to buy."
+    "thankYouNote": "Questions? A Revelation Gold Group specialist can walk you through it, with nothing to buy.",
+    "hubspotFormGuid": "afd0ae01-271d-4d04-a56e-460b83f43bc5"
   },
   "page": {
     "version": 1,
@@ -323,9 +327,9 @@
       "partnerLogoHeightMobile": 26
     },
     "tracking": {
-      "hubspotEmbed": "",
+      "hubspotEmbed": "<script src=\"https://js.hsforms.net/forms/embed/44817109.js\" defer></script>\n<div class=\"hs-form-frame\" data-region=\"na1\" data-form-id=\"afd0ae01-271d-4d04-a56e-460b83f43bc5\" data-portal-id=\"44817109\"></div>",
       "hubspotPortalId": "44817109",
-      "hubspotFormGuid": "",
+      "hubspotFormGuid": "afd0ae01-271d-4d04-a56e-460b83f43bc5",
       "hubspotRegion": "na1",
       "formMode": "styled",
       "kifloPartnerCode": "",

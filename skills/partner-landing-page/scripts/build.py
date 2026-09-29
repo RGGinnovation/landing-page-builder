@@ -56,10 +56,20 @@ REQUIRED = [
 ]
 # Supplied by people or systems outside the research: they block publishing, not the kit.
 HUMAN_ITEMS = {
-    "hubspotEmbed": "HubSpot form embed: clone the latest partner form in HubSpot (Marketing > Forms), name it '<Partner> Landing Page', then Share > Embed code, and paste it in Lead form & tracking.",
-    "photoUrl": "Hero photo: upload the chosen photo (transparent PNG cut-out) in Logo & photo.",
-    "logoUrl": "Partner logo: upload a light or white logo in Logo & photo.",
+    "photoUrl": "Hero photo: none found. Upload one (transparent PNG cut-out) in Logo & photo.",
+    "logoUrl": "Partner logo: none found. Upload a light or white logo in Logo & photo.",
 }
+GUID = re.compile(r"^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$", re.I)
+
+
+def hubspot_embed(guid, portal=None, region="na1"):
+    """The standard HubSpot embed for a form in the RGG portal (same as every live page)."""
+    portal = portal or PORTAL
+    return (
+        f'<script src="https://js.hsforms.net/forms/embed/{portal}.js" defer></script>\n'
+        f'<div class="hs-form-frame" data-region="{region}" data-form-id="{guid}" '
+        f'data-portal-id="{portal}"></div>'
+    )
 
 
 # ---- colors: mirrors src/template/theme.ts (accentShades, bandShades, isGoldHue, readableTheme)
@@ -235,6 +245,8 @@ def build_page(f):
 
     tr = page["tracking"]
     embed = f.get("hubspotEmbed") or ""
+    if not embed and GUID.match((f.get("hubspotFormGuid") or "").strip()):
+        embed = hubspot_embed(f["hubspotFormGuid"].strip())
     if embed:
         tr["hubspotEmbed"] = embed
         m = re.search(r'data-form-id\s*=\s*["\']([^"\']+)', embed) or re.search(
@@ -429,10 +441,18 @@ def check(kit, page, guide):
     for k, msg in HUMAN_ITEMS.items():
         if not f.get(k):
             T(msg)
+    tr = page["tracking"]
+    if not tr.get("hubspotFormGuid"):
+        T("HubSpot form: none found for this partner. In HubSpot, Marketing > Forms, clone the latest partner form, name it '<Partner> Landing Page', then paste its embed code in Lead form & tracking.")
+    elif not GUID.match(tr["hubspotFormGuid"]):
+        E(f"HubSpot form id '{tr['hubspotFormGuid']}' is not a valid form GUID.")
+    form = (kit.get("hubspot") or {}).get("form") or {}
+    if tr.get("hubspotFormGuid") and not form.get("source"):
+        W("HubSpot form has no recorded source (hubspot.form.source). Say where the form id came from.")
+    if f.get("kifloCode") and not f.get("kifloCodeConfirmed"):
+        E("kifloCode is set but not confirmed by a source. Leave it blank: the team enters the Kiflo code.")
     if not f.get("kifloCode"):
-        T("Kiflo referral code: find the partner's code in Kiflo and enter it.")
-    elif not f.get("kifloCodeConfirmed"):
-        T(f"Kiflo code '{page['tracking']['kifloPartnerCode']}' is PROPOSED, NOT CONFIRMED. Confirm it in Kiflo.")
+        T("Kiflo referral code: enter it in Lead form & tracking (the team adds this).")
     T(f"Kiflo: the partner's link must target {SITE}/{slug} or Kiflo drops every visit and lead.")
     T("Partner approval: the quote and Why I Believe paragraph are drafts in the partner's voice (FTC endorsement rules). Get written approval before publishing.")
     T("Perishable: verify the BBB rating, Google rating and review count, and any figure in 3 Reasons, before launch.")
@@ -580,10 +600,13 @@ def markdown(kit, page, guide, status, errors, warnings, todo):
     if alts:
         md += ["Alternates:"] + [f"- {x.get('url')} ({x.get('why', '')})" for x in alts] + [""]
     md += [block("Photo description", f.get("photoAlt"))]
+    form = hs.get("form") or {}
+    tr = page["tracking"]
     md += ["## 3. Lead form & tracking",
-           block("HubSpot form embed code", f.get("hubspotEmbed") or HUMAN_ITEMS["hubspotEmbed"]),
-           block("Kiflo referral code", page["tracking"]["kifloPartnerCode"],
-                 "" if f.get("kifloCodeConfirmed") else "PROPOSED, NOT CONFIRMED")]
+           block("HubSpot form embed code", tr["hubspotEmbed"] or "(no form found: see To do)",
+                 (f"Form: {form.get('name', '')} ({tr['hubspotFormGuid']}), from {form.get('source', '')}"
+                  if tr["hubspotFormGuid"] else "")),
+           block("Kiflo referral code", tr["kifloPartnerCode"] or "(the team adds this)")]
     md += ["## 4. Quote & signature (DRAFT FOR PARTNER APPROVAL)",
            block("Quote", f.get("quote")),
            block("Signature name", f.get("signatureName")),
