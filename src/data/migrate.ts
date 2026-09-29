@@ -37,6 +37,17 @@ export function migrate(input: PageConfig): PageConfig {
   };
 }
 
+/** Retired default Why sentences (implied a benefit) and their personal-choice replacement. */
+const OLD_WHY_SENTENCES = [
+  "That is why I partnered with **Revelation Gold Group**, a faith-driven firm that shows families how physical gold and silver may help protect retirement and savings.",
+  "That is why I partnered with **Revelation Gold Group**, a faith-driven firm that helps families understand how physical gold and silver may help protect their retirement and savings.",
+  "That is exactly why I partnered with **Revelation Gold Group**, a faith-driven firm that walks families through how physical gold and silver may help protect retirement and savings.",
+  "That is why I work with **Revelation Gold Group**, a faith-driven firm that shows families, in plain English, how physical gold and silver may help protect their savings.",
+  "That is the reason I partnered with **Revelation Gold Group**, a faith-driven firm that explains how physical gold and silver may help protect retirement and savings.",
+];
+const NEW_WHY_SENTENCE =
+  "Owning physical gold and silver is a personal choice I made for my own family, and when I looked for a company to work with, I chose **Revelation Gold Group**, a faith-driven firm.";
+
 const STEWARD = KIT_OPTIONS.find((k) => k.id === "faithful-steward")!;
 const OLD_STEWARD_HEADLINES = new Set(["Get Your Free Faithful Steward Guide"]);
 const OLD_STEWARD_BUTTONS = new Set(["get my free guide"]);
@@ -46,8 +57,16 @@ function upgradeSection(s: Section): Section {
   switch (s.type) {
     case "why": {
       // "Why I Believe" is one paragraph.
-      const paras = s.props.paragraphs.map((x) => x.trim()).filter(Boolean);
-      return paras.length > 1 ? { ...s, props: { ...s.props, paragraphs: [paras.join(" ")] } } : s;
+      let paras = s.props.paragraphs.map((x) => x.trim()).filter(Boolean);
+      if (paras.length > 1) paras = [paras.join(" ")];
+      // Personal choice only: swap the retired benefit sentence for the current one.
+      const fixed = paras.map((x) =>
+        OLD_WHY_SENTENCES.reduce((t, o) => t.replace(o, NEW_WHY_SENTENCE), x),
+      );
+      const changed =
+        fixed.length !== s.props.paragraphs.length ||
+        fixed.some((x, i) => x !== s.props.paragraphs[i]);
+      return changed ? { ...s, props: { ...s.props, paragraphs: fixed } } : s;
     }
     case "kit": {
       // Biblical Stewardship Kit wording for the Faithful Steward guide.

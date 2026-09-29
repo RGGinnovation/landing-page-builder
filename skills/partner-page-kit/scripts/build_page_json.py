@@ -19,14 +19,30 @@ from pathlib import Path
 ASSETS = Path(__file__).resolve().parent.parent / "assets"
 SITE = "https://partner.revelationgoldgroup.com"
 
+# Partner copy is personal opinion and belief only: no claim about what metals do, no implied
+# return, no advice. Mirrors src/template/compliance.ts in the app (the editor blocks Publish on
+# these too).
 BANNED = [
-    r"\bguarantee",
-    r"\brisk[- ]free\b",
-    r"\bsafe haven\b",
-    r"\bwill (rise|go up|double|soar)\b",
-    r"\bprofits?\b",
-    r"\bskyrocket",
-    r"\btax[- ]free\b",
+    (r"\bprotect(s|ed|ing|ion)?\b", "protection claim"),
+    (r"\bpreserv(e|es|ed|ing|ation)\b", "preservation claim"),
+    (r"\bsafeguard|\bshield(s|ed|ing)?\b", "protection claim"),
+    (r"\bhedg(e|es|ing)\b", "hedge claim"),
+    (r"\b(carr(y|ies|ied)|got|gets|see|sees|saw) (families|people|us|savers) through\b"
+     r"|\bthrough (hard|tough|bad|difficult) (times|seasons)\b", "protection claim"),
+    (r"\bsafe haven\b|\bsafe(ty|r|st)?\b", "safety claim"),
+    (r"\bsecur(e|es|ed|ing)\b", "security claim"),
+    (r"\b(can|may|will|could|might|would)\s+helps?\s+(you\s+|to\s+|families\s+|your\s+family\s+)?"
+     r"(protect|preserve|diversify|grow|keep|guard|shield|hedge|secure|safeguard|build|save)\b",
+     "says metals help (a benefit claim)"),
+    (r"\bgrow(s|th|ing)?\b", "growth claim"),
+    (r"\b(returns|return on|profits?|gains?|appreciat\w*)\b", "return claim"),
+    (r"\bworth (more|over time)\b|\b(hold|holds|keep|keeps|kept|held) (its|their) (value|worth)\b", "value claim"),
+    (r"\bstore of (value|wealth)\b|\bbeats? inflation\b|\boutpac\w*|\boutperform\w*", "value claim"),
+    (r"\bguarantee\w*|\brisk[- ]free\b|\bno risk\b", "guarantee"),
+    (r"\bwill (rise|go up|double|soar|climb|protect)\b|\bskyrocket\w*|\bprice (target|prediction)", "price prediction"),
+    (r"\btax[- ]free\b", "tax claim"),
+    (r"\byou (should|need to|must|have to|ought to)\b|\bdiversify your\b|\b(move|roll over|rollover) your\b",
+     "advice to the reader"),
 ]
 
 
@@ -177,12 +193,18 @@ def checks(page, f):
     text = json.dumps(page, ensure_ascii=False)
     if "—" in text or "–" in text:
         warn.append("Em or en dash found. Replace with a period or comma.")
-    copy_text = " ".join(
-        str(f.get(k, "")) for k in ("quote", "whyParagraph", "thankYouMessage", "seoDescription")
-    ) + " " + " ".join(f.get("reasons", []))
-    for pat in BANNED:
-        if re.search(pat, copy_text, re.I):
-            warn.append(f"Banned claim pattern in copy: {pat}")
+    voice = [("quote", f.get("quote", "")), ("whyParagraph", f.get("whyParagraph", ""))]
+    voice += [(f"reasons[{i}]", r) for i, r in enumerate(f.get("reasons", []))]
+    voice += [(k, f.get(k, "")) for k in ("thankYouMessage", "seoDescription")]
+    for key, text in voice:
+        plain = str(text).replace("**", "")
+        for pat, why in BANNED:
+            m = re.search(pat, plain, re.I)
+            if m:
+                warn.append(
+                    f'{key}: "{m.group(0)}" is flagged ({why}). Rewrite as the partner\'s own '
+                    "opinion or choice, with no implied return or advice."
+                )
     t = page["theme"]
     if t.get("preset") == "custom" or not f.get("themePreset"):
         warn.append("No theme preset set. Pick one from theme-presets.json (never gold or amber).")

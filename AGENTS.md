@@ -21,6 +21,11 @@ RGG Partner Pages: one template, one editor, every partner landing page. Read RE
   amber, bronze or brass anywhere. No em dashes in any copy.
 - Compliance: "Not financial advice" stays in the footer disclosures. No return promises,
   guarantees or price predictions in any default or generated copy.
+- Partner voice copy (endorsement quote, Why I Believe, 3 Reasons) is opinion and personal belief
+  only: what the partner believes or chose for their own family. Never what gold and silver do
+  (protect, preserve, grow, hedge, hold value, "may help protect", "can help diversify"), never an
+  implied return, never advice to the reader. Rules live in src/template/compliance.ts; the editor
+  checklist blocks Publish on them.
 
 <!-- LOVABLE:BEGIN -->
 > [!IMPORTANT]

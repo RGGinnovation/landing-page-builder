@@ -25,8 +25,42 @@ Read the finished copy aloud as the partner. If it sounds like a bank, rewrite i
 
 ## Compliance: every field is public, partner-facing copy
 
-- No return promises, guarantees, "risk-free", "safe haven", growth or price predictions.
-  Hedge: "may help protect", "can help diversify".
+### Opinion and personal belief only (the rule reviewers check first)
+
+The quote, Why I Believe and 3 Reasons are the partner's personal opinions and choices, nothing
+more. Every sentence about gold and silver says what the partner believes, chose or does for
+their own family. No sentence says what gold and silver do for anyone.
+
+- Frame every metals statement as the partner's own: "I believe", "I chose", "for my family",
+  "a personal choice I made", "I would rather own something real".
+- Never state or imply a benefit or outcome, not even hedged. Banned in partner copy: protect,
+  preserve, safeguard, shield, hedge, safe, secure, grow or growth, gains, returns, profit,
+  appreciate, "worth more", "worth over time", "hold their value", "store of value",
+  "beat inflation", "carried families through hard times", and any "may help ..." or
+  "can help ..." about metals. "May help protect" and "can help diversify" are NOT compliant.
+- Diversify appears only as the partner's own action: "holding physical gold and silver is a
+  personal choice I made to diversify my family's savings". Never "gold can help diversify".
+- Never tell the reader what to do with their money: no "you should", "diversify your",
+  "move your 401(k)". The reader is invited to request a free guide, nothing else.
+- Facts are context for a personal choice, never a promise: "The national debt has passed
+  $40 trillion, and I don't see a plan to pay it down" is fine. Linking a fact to what metals
+  will do is not.
+
+Rewrite examples:
+
+| Not compliant | Compliant |
+| --- | --- |
+| Physical gold and silver can help diversify what my family's savings are worth over time. | Holding physical gold and silver is a personal choice I made to diversify my family's savings. |
+| A faith-driven firm that shows families how physical gold and silver may help protect retirement and savings. | Owning physical gold and silver is a personal choice I made for my own family, and I chose **Revelation Gold Group**. |
+| Owning physical metal may help protect some of what I've earned. | That's why I choose to keep part of what I've earned in physical metal. |
+| Gold and silver have carried families through hard seasons for generations. | For us, gold and silver are part of being good stewards. |
+| I help families protect their health and their wealth. | I help families make informed decisions about their health and their future. |
+
+Kept as is (approved): "I want my family holding something real too, not just paper."
+
+### Everything else
+
+- No guarantees, "risk-free", "safe haven" or price predictions.
 - No tax or investment advice. Approved phrasing: "a tax-advantaged gold IRA".
 - No claims about competitors.
 - Statistics carry a named source and date, and are verified now. Unverifiable: drop the number.

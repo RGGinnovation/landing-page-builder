@@ -50,13 +50,13 @@ export default definePage(
     },
     quote: {
       quote:
-        "For decades I have written about Washington’s spending, the debt it leaves behind, and what it costs ordinary Americans. Gold and silver have outlasted every policy failure I have covered. That is why I partnered with Revelation.",
+        "For decades I have written about Washington’s spending, the debt it leaves behind, and what it costs ordinary Americans. I would rather own something real than trust the next promise out of Washington. That is why I partnered with Revelation.",
       name: "Frank Vernuccio",
       role: "Editor-in-Chief, New York Analysis of Policy & Government",
     },
     why: {
       paragraphs: [
-        "If you are worried about your savings right now, you are not alone. That is why I partnered with **Revelation Gold Group**, a faith-driven firm that shows families how physical gold and silver may help protect retirement and savings.",
+        "If you are worried about your savings right now, you are not alone. Owning physical gold and silver is a personal choice I made for my own family, and when I looked for a company to work with, I chose **Revelation Gold Group**, a faith-driven firm.",
         "I do not lend our name out. I did my homework, I met the team, and I asked every question I would want you to ask. They answered all of them in plain English, and nobody pushed me toward a decision.",
         "A **BBB Accredited Business with an A+ rating**, a **4.9 star Google rating across 256 reviews**, and verified reviews on Trustpilot. They have helped families all over the country. Now they want to help you.",
       ],
@@ -66,9 +66,9 @@ export default definePage(
     },
     reasons: {
       items: [
-        "The national debt has blown past **$40 trillion**. Not one plan to pay it back has ever reached a floor vote.",
-        "Inflation is not weather. It is policy. And it takes from the savers who did everything right.",
-        "Gold and silver are real. You can hold them in your hand. They are nobody’s promise and nobody’s IOU.",
+        "The national debt has blown past **$40 trillion**, and I have yet to see a serious plan to pay it back.",
+        "In my view, inflation is not weather. It is policy. And it takes from the savers who did everything right.",
+        "I like that gold and silver are real. I can hold them in my hand. They are nobody's promise and nobody's IOU.",
       ],
       sourceAlign: "left",
     },

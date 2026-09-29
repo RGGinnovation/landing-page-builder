@@ -1,6 +1,7 @@
 import { RESERVED_SLUGS } from "@/template/constants";
 import { isGuid } from "@/template/hubspot";
 import { kitOptionFor } from "@/template/kits";
+import { partnerCopyIssues } from "@/template/compliance";
 import { isGoldHue } from "@/template/theme";
 import type { PageConfig, SectionOf, SectionType } from "@/template/types";
 
@@ -53,6 +54,22 @@ export function checkPage(c: PageConfig): Issue[] {
     (/partner name/i.test(quote.props.name) || /partner's own words/i.test(quote.props.quote))
   )
     err("Quote and signature are placeholder copy.", "quote");
+
+  // Partner voice copy is personal opinion and belief only (see template/compliance.ts).
+  const voice: [string, string, GroupId][] = [];
+  if (quote) voice.push(["Quote", quote.props.quote, "quote"]);
+  const why = find("why");
+  if (why) why.props.paragraphs.forEach((p) => voice.push(["Why I Believe", p, "why"]));
+  const reasons = find("reasons");
+  if (reasons) reasons.props.items.forEach((r, i) => voice.push([`Reason ${i + 1}`, r, "reasons"]));
+  for (const [label, text, target] of voice) {
+    const hit = partnerCopyIssues(text)[0];
+    if (hit)
+      err(
+        `${label}: “${hit.match}” is flagged (${hit.why}). Partner copy must be personal opinion and choice only, with no implied return or advice.`,
+        target,
+      );
+  }
 
   const kit = find("kit");
   const guide = kit ? kitOptionFor(kit.props.image) : undefined;

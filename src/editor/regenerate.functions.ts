@@ -36,8 +36,8 @@ Rules:
 - Keep markdown bold (**like this**) around the same facts and around "Revelation Gold Group" if it was bold.
 - Plain, warm, direct American English. No jargon, no hype, no exclamation marks.
 - Never use em dashes or en dashes. Use periods or commas.
-- Never promise returns, profits, growth, safety or protection. Never say "guarantee", "risk-free" or "safe haven". Never predict prices. Keep hedged wording like "may help protect".
-- No tax, legal or investment advice.
+- Everything about gold and silver stays the partner's personal opinion, belief or choice ("I chose", "I believe", "for my family"). Never say what metals do for anyone: no protect, preserve, grow, hedge, safe, secure, hold value, worth more, returns or gains, not even hedged ("may help protect", "can help diversify"). Never say "guarantee", "risk-free" or "safe haven". Never predict prices.
+- No tax, legal or investment advice, and never tell the reader what to do with their money ("you should", "diversify your savings").
 - Output only the rewritten paragraph. No quotes, no preface.`;
 
 async function verifyEditor(token: string | undefined): Promise<boolean> {

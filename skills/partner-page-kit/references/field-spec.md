@@ -60,9 +60,11 @@ Always print the two links the team needs:
 | Signature name | `signatureName` | How they sign: "Mike Church", "Karon Smedley". Rendered in a script font, so keep it the personal name. |
 | Title under the signature | `signatureRole` | "Host, The Mike Church Show". |
 
-Example (IBTV, approved style): "Our family has always believed in owning something real. Gold and
-silver have carried families through hard seasons for generations, and that is why I partnered
-with Revelation Gold Group."
+Example (IBTV): "Our family has always believed in owning something real. For us, gold and
+silver are part of being good stewards, and that is why I partnered with Revelation Gold Group."
+
+Opinion and personal belief only, as everywhere in partner copy (voice-and-compliance.md):
+no claim about what metals do, no implied return, no advice.
 
 ## 5. Why I Believe
 
@@ -73,19 +75,20 @@ with Revelation Gold Group."
 
 Structure, in this order:
 1. An opener that speaks to the partner's audience and what they worry about.
-2. Why the partner chose RGG, tied to the partner's own mission or show theme (this is the part that makes each page unique).
+2. Why the partner chose RGG, tied to the partner's own mission or show theme (this is the part that makes each page unique). Owning metals is framed as the partner's personal choice ("a personal choice I made for my family"), never as what metals do.
 3. How they vetted RGG: met the team, asked hard questions, no pressure.
 4. The trust facts, kept exactly as written, bold markers included: `**Revelation Gold Group**`, `**BBB Accredited Business with an A+ rating**`, `**4.9 star Google rating across 256 reviews**`, verified reviews on Trustpilot. These ratings are perishable: note "verify BBB and Google counts before launch".
 5. A short close ("Now they want to help you.").
 
-Use "may help protect", never "will protect". `**bold**` is the only formatting.
+No benefit language at all: not "will protect", not "may help protect". Opinion and personal
+choice only (voice-and-compliance.md). `**bold**` is the only formatting.
 
 ## 6. 3 Reasons
 
 | Field | key | Rule |
 | --- | --- | --- |
 | Headline | `reasonsHeadline` | Default "3 Reasons I Choose\nGold & Silver". |
-| Reasons | `reasons` (array of 3) | Each 1 or 2 sentences, first person, in the partner's voice and angle (policy host: spending and debt; ministry: stewardship and faith; homesteader: self-reliance). Draw on the core themes: national debt, inflation, central bank gold buying, dollar purchasing power, physical versus paper. |
+| Reasons | `reasons` (array of 3) | Each 1 or 2 sentences, first person, in the partner's voice and angle (policy host: spending and debt; ministry: stewardship and faith; homesteader: self-reliance). Draw on the core themes: national debt, inflation, central bank gold buying, dollar purchasing power, physical versus paper. Pattern: a fact or observation, then the partner's own belief or choice ("...so I chose to keep part of my savings in something real"). Never a benefit ("can help diversify", "may help protect", "worth over time"). |
 | Source line | `reasonsSource` | Named source and date for any figure used, e.g. "Source: U.S. Treasury, Debt to the Penny, September 2026." Blank only if no figures. |
 
 Any number must be verified now (national debt: fiscaldata.treasury.gov Debt to the Penny;

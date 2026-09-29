@@ -63,13 +63,13 @@ export default applyGuide(
       quote: {
         // DRAFT COPY on production too: replace with Karon's approved sentence before launch.
         quote:
-          "Our family has always believed in owning something real. Gold and silver have carried families through hard seasons for generations, and that is why I partnered with Revelation Gold Group.",
+          "Our family has always believed in owning something real. For us, gold and silver are part of being good stewards, and that is why I partnered with Revelation Gold Group.",
         name: "Karon Smedley",
         role: "Co-Founder, IBTV Faith Network",
       },
       why: {
         paragraphs: [
-          "If you are worried about your savings right now, you are not alone. That is why I partnered with **Revelation Gold Group**, a faith-driven firm that shows families how physical gold and silver may help protect retirement and savings.",
+          "If you are worried about your savings right now, you are not alone. Owning physical gold and silver is a personal choice I made for my own family, and when I looked for a company to work with, I chose **Revelation Gold Group**, a faith-driven firm.",
           "I only put the IBTV name beside people I would send my own family to. I did my homework, I met the team, and I asked every question I would want you to ask. They answered all of them in plain English, and nobody pushed me toward a decision.",
           "A **BBB Accredited Business with an A+ rating**, a **4.9 star Google rating across 256 reviews**, and verified reviews on Trustpilot. They have helped families all over the country. Now they want to help you.",
         ],
@@ -79,9 +79,9 @@ export default applyGuide(
       },
       reasons: {
         items: [
-          "Inflation has quietly taken a bite out of what every dollar I saved will actually buy.",
-          "The national debt has blown past **$40 trillion**, and nobody in Washington has a plan to pay it down.",
-          "Gold and silver are real, physical assets. They are not somebody else’s promise to pay me later.",
+          "I have watched inflation quietly take a bite out of what every dollar I saved will buy, and that shaped how our family chose to save.",
+          "The national debt has blown past **$40 trillion**, and I have not seen anyone in Washington with a plan to pay it down.",
+          "I believe in owning something real. Gold and silver are not somebody else's promise to pay me later.",
         ],
         sourceAlign: "center",
       },

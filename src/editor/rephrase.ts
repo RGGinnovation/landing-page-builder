@@ -10,6 +10,8 @@
  * the compliance check (see checkRewrite).
  */
 
+import { partnerCopyIssues } from "@/template/compliance";
+
 const GROUPS: string[][] = [
   [
     "If you are worried about your savings right now, you are not alone.",
@@ -19,11 +21,11 @@ const GROUPS: string[][] = [
     "If you have been watching your savings and feeling uneasy, you are not alone.",
   ],
   [
-    "That is why I partnered with **Revelation Gold Group**, a faith-driven firm that shows families how physical gold and silver may help protect retirement and savings.",
-    "That is why I partnered with **Revelation Gold Group**, a faith-driven firm that helps families understand how physical gold and silver may help protect their retirement and savings.",
-    "That is exactly why I partnered with **Revelation Gold Group**, a faith-driven firm that walks families through how physical gold and silver may help protect retirement and savings.",
-    "That is why I work with **Revelation Gold Group**, a faith-driven firm that shows families, in plain English, how physical gold and silver may help protect their savings.",
-    "That is the reason I partnered with **Revelation Gold Group**, a faith-driven firm that explains how physical gold and silver may help protect retirement and savings.",
+    "Owning physical gold and silver is a personal choice I made for my own family, and when I looked for a company to work with, I chose **Revelation Gold Group**, a faith-driven firm.",
+    "For my family, owning physical gold and silver is a personal choice, and the company I chose to work with is **Revelation Gold Group**, a faith-driven firm.",
+    "I made owning physical gold and silver a personal choice for my family, and I chose **Revelation Gold Group**, a faith-driven firm, to work with.",
+    "Owning some physical gold and silver is a decision I made for my own household, and **Revelation Gold Group**, a faith-driven firm, is the company I chose.",
+    "Physical gold and silver are a personal choice for my family, and when it came time to pick a company, I chose **Revelation Gold Group**, a faith-driven firm.",
   ],
   [
     "I did my homework, I met the team, and I asked every question I would want you to ask.",
@@ -124,18 +126,6 @@ export function rephraseOffline(text: string): { text: string; changed: boolean 
 /* Compliance check for any rewrite (AI or offline)                    */
 /* ------------------------------------------------------------------ */
 
-const BANNED = [
-  /\bguarantee/i,
-  /\brisk[- ]free\b/i,
-  /\bno risk\b/i,
-  /\bsafe haven\b/i,
-  /\bwill (rise|go up|double|soar|protect)\b/i,
-  /\b(returns?|profits?|gains?)\b/i,
-  /\bskyrocket/i,
-  /\bprice (target|prediction)/i,
-  /\btax[- ]free\b/i,
-];
-
 function numbers(s: string) {
   return (s.match(/\d[\d,.]*/g) ?? [])
     .map((n) => n.replace(/[,.]$/, ""))
@@ -149,8 +139,9 @@ export function checkRewrite(original: string, rewrite: string): string | null {
   if (!r) return "empty";
   if (/[\u2014\u2013]/.test(r)) return "dash";
   if (numbers(original) !== numbers(r)) return "numbers changed";
-  for (const re of BANNED)
-    if (re.test(r) && !re.test(original)) return "banned phrase " + re.source;
+  const before = new Set(partnerCopyIssues(original).map((x) => x.why));
+  const added = partnerCopyIssues(r).find((x) => !before.has(x.why));
+  if (added) return "banned phrase " + added.match;
   const len = original.length || 1;
   if (r.length > len * 1.5 + 40 || r.length < len * 0.5) return "length";
   return null;

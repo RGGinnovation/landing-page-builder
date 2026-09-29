@@ -29,7 +29,9 @@ Every public page carries the Kiflo snippet and the HubSpot tracking code automa
 | Advanced | SEO, section show/hide, all template copy, RGG phone |
 
 A launch checklist blocks **Publish now** until the page has a real partner name, logo, photo,
-quote, HubSpot form, Kiflo code, and a non-gold accent.
+quote, HubSpot form, Kiflo code, and a non-gold accent, and until the quote, Why I Believe and
+3 Reasons read as the partner's personal opinion and choice only (no benefit or return claims such
+as "may help protect" or "can help diversify", no advice). Rules: `src/template/compliance.ts`.
 
 ### Regenerate
 

@@ -62,7 +62,10 @@ write the reason without the number.
 
 ### 4. Write the fields
 
-Follow field-spec.md for every field, in the partner's voice. Write a short voice profile
+Follow field-spec.md for every field, in the partner's voice. The quote, Why I Believe and 3
+Reasons are the partner's personal opinions and choices only: no sentence says what gold and
+silver do (protect, preserve, grow, hedge, hold value), none implies a return, none gives the
+reader advice. See voice-and-compliance.md. Write a short voice profile
 first and keep it at the top of the sheet so the reviewer can see why the copy sounds the way
 it does. Pick the guide (faith audience: Faithful Steward; otherwise Wealth Guide), theme
 preset and hero background with a one-line reason each.
@@ -154,6 +157,8 @@ HubSpot: <contact link>
 
 - Every value is final text, ready to paste. No placeholders, except where data truly does
   not exist, and then say exactly what to get and where.
+- Partner copy is opinion and personal belief only. Read each metals sentence and ask "is this
+  what the partner believes or chose, or a claim about what metals do?" Only the first ships.
 - House style holds everywhere: no em dashes, no gold themes, no guarantees or predictions.
 - Trust facts and ratings unchanged and flagged as perishable.
 - The partner would recognize themselves in the copy.
