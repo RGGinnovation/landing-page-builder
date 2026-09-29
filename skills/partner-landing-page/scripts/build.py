@@ -1,15 +1,16 @@
 #!/usr/bin/env python3
 """
-Builds the two partner page kit deliverables from one research file:
+Builds the two partner landing page deliverables from one research file:
 
-    <slug>.page-kit.json   one downloadable JSON: research, review status and the
-                           import-ready page (editor: Publish menu > Import JSON)
-    <slug>-page-kit.md     the same content as a readable copy-and-paste sheet
+    <slug>.landing-page.json   one downloadable JSON: research, colors, review status and
+                               the import-ready page (editor: Publish menu > Import JSON)
+    <slug>-landing-page.md     the same content as a readable sheet: every field to paste,
+                               the colors, and every line of the page top to bottom
 
 Usage:
-    python build_kit.py kit-input.json [out_dir]
+    python build.py input.json [out_dir]
 
-kit-input.json follows references/output-format.md. The script builds the page on the
+input.json follows references/output-format.md. The script builds the page on the
 live RGG template (assets/), applies the guide, theme and SEO rules, runs every
 compliance and completeness check, and prints ERRORS (fix and rerun) and TODO items
 (things only a person can supply, such as the HubSpot form or Kiflo confirmation).
@@ -23,8 +24,8 @@ import sys
 from pathlib import Path
 
 ASSETS = Path(__file__).resolve().parent.parent / "assets"
-FORMAT = "rgg-partner-page-kit"
-FORMAT_VERSION = 2
+FORMAT = "rgg-partner-landing-page"
+FORMAT_VERSION = 3
 
 
 def load(name):
@@ -50,7 +51,7 @@ DASHES = re.compile("[—–]")
 
 REQUIRED = [
     "partnerName", "slug", "quote", "signatureName", "signatureRole", "whyParagraph",
-    "reasons", "guide", "themePreset", "heroBackground", "thankYouStyle", "photoAlt",
+    "reasons", "guide", "heroBackground", "thankYouStyle", "photoAlt",
     "seoDescription",
 ]
 # Supplied by people or systems outside the research: they block publishing, not the kit.
@@ -59,6 +60,119 @@ HUMAN_ITEMS = {
     "photoUrl": "Hero photo: upload the chosen photo (transparent PNG cut-out) in Logo & photo.",
     "logoUrl": "Partner logo: upload a light or white logo in Logo & photo.",
 }
+
+
+# ---- colors: mirrors src/template/theme.ts (accentShades, bandShades, isGoldHue, readableTheme)
+
+def _rgb(h):
+    m = re.fullmatch(r"#?([0-9a-fA-F]{6})", (h or "").strip())
+    if not m:
+        return None
+    n = int(m.group(1), 16)
+    return [(n >> 16) & 255, (n >> 8) & 255, n & 255]
+
+
+def _hex(rgb):
+    return "#" + "".join(f"{max(0, min(255, round(c))):02X}" for c in rgb)
+
+
+def mix(h, target, amount):
+    rgb = _rgb(h)
+    return _hex([c + (target - c) * amount for c in rgb]) if rgb else h
+
+
+def accent_shades(a):
+    return {"accent": a.upper(), "accentLight": mix(a, 255, 0.14), "accentDark": mix(a, 0, 0.22)}
+
+
+def band_shades(b):
+    return {"navy": b.upper(), "navyDeep": mix(b, 0, 0.4), "navyMid": mix(b, 255, 0.06)}
+
+
+def is_gold_hue(h):
+    rgb = _rgb(h)
+    if not rgb:
+        return False
+    r, g, b = [c / 255 for c in rgb]
+    mx, mn = max(r, g, b), min(r, g, b)
+    d = mx - mn
+    if d < 0.12 or mx < 0.25:
+        return False
+    if mx == r:
+        hue = ((g - b) / d) % 6
+    elif mx == g:
+        hue = (b - r) / d + 2
+    else:
+        hue = (r - g) / d + 4
+    hue *= 60
+    hue = hue + 360 if hue < 0 else hue
+    return 24 <= hue <= 68
+
+
+def _lum(h):
+    rgb = _rgb(h) or [0, 0, 0]
+    v = [(c / 255) / 12.92 if c / 255 <= 0.03928 else ((c / 255 + 0.055) / 1.055) ** 2.4 for c in rgb]
+    return 0.2126 * v[0] + 0.7152 * v[1] + 0.0722 * v[2]
+
+
+def contrast(a, b):
+    x, y = sorted([_lum(a), _lum(b)], reverse=True)
+    return (x + 0.05) / (y + 0.05)
+
+
+def _until(h, target, ok):
+    c = (h or "").upper()
+    if not _rgb(c):
+        return c
+    for _ in range(40):
+        if ok(c):
+            break
+        c = mix(c, target, 0.06)
+    return c
+
+
+def readable(t):
+    """What the site renders (theme.ts readableTheme): every text meets WCAG AA."""
+    band = {k: _until(t[k], 0, lambda c: contrast("#FFFFFF", c) >= 12) for k in ("navy", "navyDeep", "navyMid")}
+    lights = [t["paper"], t["alt"]]
+    on_light = lambda c: all(contrast(c, l) >= 4.5 for l in lights)
+    ink = _until(t["ink"], 0, on_light)
+    best = lambda bg: "#FFFFFF" if contrast("#FFFFFF", bg) >= contrast(ink, bg) else ink
+    label_ok = lambda c: contrast(best(c), c) >= 4.5
+    accent = _until(t["accent"], 0, label_ok)
+    accent_lt = _until(t["accentLight"], 0, label_ok)
+    return {
+        **band,
+        "accent": accent, "accentLight": accent_lt,
+        "ink": ink, "body": _until(t["body"], 0, on_light), "muted": _until(t["muted"], 0, on_light),
+        "onAccent": best(accent), "onAccentLight": best(accent_lt),
+        "accentInk": _until(t["accent"], 0, on_light),
+        "accentGlow": _until(t["accentLight"], 255, lambda c: all(contrast(c, d) >= 4.5 for d in band.values())),
+    }
+
+
+def color_report(t):
+    r = readable(t)
+    rows = [
+        ("Button label on accent", r["onAccent"], r["accent"]),
+        ("Button label on hover", r["onAccentLight"], r["accentLight"]),
+        ("Accent text on white", r["accentInk"], t["paper"]),
+        ("Accent text on grey", r["accentInk"], t["alt"]),
+        ("Accent text on dark band", r["accentGlow"], r["navy"]),
+        ("White text on band", "#FFFFFF", r["navy"]),
+        ("White text on deep band", "#FFFFFF", r["navyDeep"]),
+        ("Headings on white", r["ink"], t["paper"]),
+        ("Body text on white", r["body"], t["paper"]),
+        ("Small text on grey", r["muted"], t["alt"]),
+    ]
+    adjusted = [k for k in ("navy", "navyDeep", "navyMid") if r[k].upper() != t[k].upper()]
+    return {
+        "chosen": {k: t[k] for k in ("accent", "accentLight", "accentDark", "navy", "navyDeep", "navyMid")},
+        "rendered": r,
+        "adjustedForReadability": adjusted,
+        "checks": [{"pair": n, "text": a, "background": b, "ratio": round(contrast(a, b), 2),
+                    "pass": contrast(a, b) >= 4.5} for n, a, b in rows],
+    }
 
 
 def slugify(s):
@@ -105,6 +219,13 @@ def build_page(f):
     if preset:
         t.update(preset["colors"])
         t["preset"] = preset["id"]
+    # The partner's own brand colors (custom theme) take precedence over a preset.
+    if _rgb(f.get("brandAccent") or ""):
+        t.update(accent_shades(f["brandAccent"]))
+        t["preset"] = "custom"
+    if _rgb(f.get("brandBand") or ""):
+        t.update(band_shades(f["brandBand"]))
+        t["preset"] = "custom"
     if f.get("logoHeight"):
         h = int(f["logoHeight"])
         t["partnerLogoHeight"] = h
@@ -140,6 +261,12 @@ def build_page(f):
     for k_in, k_out in (("quote", "quote"), ("signatureName", "name"), ("signatureRole", "role")):
         if f.get(k_in):
             quote[k_out] = f[k_in].strip()
+
+    callband = section(page, "callband")["props"]
+    if f.get("callbandHeadline"):
+        callband["headline"] = f["callbandHeadline"].strip()
+    if f.get("callbandSubline"):
+        callband["subline"] = f["callbandSubline"].strip()
 
     if f.get("whyParagraph"):
         section(page, "why")["props"]["paragraphs"] = [f["whyParagraph"].strip()]
@@ -212,7 +339,8 @@ def check(kit, page, guide):
     voice = [("quote", f.get("quote")), ("whyParagraph", f.get("whyParagraph"))]
     voice += [(f"reasons[{i + 1}]", r) for i, r in enumerate(f.get("reasons") or [])]
     voice += [(k, f.get(k)) for k in (
-        "thankYouHeadline", "thankYouMessage", "thankYouNote", "seoDescription", "photoAlt")]
+        "thankYouHeadline", "thankYouMessage", "thankYouNote", "seoDescription", "photoAlt",
+        "callbandHeadline", "callbandSubline")]
     voice.append(("hero headline", section(page, "hero")["props"]["headline"]))
     for key, text in voice:
         if not text:
@@ -271,6 +399,25 @@ def check(kit, page, guide):
     if not faith_forward and guide["id"] == "faithful-steward":
         W("Faithful Steward guide selected for a partner whose public frame is not faith. Confirm.")
 
+    # Colors: the partner's own, never gold, and readable everywhere.
+    theme = page["theme"]
+    if theme.get("preset") in (None, "", "custom") and not (_rgb(f.get("brandAccent") or "") and _rgb(f.get("brandBand") or "")):
+        if not f.get("themePreset"):
+            E("Colors: give brandAccent and brandBand (the partner's own colors) or a themePreset.")
+        elif theme.get("preset") == "custom":
+            W("Only one brand color given; the other comes from the preset. Give both for a fully custom theme.")
+    for k in ("accent", "accentLight", "accentDark"):
+        if is_gold_hue(theme[k]):
+            E(f"Colors: {k} {theme[k]} is in the gold, yellow, amber, bronze or brass range. Pick the partner's nearest non-gold color.")
+    if not f.get("brandAccent") and not kit.get("assets", {}).get("brandColors"):
+        W("No partner brand colors recorded. The theme is a preset, not tailored to the partner.")
+    rep = color_report(theme)
+    if rep["adjustedForReadability"]:
+        W(f"Band color {theme['navy']} is too light for white text; the site darkens it to {rep['rendered']['navy']}. Use a darker brand color for an exact match.")
+    for row in rep["checks"]:
+        if not row["pass"]:
+            E(f"Colors: {row['pair']} is {row['ratio']}:1 (needs 4.5:1).")
+
     sd = f.get("seoDescription") or ""
     if sd and not 120 <= len(sd) <= 165:
         W(f"seoDescription is {len(sd)} characters (target 140 to 160).")
@@ -320,6 +467,76 @@ def block(label, value, note=""):
     return out
 
 
+def full_page_lines(page):
+    b = page["brand"]
+    tok = {"{partner}": b["partnerName"], "{phone}": b["phoneDisplay"], "{rgg}": b["rggName"]}
+
+    def fill(x):
+        x = str(x or "")
+        for k, v in tok.items():
+            x = x.replace(k, v)
+        return x.replace("**", "")
+
+    out = []
+    add = lambda label, text, fixed=False: text and out.append(f"- **{label}**{' (fixed)' if fixed else ''}: {fill(text)}")
+    for s in page["sections"]:
+        if s.get("hidden"):
+            continue
+        p, t = s["props"], s["type"]
+        if t == "topbar":
+            add("Top bar", f"{b['partnerName']} x Revelation Gold Group. {p.get('callLabel', '')} {b['phoneDisplay']}", True)
+        elif t == "hero":
+            add("Hero headline", p["headline"], True)
+            add("Form", f"{p['firstLabel']}, {p['lastLabel']}, {p['phoneLabel']}, {p['emailLabel']}. Button: {p['submitLabel']}", True)
+            add("Consent", p["consent"], True)
+        elif t == "quote":
+            add("Quote", f"\u201c{p['quote']}\u201d, {p['name']}, {p['role']}")
+        elif t == "callband":
+            add("Call band", f"{p['headline']} {p['subline']} Button: {p['buttonLabel']}")
+        elif t == "why":
+            add("Why I Believe headline", p["headline"].replace("\n", " "), True)
+            for para in p["paragraphs"]:
+                add("Why I Believe", para.replace("\n\n", " "))
+            add("Trust badges", ", ".join(f"{x.get('label')} {x.get('value', '')}".strip() for x in p.get("badges", [])), True)
+            add("Badge note", p.get("note"), True)
+        elif t == "kit":
+            add("Guide headline", p["headline"], True)
+            add("Guide text", p["lede"], True)
+            add("Guide checklist", "; ".join(p["points"]), True)
+            add("Guide button", p["buttonLabel"], True)
+        elif t == "reasons":
+            add("3 Reasons headline", p["headline"].replace("\n", " "))
+            for i, x in enumerate(p["items"], 1):
+                add(f"Reason {i}", x)
+            add("Source line", p.get("source"))
+        elif t == "question":
+            add("401(k) eyebrow", p["eyebrow"], True)
+            add("401(k) headline", p["headline"], True)
+            for para in p["paragraphs"]:
+                add("401(k) text", para, True)
+            add("401(k) lead", p["lead"], True)
+            add("401(k) accounts", ", ".join(p["accounts"]), True)
+            add("401(k) ask", p["ask"].replace("\n", " "), True)
+            add("401(k) fine print", p["fine"], True)
+        elif t == "offer":
+            add("Offer", f"{p['eyebrow']} {p['headline'].replace(chr(10), ' ')}", True)
+            add("Offer terms", p["terms"], True)
+        elif t == "footer":
+            add("Footer disclosure", p.get("partnerDisclosure"), True)
+            for d in p["disclosures"]:
+                add("Footer disclaimer", d, True)
+        elif t == "callbar":
+            add("Mobile call bar", p["label"], True)
+    ty = page["thankYou"]
+    out += ["", "Thank-you page:"]
+    add("Greeting", f"{ty['greetingNamed']} / {ty['greeting']}")
+    add("Headline", ty["headline"])
+    add("Message", ty["body"])
+    add("Download button", f"{ty['primaryLabel']} ({ty['primaryUrl']})", True)
+    add("Note", ty["note"])
+    return out + [""]
+
+
 def markdown(kit, page, guide, status, errors, warnings, todo):
     f = kit.get("fields", {})
     p = kit.get("partner", {})
@@ -328,7 +545,7 @@ def markdown(kit, page, guide, status, errors, warnings, todo):
     hs = kit.get("hubspot", {})
     L = links(page)
     ready = "READY TO PASTE" if status["copyReady"] else "NOT READY: fix the errors below"
-    md = [f"# {f.get('partnerName') or page['name']}: page kit\n",
+    md = [f"# {f.get('partnerName') or page['name']}: landing page\n",
           f"Status: **{ready}**. Publish blockers left: {len(todo)}.\n",
           f"- Page: {L['page']}",
           f"- Referral link: {L['referral'] or '(needs Kiflo code)'}",
@@ -380,9 +597,20 @@ def markdown(kit, page, guide, status, errors, warnings, todo):
     md += [block("Source line", f.get("reasonsSource") or "(no figures used: leave blank)")]
     md += ["## 7. Free guide",
            block("Guide", guide["label"], r.get("guide", ""))]
-    md += ["## 8. Theme",
-           block("Preset", f.get("themePreset"), r.get("themePreset", "")),
-           block("Hero background", f.get("heroBackground"), r.get("heroBackground", ""))]
+    th = page["theme"]
+    rep = color_report(th)
+    md += ["## 8. Theme and colors"]
+    if th.get("preset") == "custom":
+        md += ["Theme: **Custom** (the partner's own colors). In the editor pick Custom, then paste:",
+               block("Accent color (buttons, numbers, stars)", th["accent"], r.get("brandAccent", "")),
+               block("Band color (top bar, hero, call band, footer)", th["navy"], r.get("brandBand", ""))]
+    else:
+        md += [block("Preset", th.get("preset"), r.get("themePreset", ""))]
+    md += [block("Hero background", f.get("heroBackground"), r.get("heroBackground", ""))]
+    md += ["Readability (every pair must be 4.5:1 or more; the site enforces this automatically):", "",
+           "| Where | Text | Background | Ratio |", "| --- | --- | --- | --- |"]
+    md += [f"| {c['pair']} | {c['text']} | {c['background']} | {c['ratio']}:1 {'ok' if c['pass'] else 'FAIL'} |" for c in rep["checks"]]
+    md += [""]
     ty = page["thankYou"]
     md += ["## 9. Thank-you page",
            block("Layout", ty["style"], r.get("thankYouStyle", "")),
@@ -394,9 +622,13 @@ def markdown(kit, page, guide, status, errors, warnings, todo):
     md += ["## 10. Advanced",
            block("Page title", seo["title"]),
            block("Meta description", seo["description"])]
-    md += ["## Fixed by the template (do not edit)",
-           f"- Hero headline: {section(page, 'hero')['props']['headline']}",
-           "- Form, consent text, call band, 401(k) section, silver offer, footer disclaimer, phone and address.\n"]
+    cb = section(page, "callband")["props"]
+    md += ["## 11. Call band (tailored)",
+           block("Headline", cb["headline"]),
+           block("Subline", cb["subline"])]
+    md += ["## Every line on the page, top to bottom", "",
+           "This is exactly what visitors will read. Fixed template lines are marked (fixed).", ""]
+    md += full_page_lines(page)
     md += ["## Facts used in the copy, with sources"]
     md += [f"- {c.get('text')} ({c.get('source')})" for c in kit.get("claims") or []] or ["- none"]
     md += [f"- {x.get('text')} ({x.get('source')}, checked {x.get('checked')})" for x in kit.get("figures") or []]
@@ -433,6 +665,7 @@ def main():
         "hubspot": kit.get("hubspot", {}),
         "assets": kit.get("assets", {}),
         "rationale": kit.get("rationale", {}),
+        "colors": color_report(page["theme"]),
         "claims": kit.get("claims", []),
         "figures": kit.get("figures", []),
         "sources": kit.get("sources", []),
@@ -441,8 +674,8 @@ def main():
         "page": page,
     }
     slug = page["slug"]
-    jp = out_dir / f"{slug}.page-kit.json"
-    mp = out_dir / f"{slug}-page-kit.md"
+    jp = out_dir / f"{slug}.landing-page.json"
+    mp = out_dir / f"{slug}-landing-page.md"
     jp.write_text(json.dumps(out, indent=2, ensure_ascii=False) + "\n")
     mp.write_text(markdown(kit, page, guide, status, errors, warnings, todo))
 

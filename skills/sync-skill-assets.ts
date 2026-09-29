@@ -1,5 +1,5 @@
 /**
- * Regenerates the partner-page-kit skill's assets from the app code, so the skill always
+ * Regenerates the partner-landing-page skill's assets from the app code, so the skill always
  * builds pages with the live template, guides, themes and compliance rules.
  *
  *   bun skills/sync-skill-assets.ts
@@ -14,7 +14,7 @@ import { DEFAULT_SITE_URL, HUBSPOT_PORTAL_ID, RESERVED_SLUGS } from "@/template/
 import { KIT_OPTIONS } from "@/template/kits";
 import { HERO_BACKGROUNDS, THEME_PRESETS } from "@/template/theme";
 
-const dir = "skills/partner-page-kit/assets/";
+const dir = "skills/partner-landing-page/assets/";
 const write = (name: string, data: unknown) =>
   writeFileSync(dir + name, JSON.stringify(data, null, 2) + "\n");
 

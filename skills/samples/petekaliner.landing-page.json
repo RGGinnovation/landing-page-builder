@@ -1,7 +1,7 @@
 {
-  "format": "rgg-partner-page-kit",
-  "formatVersion": 2,
-  "generatedAt": "2026-09-29T16:32:22Z",
+  "format": "rgg-partner-landing-page",
+  "formatVersion": 3,
+  "generatedAt": "2026-09-29T16:48:53Z",
   "input": {
     "link": "https://thepetekalinershow.com",
     "name": "Pete Kaliner"
@@ -17,7 +17,9 @@
     "copyReady": true,
     "publishReady": false,
     "errors": [],
-    "warnings": [],
+    "warnings": [
+      "No partner brand colors recorded. The theme is a preset, not tailored to the partner."
+    ],
     "todo": [
       "HubSpot form embed: clone the latest partner form in HubSpot (Marketing > Forms), name it '<Partner> Landing Page', then Share > Embed code, and paste it in Lead form & tracking.",
       "Hero photo: upload the chosen photo (transparent PNG cut-out) in Logo & photo.",
@@ -25,7 +27,8 @@
       "Kiflo referral code: find the partner's code in Kiflo and enter it.",
       "Kiflo: the partner's link must target https://partner.revelationgoldgroup.com/petekaliner or Kiflo drops every visit and lead.",
       "Partner approval: the quote and Why I Believe paragraph are drafts in the partner's voice (FTC endorsement rules). Get written approval before publishing.",
-      "Perishable: verify the BBB rating, Google rating and review count, and any figure in 3 Reasons, before launch."
+      "Perishable: verify the BBB rating, Google rating and review count, and any figure in 3 Reasons, before launch.",
+      "Brand colors: read Pete's logo and site colors and set brandAccent and brandBand."
     ]
   },
   "partner": {
@@ -110,9 +113,106 @@
   "rationale": {
     "slug": "First and last name, the pattern used for existing partner pages.",
     "guide": "Freedom-first audience, not faith-first: Wealth Guide.",
-    "themePreset": "Navy fits a news and talk brand; no gold.",
+    "themePreset": "No brand colors could be read (site blocked here), so the navy preset. Confirm his colors.",
     "heroBackground": "Politics and policy host: flag.",
     "thankYouStyle": "Photo layout, dark, to match the hero."
+  },
+  "colors": {
+    "chosen": {
+      "accent": "#2C66A8",
+      "accentLight": "#3F7CC2",
+      "accentDark": "#1F4E85",
+      "navy": "#072B4E",
+      "navyDeep": "#041A30",
+      "navyMid": "#0A3560"
+    },
+    "rendered": {
+      "navy": "#072B4E",
+      "navyDeep": "#041A30",
+      "navyMid": "#0A3560",
+      "accent": "#2C66A8",
+      "accentLight": "#3B75B6",
+      "ink": "#141726",
+      "body": "#3D4254",
+      "muted": "#646A7E",
+      "onAccent": "#FFFFFF",
+      "onAccentLight": "#FFFFFF",
+      "accentInk": "#2C66A8",
+      "accentGlow": "#739FD2"
+    },
+    "adjustedForReadability": [],
+    "checks": [
+      {
+        "pair": "Button label on accent",
+        "text": "#FFFFFF",
+        "background": "#2C66A8",
+        "ratio": 5.88,
+        "pass": true
+      },
+      {
+        "pair": "Button label on hover",
+        "text": "#FFFFFF",
+        "background": "#3B75B6",
+        "ratio": 4.77,
+        "pass": true
+      },
+      {
+        "pair": "Accent text on white",
+        "text": "#2C66A8",
+        "background": "#FFFFFF",
+        "ratio": 5.88,
+        "pass": true
+      },
+      {
+        "pair": "Accent text on grey",
+        "text": "#2C66A8",
+        "background": "#EDEEF1",
+        "ratio": 5.07,
+        "pass": true
+      },
+      {
+        "pair": "Accent text on dark band",
+        "text": "#739FD2",
+        "background": "#072B4E",
+        "ratio": 5.2,
+        "pass": true
+      },
+      {
+        "pair": "White text on band",
+        "text": "#FFFFFF",
+        "background": "#072B4E",
+        "ratio": 14.34,
+        "pass": true
+      },
+      {
+        "pair": "White text on deep band",
+        "text": "#FFFFFF",
+        "background": "#041A30",
+        "ratio": 17.56,
+        "pass": true
+      },
+      {
+        "pair": "Headings on white",
+        "text": "#141726",
+        "background": "#FFFFFF",
+        "ratio": 17.79,
+        "pass": true
+      },
+      {
+        "pair": "Body text on white",
+        "text": "#3D4254",
+        "background": "#FFFFFF",
+        "ratio": 9.97,
+        "pass": true
+      },
+      {
+        "pair": "Small text on grey",
+        "text": "#646A7E",
+        "background": "#EDEEF1",
+        "ratio": 4.64,
+        "pass": true
+      }
+    ]
   },
   "claims": [
     {
@@ -176,7 +276,10 @@
     "heroBackground": "flag",
     "thankYouStyle": "portrait",
     "thankYouHeadline": "Your kit is on its way.",
-    "seoDescription": "Pete Kaliner Show listeners can request the free 2026 Wealth Protection Guide from Revelation Gold Group. A plain English look at gold and silver. Nothing to buy."
+    "seoDescription": "Pete Kaliner Show listeners can request the free 2026 Wealth Protection Guide from Revelation Gold Group. A plain English look at gold and silver. Nothing to buy.",
+    "callbandHeadline": "Got a question first?",
+    "callbandSubline": "Talk to a real person, not a sales script.",
+    "thankYouNote": "Questions? A Revelation Gold Group specialist can walk you through it, with nothing to buy."
   },
   "page": {
     "version": 1,
@@ -294,8 +397,8 @@
         "id": "callband-3",
         "type": "callband",
         "props": {
-          "headline": "Have a question first?",
-          "subline": "Talk to a real person.",
+          "headline": "Got a question first?",
+          "subline": "Talk to a real person, not a sales script.",
           "buttonLabel": "Call {phone}"
         }
       },

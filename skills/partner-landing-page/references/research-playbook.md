@@ -85,7 +85,14 @@ background cut-out is needed.
 **Logo:** find a light or white version for the dark navy header, as a transparent PNG or
 SVG. If only a dark logo exists, say so.
 
-**Brand colors:** note 1 to 3 hex values. They pick the nearest preset, never a gold preset.
+**Brand colors:** record 1 to 3 hex values in `assets.brandColors`, with where each came from.
+Read them from, in order:
+1. The logo file.
+2. The site's `<meta name="theme-color">`, header background and button colors in its CSS.
+3. Their show artwork or social banner.
+
+The darkest one becomes `brandBand` and the signature one `brandAccent`. Skip anything gold,
+yellow, amber, bronze or brass.
 
 ## 7. When pages will not load
 

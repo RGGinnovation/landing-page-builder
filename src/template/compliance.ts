@@ -9,7 +9,7 @@
  * Bad:  "Physical gold and silver can help diversify what my savings are worth over time."
  *
  * The same list is used by the editor checklist (blocks Publish), the Regenerate check
- * and the partner-page-kit skill (skills/partner-page-kit/scripts/build_page_json.py).
+ * and the partner-landing-page skill (skills/partner-landing-page/scripts/build.py).
  */
 export const PARTNER_COPY_RULES: { re: RegExp; why: string }[] = [
   { re: /\bprotect(s|ed|ing|ion)?\b/i, why: "protection claim" },

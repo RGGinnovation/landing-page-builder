@@ -1551,3 +1551,70 @@
 .lp .foot .disclosure p:last-child {
   margin-bottom: 0;
 }
+
+/* ============ READABLE ON ANY THEME ============
+   Colors derived in theme.ts (readableTheme): labels on the accent pick white or ink by
+   contrast, accent text on light backgrounds is darkened (--accent-ink) and accent text on
+   the dark bands is lightened (--accent-glow) until each meets WCAG AA. */
+.lp .skip,
+.lp .btn-solid {
+  color: var(--on-accent);
+}
+.lp .btn-solid:hover {
+  color: var(--on-accent-lt);
+}
+.lp .btn-call svg {
+  fill: var(--accent-ink);
+}
+.lp .btn-call:hover {
+  color: var(--on-accent);
+}
+.lp .btn-call:hover svg {
+  fill: var(--on-accent);
+}
+.lp .rlist .n,
+.lp .bcard .bstars,
+.lp .offer h2 .ast,
+.lp .lp-split .eyebrow,
+.lp .ty-portrait.is-light .ty-greet {
+  color: var(--accent-ink);
+}
+.lp .kit .kitpts svg {
+  fill: var(--accent-ink);
+}
+.lp .topcall svg {
+  fill: var(--accent-glow);
+}
+.lp .topcall:hover .tc-num,
+.lp .fld label .req,
+.lp .qsec .eyebrow,
+.lp .lp-content.qsec .eyebrow,
+.lp .ty-portrait:not(.is-light) .ty-greet {
+  color: var(--accent-glow);
+}
+/* Softer greys on the dark bands are white at an opacity, so they keep AA contrast on any
+   band color (fixed greys were tuned for near-black bands only). */
+.lp .topcall .tc-lab,
+.lp .qsec .qalt {
+  color: rgba(255, 255, 255, 0.66);
+}
+.lp .fine,
+.lp .legal-links a {
+  color: rgba(255, 255, 255, 0.72);
+}
+.lp .fine a,
+.lp .callband h2 .csub,
+.lp .qsec,
+.lp .qsec .qask,
+.lp .fmeta a {
+  color: rgba(255, 255, 255, 0.82);
+}
+.lp .qgrid span,
+.lp .qalt a {
+  color: rgba(255, 255, 255, 0.9);
+}
+.lp .qsec .qfine,
+.lp .foot,
+.lp .legal-links span {
+  color: rgba(255, 255, 255, 0.62);
+}

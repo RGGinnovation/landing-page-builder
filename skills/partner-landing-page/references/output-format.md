@@ -1,10 +1,10 @@
 # Output format
 
-You write **one** file, `kit-input.json`. `scripts/build_kit.py` turns it into the two
+You write **one** file, `input.json`. `scripts/build.py` turns it into the two
 deliverables. A complete worked example, with real verified data, is
-`assets/example-kit-input.json` (Pete Kaliner). Copy its shape, not its facts.
+`assets/example-input.json` (Pete Kaliner). Copy its shape, not its facts.
 
-## kit-input.json
+## input.json
 
 ```jsonc
 {
@@ -32,7 +32,7 @@ deliverables. A complete worked example, with real verified data, is
     "photo": { "url": "", "width": 0, "height": 0, "source": "", "needsCutout": true, "why": "" },
     "photoAlternates": [{ "url": "", "why": "" }],
     "logo": { "url": "", "width": 0, "height": 0, "source": "", "onDark": true, "why": "" },
-    "brandColors": ["#hex"]
+    "brandColors": [{ "hex": "#hex", "where": "logo, header, buttons, artwork", "source": "url" }]
   },
 
   "fields": { /* every key in field-spec.md */ },
@@ -46,12 +46,12 @@ deliverables. A complete worked example, with real verified data, is
 }
 ```
 
-## The downloadable file: `<slug>.page-kit.json`
+## The downloadable file: `<slug>.landing-page.json`
 
 ```jsonc
 {
-  "format": "rgg-partner-page-kit",   // the editor's Import JSON recognizes this
-  "formatVersion": 2,
+  "format": "rgg-partner-landing-page",   // the editor's Import JSON recognizes this
+  "formatVersion": 3,
   "generatedAt": "UTC timestamp",
   "input": {...},
   "links": { "page", "thankYou", "referral", "kifloLinkTarget", "vanityDomain" },
@@ -61,6 +61,10 @@ deliverables. A complete worked example, with real verified data, is
     "errors": [], "warnings": [], "todo": []
   },
   "partner": {...}, "hubspot": {...}, "assets": {...}, "rationale": {...},
+  "colors": {               // chosen vs rendered colors and every readability check
+    "chosen": {...}, "rendered": {...}, "adjustedForReadability": [],
+    "checks": [{ "pair", "text", "background", "ratio", "pass" }]
+  },
   "claims": [...], "figures": [...], "sources": [...], "blocked": [...],
   "fields": {...},          // the flat field values, keyed as in field-spec.md
   "page": { ... }           // the full PageConfig on the live template, import-ready
@@ -71,7 +75,7 @@ deliverables. A complete worked example, with real verified data, is
   parts (hero headline, 401(k) section, silver offer, footer disclaimer) are always current.
 - `fields` plus `status` are what a future editor feature can read to prefill fields and show
   the to-do list.
-- The sheet `<slug>-page-kit.md` is rendered from the same data, so the two never disagree.
+- The sheet `<slug>-landing-page.md` is rendered from the same data, so the two never disagree.
 
 ## Keeping the assets current
 

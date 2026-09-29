@@ -357,8 +357,9 @@ function Workspace({ email }: { email: string }) {
     if (!file) return;
     try {
       const raw = JSON.parse(await file.text()) as { format?: string; page?: unknown };
-      // A partner-page-kit file (skills/partner-page-kit) carries the page under "page".
-      const data: unknown = raw?.format === "rgg-partner-page-kit" ? raw.page : raw;
+      // A partner-landing-page skill file carries the page under "page".
+      const kitFormats = ["rgg-partner-landing-page", "rgg-partner-page-kit"];
+      const data: unknown = kitFormats.includes(raw?.format ?? "") ? raw.page : raw;
       if (!isPageConfig(data)) throw new Error("That file is not a partner page export.");
       let slug = data.slug;
       let n = 2;

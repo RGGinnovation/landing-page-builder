@@ -1,5 +1,8 @@
 {
-  "input": { "link": "https://thepetekalinershow.com", "name": "Pete Kaliner" },
+  "input": {
+    "link": "https://thepetekalinershow.com",
+    "name": "Pete Kaliner"
+  },
   "partner": {
     "fullName": "Pete Kaliner",
     "knownAs": "Pete Kaliner",
@@ -10,8 +13,14 @@
     "faithNote": "No public faith frame. HubSpot guidance: let faith come from him.",
     "bio": "Pete Kaliner hosts The Pete Kaliner Show on WBT in Charlotte, weekdays at noon, and runs his own podcast. A career radio journalist and self-described lowercase-L libertarian, he has bought silver since the 2008 crash.",
     "identityCheck": [
-      { "fact": "Host of The Pete Kaliner Show on WBT Charlotte", "source": "https://thepetekalinershow.com/about" },
-      { "fact": "Returned to WBT in July 2021 in the noon to 3 PM slot", "source": "https://radioinsight.com/headlines/210964" }
+      {
+        "fact": "Host of The Pete Kaliner Show on WBT Charlotte",
+        "source": "https://thepetekalinershow.com/about"
+      },
+      {
+        "fact": "Returned to WBT in July 2021 in the noon to 3 PM slot",
+        "source": "https://radioinsight.com/headlines/210964"
+      }
     ],
     "voiceProfile": [
       "Punchy and sardonic: quick setup, then a jab.",
@@ -21,13 +30,32 @@
       "Never preachy or sentimental; no faith language unless he uses it."
     ],
     "voiceSamples": [
-      { "text": "I talk about stuff.", "source": "https://www.facebook.com/petekalinershow" },
-      { "text": "Dems & media (but I repeat myself)", "source": "https://x.com/PeteKaliner/status/1755937018176000174" },
-      { "text": "All good things come to an end. All jobs have a shelf life.", "source": "https://x.com/petekaliner/status/1217104073041891328" },
-      { "text": "creating conversations on the radio & podcast", "source": "https://www.patreon.com/petekalinershow" },
-      { "text": "I knew right out of the gate that I was not going to ever be able to measure up to that.", "source": "https://barrettmedia.com/2025/03/14/pete-kaliner-hosting-on-wbt-in-former-rush-limbaugh-timeslot-my-dream-job/" }
+      {
+        "text": "I talk about stuff.",
+        "source": "https://www.facebook.com/petekalinershow"
+      },
+      {
+        "text": "Dems & media (but I repeat myself)",
+        "source": "https://x.com/PeteKaliner/status/1755937018176000174"
+      },
+      {
+        "text": "All good things come to an end. All jobs have a shelf life.",
+        "source": "https://x.com/petekaliner/status/1217104073041891328"
+      },
+      {
+        "text": "creating conversations on the radio & podcast",
+        "source": "https://www.patreon.com/petekalinershow"
+      },
+      {
+        "text": "I knew right out of the gate that I was not going to ever be able to measure up to that.",
+        "source": "https://barrettmedia.com/2025/03/14/pete-kaliner-hosting-on-wbt-in-former-rush-limbaugh-timeslot-my-dream-job/"
+      }
     ],
-    "socials": { "x": "https://x.com/PeteKaliner", "facebook": "https://www.facebook.com/petekalinershow/", "instagram": "https://www.instagram.com/petekaliner" }
+    "socials": {
+      "x": "https://x.com/PeteKaliner",
+      "facebook": "https://www.facebook.com/petekalinershow/",
+      "instagram": "https://www.instagram.com/petekaliner"
+    }
   },
   "hubspot": {
     "found": true,
@@ -35,10 +63,18 @@
     "leadStatus": "Partner",
     "website": "https://KalinerMetals.com",
     "keyNotes": [
-      { "date": "2026-09-08", "point": "Pete has bought silver himself since the 2008 crash." },
-      { "date": "2026-08-20", "point": "Self-identifies as a lowercase-L libertarian. No public information on faith." }
+      {
+        "date": "2026-09-08",
+        "point": "Pete has bought silver himself since the 2008 crash."
+      },
+      {
+        "date": "2026-08-20",
+        "point": "Self-identifies as a lowercase-L libertarian. No public information on faith."
+      }
     ],
-    "guidance": ["Treat the audience as freedom-first rather than faith-first. Let faith come from him."]
+    "guidance": [
+      "Treat the audience as freedom-first rather than faith-first. Let faith come from him."
+    ]
   },
   "assets": {
     "photo": {},
@@ -74,27 +110,53 @@
     "heroBackground": "flag",
     "thankYouStyle": "portrait",
     "thankYouHeadline": "Your kit is on its way.",
-    "seoDescription": "Pete Kaliner Show listeners can request the free 2026 Wealth Protection Guide from Revelation Gold Group. A plain English look at gold and silver. Nothing to buy."
+    "seoDescription": "Pete Kaliner Show listeners can request the free 2026 Wealth Protection Guide from Revelation Gold Group. A plain English look at gold and silver. Nothing to buy.",
+    "callbandHeadline": "Got a question first?",
+    "callbandSubline": "Talk to a real person, not a sales script.",
+    "thankYouNote": "Questions? A Revelation Gold Group specialist can walk you through it, with nothing to buy."
   },
   "rationale": {
     "slug": "First and last name, the pattern used for existing partner pages.",
     "guide": "Freedom-first audience, not faith-first: Wealth Guide.",
-    "themePreset": "Navy fits a news and talk brand; no gold.",
+    "themePreset": "No brand colors could be read (site blocked here), so the navy preset. Confirm his colors.",
     "heroBackground": "Politics and policy host: flag.",
     "thankYouStyle": "Photo layout, dark, to match the hero."
   },
   "claims": [
-    { "text": "Pete has bought silver since the 2008 crash", "source": "HubSpot note, 2026-09-08" },
-    { "text": "Pete calls himself a lowercase-L libertarian", "source": "HubSpot note, 2026-08-20; mountainx.com" }
+    {
+      "text": "Pete has bought silver since the 2008 crash",
+      "source": "HubSpot note, 2026-09-08"
+    },
+    {
+      "text": "Pete calls himself a lowercase-L libertarian",
+      "source": "HubSpot note, 2026-08-20; mountainx.com"
+    }
   ],
   "figures": [
-    { "text": "National debt above $40 trillion", "source": "U.S. Treasury, Debt to the Penny", "checked": "2026-09-29" }
+    {
+      "text": "National debt above $40 trillion",
+      "source": "U.S. Treasury, Debt to the Penny",
+      "checked": "2026-09-29"
+    }
   ],
   "sources": [
-    { "url": "https://thepetekalinershow.com/about", "usedFor": "bio, identity" },
-    { "url": "https://radioinsight.com/headlines/210964", "usedFor": "WBT return date" },
-    { "url": "https://app.hubspot.com/contacts/44817109/record/0-1/242971280648", "usedFor": "notes, vanity domain, guidance" }
+    {
+      "url": "https://thepetekalinershow.com/about",
+      "usedFor": "bio, identity"
+    },
+    {
+      "url": "https://radioinsight.com/headlines/210964",
+      "usedFor": "WBT return date"
+    },
+    {
+      "url": "https://app.hubspot.com/contacts/44817109/record/0-1/242971280648",
+      "usedFor": "notes, vanity domain, guidance"
+    }
   ],
-  "blocked": ["thepetekalinershow.com (sandbox proxy)"],
-  "todo": []
+  "blocked": [
+    "thepetekalinershow.com (sandbox proxy)"
+  ],
+  "todo": [
+    "Brand colors: read Pete's logo and site colors and set brandAccent and brandBand."
+  ]
 }

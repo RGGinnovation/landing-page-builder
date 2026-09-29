@@ -1,7 +1,7 @@
 # Partner page fields: spec and rules
 
 This file lists every field in the RGG Partner Pages editor (partner.revelationgoldgroup.com/admin),
-in the order the editor shows them. The `key` is the key used in `fields` in kit-input.json.
+in the order the editor shows them. The `key` is the key used in `fields` in input.json.
 Live pages already built with these rules include /petekaliner, /tonishuppe, /emmadowd,
 /king-dude and /asor.
 
@@ -93,8 +93,17 @@ Central bank buying can be referenced without a number ("buying gold at a record
 
 | Field | key | Rule |
 | --- | --- | --- |
-| Preset | `themePreset` | If brand colors are unknown, use `revelation-navy`. Otherwise pick the nearest to their brand colors: `revelation-navy`, `patriot-red`, `ember`, `royal-purple`, `liberty-blue`, `frontier-green`, `crimson` or `charcoal-steel`. A gold or orange brand maps to `ember` or `revelation-navy`. Never gold. |
+| Brand accent | `brandAccent` | The partner's signature color as hex, from their logo, site buttons or artwork. It drives buttons, numbers, stars and rules, and it can never be gold, yellow, amber, bronze or brass. For a gold or orange brand, take their next brand color, or `#2C66A8` (RGG blue). |
+| Brand band | `brandBand` | The partner's darkest brand color as hex, used for the top bar, hero, call band and footer, all with white text. If it is too light the site darkens it, and the script warns; prefer a truly dark brand shade. |
+| Preset (fallback) | `themePreset` | Only when no brand colors are found. Use `revelation-navy`, or pick the nearest of: `revelation-navy`, `patriot-red`, `ember`, `royal-purple`, `liberty-blue`, `frontier-green`, `crimson` or `charcoal-steel`. A gold or orange brand maps to `ember` or `revelation-navy`. Never gold. |
 | Hero background | `heroBackground` | `flag` for patriot, policy, 2A or veterans. `sunrise` for faith, ministry or hope. `none` for finance or minimal. When they are both faith and patriot, follow how they introduce themselves first. |
+
+## 8b. Call band (tailored)
+
+| Field | key | Rule |
+| --- | --- | --- |
+| Headline | `callbandHeadline` | Short, in their register, inviting a call. Default "Have a question first?". Example for Mike Church: "Dude Nation, have a question first?" |
+| Subline | `callbandSubline` | Short. Default "Talk to a real person." No claims. |
 
 ## 9. Thank-you page
 
@@ -104,6 +113,7 @@ Central bank buying can be referenced without a number ("buying gold at a record
 | Greeting with first name | `thankYouGreetingNamed` | Leave it blank to keep "Thank you, {firstName}". |
 | Greeting without a name | `thankYouGreeting` | Leave it blank to keep "Thank you". |
 | Headline | `thankYouHeadline` | Short and in their voice. Default: "Your kit is on its way." |
+| Note | `thankYouNote` | One short line in their voice under the buttons. Default: "Questions? A Revelation Gold Group specialist can walk you through it, with nothing to buy." |
 | Message | `thankYouMessage` | Optional. Leave it blank to use the guide's message. If you write one: 2 or 3 sentences that name the guide, say to check the inbox and the promotions or spam folder, and say a representative can answer questions. No claims. |
 
 ## 10. Advanced
@@ -116,7 +126,7 @@ Central bank buying can be referenced without a number ("buying gold at a record
 ## Fixed by the template (never write these)
 
 - **Hero headline:** "Your First Step Toward Owning Physical Gold & Silver".
-- **Lead form:** the form labels, the consent text, the call band and the mobile call bar.
+- **Lead form:** the form labels, the consent text and the mobile call bar.
 - **401(k) section:** it points to a tax-advantaged gold IRA and asking how a direct transfer
   works, with no tax claims.
 - **Silver offer and its terms.**

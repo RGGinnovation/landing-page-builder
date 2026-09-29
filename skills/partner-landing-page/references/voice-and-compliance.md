@@ -62,7 +62,7 @@ Rewrite examples:
 Approved by compliance and kept as is: "I want my family holding something real too, not just
 paper."
 
-The build script (`scripts/build_kit.py`) runs the same rule list the editor uses
+The build script (`scripts/build.py`) runs the same rule list the editor uses
 (`assets/rules.json`, generated from the app's `src/template/compliance.ts`). Any hit is an
 ERROR, and the editor will not publish a page that has one.
 

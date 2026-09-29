@@ -3,11 +3,16 @@ import type { CSSProperties } from "react";
 import type { ThemeConfig } from "./types";
 
 /** Maps PageConfig.theme to the CSS custom properties used by landing.css. */
-export function themeToStyle(t: ThemeConfig): CSSProperties {
+export function themeToStyle(input: ThemeConfig): CSSProperties {
+  const t = readableTheme(input);
   return {
     "--accent": t.accent,
     "--accent-lt": t.accentLight,
     "--accent-dk": t.accentDark,
+    "--on-accent": t.onAccent,
+    "--on-accent-lt": t.onAccentLight,
+    "--accent-ink": t.accentInk,
+    "--accent-glow": t.accentGlow,
     "--navy": t.navy,
     "--navy-deep": t.navyDeep,
     "--navy-mid": t.navyMid,
@@ -240,4 +245,82 @@ export function isGoldHue(hex: string): boolean {
   h *= 60;
   if (h < 0) h += 360;
   return h >= 24 && h <= 68;
+}
+
+/* ------------------------------------------------------------------ */
+/* Readability: every text stays legible whatever colors are chosen    */
+/* ------------------------------------------------------------------ */
+
+function luminance(hex: string): number {
+  const rgb = hexToRgb(hex);
+  if (!rgb) return 0;
+  const [r, g, b] = rgb.map((c) => {
+    const v = c / 255;
+    return v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4;
+  }) as [number, number, number];
+  return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+}
+
+/** WCAG contrast ratio between two hex colors (1 to 21). */
+export function contrast(a: string, b: string): number {
+  const [x, y] = [luminance(a), luminance(b)].sort((m, n) => n - m) as [number, number];
+  return (x + 0.05) / (y + 0.05);
+}
+
+/** Moves a color toward black (target 0) or white (255) until it meets every contrast floor. */
+function until(hex: string, target: 0 | 255, ok: (c: string) => boolean): string {
+  if (!hexToRgb(hex)) return hex;
+  let c = hex.toUpperCase();
+  for (let i = 0; i < 40 && !ok(c); i++) c = mix(c, target, 0.06);
+  return c;
+}
+
+const WHITE = "#FFFFFF";
+const BAND_TEXT = 12; // white on the dark bands; as dark as the presets, so the softer greys there stay AA
+const TEXT = 4.5; // WCAG AA for body text
+
+/**
+ * Returns the theme with the dark bands and text colors adjusted just enough for WCAG AA
+ * legibility, plus the derived colors landing.css uses for text on and next to the accent:
+ * onAccent (button labels), accentInk (accent text on light backgrounds) and accentGlow
+ * (accent text on the dark bands). Presets pass through unchanged apart from the derived colors.
+ */
+export function readableTheme(t: ThemeConfig) {
+  const navy = until(t.navy, 0, (c) => contrast(WHITE, c) >= BAND_TEXT);
+  const navyDeep = until(t.navyDeep, 0, (c) => contrast(WHITE, c) >= BAND_TEXT);
+  const navyMid = until(t.navyMid, 0, (c) => contrast(WHITE, c) >= BAND_TEXT);
+  const lights = [t.paper, t.alt];
+  const onLight = (c: string) => lights.every((l) => contrast(c, l) >= TEXT);
+  const ink = until(t.ink, 0, onLight);
+  const body = until(t.body, 0, onLight);
+  const muted = until(t.muted, 0, onLight);
+  const best = (bg: string) => (contrast(WHITE, bg) >= contrast(ink, bg) ? WHITE : ink);
+  // Button fills: nudge darker only when neither white nor ink reaches AA on them.
+  const labelOk = (c: string) => contrast(best(c), c) >= TEXT;
+  const accent = until(t.accent, 0, labelOk);
+  const accentLight = until(t.accentLight, 0, labelOk);
+  return {
+    ...t,
+    accent: accent === t.accent.toUpperCase() ? t.accent : accent,
+    accentLight: accentLight === t.accentLight.toUpperCase() ? t.accentLight : accentLight,
+    navy: navy === t.navy.toUpperCase() ? t.navy : navy,
+    navyDeep: navyDeep === t.navyDeep.toUpperCase() ? t.navyDeep : navyDeep,
+    navyMid: navyMid === t.navyMid.toUpperCase() ? t.navyMid : navyMid,
+    ink: ink === t.ink.toUpperCase() ? t.ink : ink,
+    body: body === t.body.toUpperCase() ? t.body : body,
+    muted: muted === t.muted.toUpperCase() ? t.muted : muted,
+    onAccent: best(accent),
+    onAccentLight: best(accentLight),
+    accentInk: until(t.accent, 0, onLight),
+    accentGlow: until(t.accentLight, 255, (c) =>
+      [navy, navyDeep, navyMid].every((d) => contrast(c, d) >= TEXT),
+    ),
+  };
+}
+
+/** Theme colors the page will render differently from what was chosen (for the checklist). */
+export function readabilityAdjustments(t: ThemeConfig): string[] {
+  const r = readableTheme(t);
+  const keys = ["navy", "navyDeep", "navyMid", "ink", "body", "muted"] as const;
+  return keys.filter((k) => r[k].toUpperCase() !== t[k].toUpperCase());
 }

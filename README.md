@@ -33,14 +33,22 @@ quote, HubSpot form, Kiflo code, and a non-gold accent, and until the quote, Why
 3 Reasons read as the partner's personal opinion and choice only (no benefit or return claims such
 as "may help protect" or "can help diversify", no advice). Rules: `src/template/compliance.ts`.
 
-### Partner page kit (skill) and Import JSON
+### Partner landing page skill and Import JSON
 
-`skills/partner-page-kit` is a Claude skill: give it a partner's link and it researches them
-(site, public footprint, HubSpot notes), writes every field in their voice under the compliance
-rules, and returns `<slug>.page-kit.json` plus a copy-and-paste sheet. In the editor, **Publish
-menu > Import JSON** accepts that file directly (it reads the `page` inside) as well as a plain
-page export. After changing the template, guides, themes or `src/template/compliance.ts`, run
-`bun skills/sync-skill-assets.ts` and repackage the skill so it builds on the live template.
+`skills/partner-landing-page` is the one Claude skill for partner pages (`/partner-landing-page`).
+Give it a partner's link and it researches them (site, public footprint, HubSpot notes), picks
+their own brand colors, writes every field in their voice under the compliance rules, and
+returns `<slug>.landing-page.json` plus a readable sheet with every line of the page. In the
+editor, **Publish menu > Import JSON** accepts that file directly (it reads the `page` inside)
+as well as a plain page export. After changing the template, guides, themes or
+`src/template/compliance.ts`, run `bun skills/sync-skill-assets.ts` and repackage the skill.
+
+### Readable on any colors
+
+`readableTheme()` in `src/template/theme.ts` runs on every render. Band colors too light for
+white text are darkened, button labels switch between white and ink, and accent text is
+darkened on light backgrounds and lightened on the dark bands, each to at least WCAG AA
+(4.5:1). The checklist says when a chosen band color was adjusted.
 
 ### Regenerate
 
