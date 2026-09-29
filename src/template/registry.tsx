@@ -411,13 +411,12 @@ export const SECTIONS: Registry = {
     pinned: "bottom",
     component: Footer,
     fields: [
-      rich("partnerDisclosure", "Partner disclosure", 4),
-      richList("disclosures", "Compliance paragraphs"),
+      rich("partnerDisclosure", "Extra partner disclosure (blank = none)", 3),
+      richList("disclosures", "Disclaimer (one short paragraph)"),
       { key: "_h", label: "Contact details and legal links are set under Brand.", type: "heading" },
     ],
     defaults: () => ({
-      partnerDisclosure:
-        "{partner} is a marketing partner of Revelation Gold Group and may be compensated for referrals made through this page. {partner} does not provide financial, tax, or investment advice. All products and services on this page are offered by Revelation Gold Group.",
+      partnerDisclosure: "",
       disclosures: [...DEFAULT_DISCLOSURES],
     }),
   },
@@ -488,12 +487,20 @@ export const DEFAULT_BADGES = [
   { kind: "consumeraffairs" as const, url: "", label: "Listed on ConsumerAffairs", value: "" },
 ];
 
-/** Terms for the "up to 10% in free silver" offer. Shown in every footer. */
-export const SILVER_OFFER_DISCLAIMER =
-  "Valid on qualifying orders only with the purchase of $50,000 to $99,999 in Revelation Gold Group premium coins. Receive 10% back in FREE Silver with the purchase of $100,000 or more in Revelation Gold Group premium coins. This offer cannot be combined with other promotions. Additional terms and conditions may apply. Please speak with your representative to determine if your order qualifies. Review your customer agreement for full details. Revelation Gold Group does not provide financial or tax advice concerning the purchase of precious metals.";
+/**
+ * The whole footer disclaimer: one short, left-aligned paragraph. Covers not financial advice,
+ * the partner's paid relationship (FTC), no advice or registration, risk and no implied return,
+ * not insured, and the free silver offer terms.
+ */
+export const FOOTER_DISCLAIMER =
+  "Not financial advice. {partner} is a marketing partner of Revelation Gold Group and may be compensated for referrals. Revelation Gold Group does not provide tax, legal or investment advice and is not a registered investment advisor or broker dealer. Precious metals involve risk, prices can go down, and no return is promised or implied. Metals are not FDIC or SIPC insured and are not suitable for everyone. Free silver offer valid only on qualifying purchases of $50,000 or more in Revelation Gold Group premium coins, with 10% back in silver at $100,000 or more. Cannot be combined with other offers. Terms apply; see your customer agreement.";
 
-export const DEFAULT_DISCLOSURES = [
+export const DEFAULT_DISCLOSURES = [FOOTER_DISCLAIMER];
+
+/** Footer copy used before the single-paragraph disclaimer (migrate replaces it). */
+export const RETIRED_FOOTER_COPY = [
+  "{partner} is a marketing partner of Revelation Gold Group and may be compensated for referrals made through this page. {partner} does not provide financial, tax, or investment advice. All products and services on this page are offered by Revelation Gold Group.",
   "Not financial advice. Revelation Gold Group does not provide tax, legal, accounting, or investment advice. Nothing on this page is a recommendation to buy or sell any asset. Consult your own tax, legal, and financial advisors before entering into any transaction. Revelation Gold Group and its representatives are not registered or licensed by any government agency as investment advisors or broker dealers.",
   "The purchase of precious metals involves risk. Prices fluctuate and can decline substantially. Premiums vary by product. Past performance does not guarantee future results, and no return of any kind is promised or implied. Precious metals produce no income and are not insured by the FDIC, the SIPC, or any government agency. Direct investment in precious metals, whether held personally or through an individual retirement account, is not suitable for all investors. Revelation Gold Group views physical precious metals as a long term holding with a recommended minimum horizon of three to five years or more. All decisions rest solely with the customer.",
-  SILVER_OFFER_DISCLAIMER,
+  "Valid on qualifying orders only with the purchase of $50,000 to $99,999 in Revelation Gold Group premium coins. Receive 10% back in FREE Silver with the purchase of $100,000 or more in Revelation Gold Group premium coins. This offer cannot be combined with other promotions. Additional terms and conditions may apply. Please speak with your representative to determine if your order qualifies. Review your customer agreement for full details. Revelation Gold Group does not provide financial or tax advice concerning the purchase of precious metals.",
 ];

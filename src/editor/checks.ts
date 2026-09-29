@@ -76,6 +76,13 @@ export function checkPage(c: PageConfig): Issue[] {
   if (guide && c.thankYou.primaryLabel && c.thankYou.primaryUrl !== guide.downloadUrl)
     warn(`Thank-you download button does not point to ${guide.downloadUrl}.`, "thankyou");
 
+  const footer = find("footer");
+  const footerText = footer
+    ? [footer.props.partnerDisclosure, ...footer.props.disclosures].join(" ")
+    : "";
+  if (!/not financial advice/i.test(footerText))
+    err("Footer disclaimer must include “Not financial advice.”", "advanced");
+
   const offer = find("offer");
   if (offer && !offer.props.terms.trim()) err("Silver offer has no terms.", "advanced");
 

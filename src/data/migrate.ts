@@ -1,7 +1,7 @@
 import { createBasePage } from "@/content/pages/base";
 import { parseKifloCode } from "@/template/kiflo";
 import { KIT_OPTIONS } from "@/template/kits";
-import { SECTIONS, SILVER_OFFER_DISCLAIMER } from "@/template/registry";
+import { DEFAULT_DISCLOSURES, RETIRED_FOOTER_COPY, SECTIONS } from "@/template/registry";
 import type { PageConfig, Section } from "@/template/types";
 
 /**
@@ -78,14 +78,21 @@ function upgradeSection(s: Section): Section {
       return { ...s, props };
     }
     case "footer": {
-      // Silver offer terms in every footer.
-      const has = s.props.disclosures.some((d) => d.startsWith("Valid on qualifying orders only"));
-      return has
-        ? s
-        : {
-            ...s,
-            props: { ...s.props, disclosures: [...s.props.disclosures, SILVER_OFFER_DISCLAIMER] },
-          };
+      // One short disclaimer paragraph replaces the old stock footer copy. Custom text is kept.
+      const parts = [s.props.partnerDisclosure, ...s.props.disclosures]
+        .map((x) => x.trim())
+        .filter(Boolean);
+      const retired = new Set(RETIRED_FOOTER_COPY);
+      if (
+        !parts.length ||
+        !parts.some((x) => retired.has(x)) ||
+        !parts.every((x) => retired.has(x))
+      )
+        return s;
+      return {
+        ...s,
+        props: { ...s.props, partnerDisclosure: "", disclosures: [...DEFAULT_DISCLOSURES] },
+      };
     }
     default:
       return s;

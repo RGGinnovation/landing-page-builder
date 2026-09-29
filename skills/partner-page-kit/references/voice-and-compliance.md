@@ -67,7 +67,7 @@ Kept as is (approved): "I want my family holding something real too, not just pa
 - Endorsements: the quote and first-person paragraphs are drafts for the partner to approve
   (FTC endorsement rules: the partner must genuinely hold the opinion). Mark them
   "DRAFT FOR PARTNER APPROVAL". Never present invented lines as things the partner has said.
-- The footer already carries "Not financial advice" and the full disclosures. Do not add
+- The footer already carries "Not financial advice" and the one-paragraph disclaimer. Do not add
   disclaimers inside the fields.
 
 ## RGG house style

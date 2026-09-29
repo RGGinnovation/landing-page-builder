@@ -1537,3 +1537,17 @@
   font-size: 10.5px;
   line-height: 1.55;
 }
+
+/* ============ FOOTER DISCLAIMER: ONE SHORT PARAGRAPH, LEFT ALIGNED ============
+   Logo, contact line and legal links stay centered; the disclaimer block stays centered on
+   the page but its text reads left aligned. */
+.lp .foot .disclosure {
+  max-width: 760px;
+}
+.lp .foot .disclosure,
+.lp .foot .disclosure p {
+  text-align: left;
+}
+.lp .foot .disclosure p:last-child {
+  margin-bottom: 0;
+}
