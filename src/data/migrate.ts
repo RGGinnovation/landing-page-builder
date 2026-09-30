@@ -56,7 +56,11 @@ const RETIRED_COPY: Record<string, string> = {
     "If you have a 401(k) still sitting with an employer you left years ago, or an IRA you rarely look at, you may have more options than you think, including a tax-advantaged gold IRA that holds physical gold and silver.",
   "Moved directly from one custodian to another, the funds stay tax deferred. No taxes, and no early withdrawal penalty.":
     "Ask how a direct custodian-to-custodian transfer works before you decide anything.",
+  // Silver offer terms (retired September 2026).
+  "*Bonus silver applies to qualifying purchases only. Minimum purchase, eligible products, and expiration terms apply. Ask your Revelation Gold Group specialist for full details. Not financial advice.":
+    "*Bonus silver starts at qualifying purchases of $50,000 in Revelation Gold Group premium coins, with 10% at $100,000 or more. Eligible products and expiration terms apply. Cannot be combined with other offers. Not financial advice.",
 };
+const RETIRED_OFFER_EYEBROW = /^plus!?\s*if you take action now\s*(…|\.{3})?$/i;
 const upgradeText = (t: string) => RETIRED_COPY[t.trim()] ?? t;
 
 /** Early pages stored the literal placeholder in SEO text instead of the {partner} token. */
@@ -99,6 +103,14 @@ function upgradeSection(s: Section): Section {
     }
     case "hero":
       return { ...s, props: { ...s.props, headline: upgradeText(s.props.headline) } };
+    case "offer": {
+      const terms = upgradeText(s.props.terms);
+      // The "Plus! If you take action now" eyebrow was retired (September 2026).
+      const eyebrow = RETIRED_OFFER_EYEBROW.test(s.props.eyebrow.trim()) ? "" : s.props.eyebrow;
+      return terms === s.props.terms && eyebrow === s.props.eyebrow
+        ? s
+        : { ...s, props: { ...s.props, terms, eyebrow } };
+    }
     case "question":
       return {
         ...s,

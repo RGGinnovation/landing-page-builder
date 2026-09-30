@@ -249,8 +249,8 @@ This is exactly what visitors will read. Fixed template lines are marked (fixed)
 - **401(k) accounts** (fixed): Old 401(k), Traditional or Roth IRA, 403(b), Thrift Savings Plan, 457(b), SEP or SIMPLE IRA
 - **401(k) ask** (fixed): Have questions about a retirement account? Speak with a representative now.
 - **401(k) fine print** (fixed): Eligibility depends on your plan and your custodian. Revelation Gold Group does not provide tax, legal, or investment advice. Consult your own advisors before any transfer.
-- **Offer** (fixed): Plus! If you take action now… Get Up To 10% In Free Silver
-- **Offer terms** (fixed): *Bonus silver applies to qualifying purchases only. Minimum purchase, eligible products, and expiration terms apply. Ask your Revelation Gold Group specialist for full details. Not financial advice.
+- **Offer** (fixed): Get Up To 10% In Free Silver
+- **Offer terms** (fixed): *Bonus silver starts at qualifying purchases of $50,000 in Revelation Gold Group premium coins, with 10% at $100,000 or more. Eligible products and expiration terms apply. Cannot be combined with other offers. Not financial advice.
 - **Footer disclaimer** (fixed): Not financial advice. Pete Kaliner is a marketing partner of Revelation Gold Group and may be compensated for referrals. Revelation Gold Group does not provide tax, legal or investment advice and is not a registered investment advisor or broker dealer. Precious metals involve risk, prices can go down, and no return is promised or implied. Metals are not FDIC or SIPC insured and are not suitable for everyone. Free silver offer valid only on qualifying purchases of $50,000 or more in Revelation Gold Group premium coins, with 10% back in silver at $100,000 or more. Cannot be combined with other offers. Terms apply; see your customer agreement.
 - **Mobile call bar** (fixed): Call (888) 465-3049
 

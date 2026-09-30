@@ -516,7 +516,7 @@ def full_page_lines(page):
             add("401(k) ask", p["ask"].replace("\n", " "), True)
             add("401(k) fine print", p["fine"], True)
         elif t == "offer":
-            add("Offer", f"{p['eyebrow']} {p['headline'].replace(chr(10), ' ')}", True)
+            add("Offer", f"{p['eyebrow']} {p['headline'].replace(chr(10), ' ')}".strip(), True)
             add("Offer terms", p["terms"], True)
         elif t == "footer":
             add("Footer disclosure", p.get("partnerDisclosure"), True)
