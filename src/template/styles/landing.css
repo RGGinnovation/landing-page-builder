@@ -1621,3 +1621,49 @@
 .lp .fmeta span {
   color: rgba(255, 255, 255, 0.55);
 }
+
+/* ============ HERO: BRIGHT, SHARP, HIGH CONTRAST (September 2026) ============
+   A light slate studio backdrop instead of the deep brand color, no colored glow, crisp
+   high-resolution backgrounds (their fade is built into the image), one clean shadow on the
+   portrait, and a soft slate panel behind the form so every label keeps strong contrast. */
+.lp .hero {
+  background: radial-gradient(95% 90% at 28% 42%, #75818c 0%, #57626c 45%, #3f4850 100%);
+}
+.lp .hero .hero-rays {
+  height: 66%;
+  -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 18%, #000 100%);
+  mask-image: linear-gradient(180deg, transparent 0, #000 18%, #000 100%);
+}
+.lp .hero .hero-vig {
+  background: linear-gradient(
+    90deg,
+    rgba(47, 55, 62, 0) 44%,
+    rgba(47, 55, 62, 0.62) 58%,
+    rgba(47, 55, 62, 0.78) 100%
+  );
+}
+.lp .hero-figure img {
+  filter: drop-shadow(0 16px 30px rgba(22, 27, 32, 0.3));
+}
+.lp .hero-form h1 {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.22);
+}
+@media (max-width: 900px) {
+  /* Stacked: the background art sits behind the portrait, the form sits on clean slate. */
+  .lp .hero {
+    background: #4a545d;
+  }
+  .lp .hero .hero-rays {
+    top: 0;
+    bottom: auto;
+    height: 270px;
+    -webkit-mask-image: linear-gradient(180deg, #000 55%, transparent 100%);
+    mask-image: linear-gradient(180deg, #000 55%, transparent 100%);
+  }
+  .lp .hero .hero-vig {
+    background: none;
+  }
+  .lp .hero-figure {
+    background: none;
+  }
+}

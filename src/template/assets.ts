@@ -15,8 +15,8 @@ export const ASSET_LIBRARY: { group: string; items: { label: string; src: string
   {
     group: "Hero backgrounds",
     items: [
-      { label: "American flag", src: "/assets/rgg/hero-bg-flag.webp" },
-      { label: "Sunrise", src: "/assets/rgg/hero-bg-sunrise.webp" },
+      { label: "American flag", src: "/assets/rgg/hero-bg-flag-hd.webp" },
+      { label: "Sunrise", src: "/assets/rgg/hero-bg-sunrise-hd.webp" },
     ],
   },
   {

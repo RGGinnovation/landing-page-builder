@@ -38,7 +38,13 @@ export function migrate(input: PageConfig): PageConfig {
       termsUrl: TERMS_URL,
       amlUrl: AML_URL,
     },
-    theme: { ...base.theme, ...p.theme, preset: p.theme?.preset ?? "custom" },
+    theme: {
+      ...base.theme,
+      ...p.theme,
+      preset: p.theme?.preset ?? "custom",
+      // The stock hero backgrounds were replaced by sharper high-resolution versions.
+      heroBg: HD_HERO_BG[p.theme?.heroBg ?? ""] ?? p.theme?.heroBg ?? base.theme.heroBg,
+    },
     tracking,
     seo: tokenizeAll({ ...base.seo, ...p.seo }),
     thankYou: tokenizeAll({ ...base.thankYou, ...p.thankYou }),
@@ -70,6 +76,10 @@ const RETIRED_COPY: Record<string, string> = {
     "*Bonus silver starts at qualifying purchases of $50,000 in Revelation Gold Group premium coins, with 10% at $100,000 or more. Eligible products and expiration terms apply. Cannot be combined with other offers. Not financial advice.",
 };
 const RETIRED_OFFER_EYEBROW = /^plus!?\s*if you take action now\s*(…|\.{3})?$/i;
+const HD_HERO_BG: Record<string, string> = {
+  "/assets/rgg/hero-bg-flag.webp": "/assets/rgg/hero-bg-flag-hd.webp",
+  "/assets/rgg/hero-bg-sunrise.webp": "/assets/rgg/hero-bg-sunrise-hd.webp",
+};
 const RETIRED_GOOGLE_URLS = new Set([
   "https://www.google.com/maps/search/?api=1&query=Revelation%20Gold%20Group%20Beverly%20Hills",
 ]);

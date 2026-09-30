@@ -29,8 +29,8 @@ export function themeToStyle(input: ThemeConfig): CSSProperties {
 }
 
 export const HERO_BACKGROUNDS: { id: string; label: string; src: string }[] = [
-  { id: "flag", label: "American flag", src: "/assets/rgg/hero-bg-flag.webp" },
-  { id: "sunrise", label: "Sunrise", src: "/assets/rgg/hero-bg-sunrise.webp" },
+  { id: "flag", label: "American flag", src: "/assets/rgg/hero-bg-flag-hd.webp" },
+  { id: "sunrise", label: "Sunrise", src: "/assets/rgg/hero-bg-sunrise-hd.webp" },
   { id: "none", label: "Plain", src: "" },
 ];
 
@@ -71,7 +71,7 @@ export const THEME_PRESETS: ThemePreset[] = [
       navy: "#072B4E",
       navyDeep: "#041A30",
       navyMid: "#0A3560",
-      heroBg: "/assets/rgg/hero-bg-flag.webp",
+      heroBg: "/assets/rgg/hero-bg-flag-hd.webp",
     },
   },
   {
@@ -86,7 +86,7 @@ export const THEME_PRESETS: ThemePreset[] = [
       navy: "#0F1531",
       navyDeep: "#080C20",
       navyMid: "#141C3A",
-      heroBg: "/assets/rgg/hero-bg-flag.webp",
+      heroBg: "/assets/rgg/hero-bg-flag-hd.webp",
     },
   },
   {
@@ -101,7 +101,7 @@ export const THEME_PRESETS: ThemePreset[] = [
       navy: "#10142E",
       navyDeep: "#080B1E",
       navyMid: "#161A3C",
-      heroBg: "/assets/rgg/hero-bg-sunrise.webp",
+      heroBg: "/assets/rgg/hero-bg-sunrise-hd.webp",
     },
   },
   {
@@ -116,7 +116,7 @@ export const THEME_PRESETS: ThemePreset[] = [
       navy: "#141130",
       navyDeep: "#0B0920",
       navyMid: "#1B173F",
-      heroBg: "/assets/rgg/hero-bg-sunrise.webp",
+      heroBg: "/assets/rgg/hero-bg-sunrise-hd.webp",
     },
   },
   {
@@ -131,7 +131,7 @@ export const THEME_PRESETS: ThemePreset[] = [
       navy: "#0C1530",
       navyDeep: "#060C1F",
       navyMid: "#121D3D",
-      heroBg: "/assets/rgg/hero-bg-flag.webp",
+      heroBg: "/assets/rgg/hero-bg-flag-hd.webp",
     },
   },
   {
@@ -146,7 +146,7 @@ export const THEME_PRESETS: ThemePreset[] = [
       navy: "#0F1A17",
       navyDeep: "#08110E",
       navyMid: "#15241F",
-      heroBg: "/assets/rgg/hero-bg-flag.webp",
+      heroBg: "/assets/rgg/hero-bg-flag-hd.webp",
     },
   },
   {
@@ -161,7 +161,7 @@ export const THEME_PRESETS: ThemePreset[] = [
       navy: "#161216",
       navyDeep: "#0D0A0D",
       navyMid: "#1F191F",
-      heroBg: "/assets/rgg/hero-bg-flag.webp",
+      heroBg: "/assets/rgg/hero-bg-flag-hd.webp",
     },
   },
   {
