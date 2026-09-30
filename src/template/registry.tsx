@@ -1,5 +1,6 @@
 import type { ComponentType } from "react";
 
+import { APPROVED_HERO_HEADLINE } from "./compliance";
 import { RICH_HELP, type Field } from "./fields";
 import { DEFAULT_KIT } from "./kits";
 import {
@@ -97,7 +98,7 @@ export const SECTIONS: Registry = {
       imageAlt: "{partner}",
       imageWidth: 820,
       imageHeight: 986,
-      headline: "Your First Step Toward Owning Physical Gold & Silver",
+      headline: APPROVED_HERO_HEADLINE,
       firstLabel: "First Name",
       lastLabel: "Last Name",
       phoneLabel: "Phone Number",

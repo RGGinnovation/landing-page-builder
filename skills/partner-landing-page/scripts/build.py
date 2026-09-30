@@ -37,6 +37,7 @@ SITE = RULES["site"]
 PORTAL = RULES["hubspotPortalId"]
 COPY_RULES = [(re.compile(r["pattern"], re.I), r["why"]) for r in RULES["partnerCopyRules"]]
 RESERVED = set(RULES["reservedSlugs"])
+APPROVED_HERO = RULES.get("approvedHeroHeadline", "")
 
 TRUST_FACTS = [
     "**BBB Accredited Business with an A+ rating**",
@@ -333,7 +334,9 @@ def check(kit, page, guide):
     voice += [(k, f.get(k)) for k in (
         "thankYouHeadline", "thankYouMessage", "thankYouNote", "seoDescription", "photoAlt",
         "callbandHeadline", "callbandSubline")]
-    voice.append(("hero headline", section(page, "hero")["props"]["headline"]))
+    hero_headline = section(page, "hero")["props"]["headline"]
+    if hero_headline.strip() != APPROVED_HERO:  # the approved template headline is company copy
+        voice.append(("hero headline", hero_headline))
     for key, text in voice:
         if not text:
             continue

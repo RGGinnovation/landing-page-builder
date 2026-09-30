@@ -1,7 +1,7 @@
 import { RESERVED_SLUGS } from "@/template/constants";
 import { isGuid } from "@/template/hubspot";
 import { kitOptionFor } from "@/template/kits";
-import { partnerCopyIssues } from "@/template/compliance";
+import { APPROVED_HERO_HEADLINE, partnerCopyIssues } from "@/template/compliance";
 import { readabilityAdjustments } from "@/template/theme";
 import type { PageConfig, SectionOf, SectionType } from "@/template/types";
 
@@ -61,7 +61,8 @@ export function checkPage(c: PageConfig): Issue[] {
   // Partner voice copy is personal opinion and belief only (see template/compliance.ts).
   // The hero headline and the 401(k) section follow the same rule.
   const voice: [string, string, GroupId][] = [];
-  if (hero) voice.push(["Hero headline", hero.props.headline, "advanced"]);
+  if (hero && hero.props.headline.trim() !== APPROVED_HERO_HEADLINE)
+    voice.push(["Hero headline", hero.props.headline, "advanced"]);
   const question = find("question");
   if (question)
     [question.props.lead, ...question.props.paragraphs].forEach((q) =>

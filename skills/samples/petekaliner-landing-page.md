@@ -224,7 +224,7 @@ Talk to a real person, not a sales script.
 This is exactly what visitors will read. Fixed template lines are marked (fixed).
 
 - **Top bar** (fixed): Pete Kaliner x Revelation Gold Group. Questions? Call (888) 465-3049
-- **Hero headline** (fixed): Your First Step Toward Owning Physical Gold & Silver
+- **Hero headline** (fixed): Your First Step To Help Diversify Your Savings
 - **Form** (fixed): First Name, Last Name, Phone Number, Email. Button: Get started with this free kit
 - **Consent** (fixed): By clicking the button above, you agree to our [Privacy Policy](https://revelationgoldgroup.com/policy) and [Terms & Conditions](https://revelationgoldgroup.com/terms-of-service) and authorize Revelation Gold Group, or someone acting on their behalf, to contact you by email, text message, and recorded and artificial voice message using automated telephone technology, including auto dialers, at the number you provided above. Consent is not a condition of any purchase. Message and data rates may apply. You may opt out at any time by replying STOP to any text message.
 - **Quote**: “I've been buying silver since the 2008 crash, because I'd rather hold something real than trust the people spending my money. When I finally picked a gold and silver company, I picked Revelation Gold Group.”, Pete Kaliner, Host, The Pete Kaliner Show

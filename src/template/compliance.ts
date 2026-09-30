@@ -48,6 +48,12 @@ export const PARTNER_COPY_RULES: { re: RegExp; why: string }[] = [
   },
 ];
 
+/**
+ * The template's hero headline, approved by RGG leadership (September 2026). It is company copy,
+ * not partner voice, so it is exempt from the rules above. Any other hero headline is checked.
+ */
+export const APPROVED_HERO_HEADLINE = "Your First Step To Help Diversify Your Savings";
+
 /** Returns the reasons a piece of partner voice copy breaks the rules (empty when clean). */
 export function partnerCopyIssues(text: string): { match: string; why: string }[] {
   const plain = text.replace(/\*\*/g, "");

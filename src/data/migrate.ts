@@ -1,4 +1,5 @@
 import { createBasePage } from "@/content/pages/base";
+import { APPROVED_HERO_HEADLINE } from "@/template/compliance";
 import { parseKifloCode } from "@/template/kiflo";
 import { KIT_OPTIONS } from "@/template/kits";
 import { DEFAULT_DISCLOSURES, RETIRED_FOOTER_COPY, SECTIONS } from "@/template/registry";
@@ -50,8 +51,8 @@ const NEW_WHY_SENTENCE =
 
 /** Retired template copy that implied a benefit or gave tax guidance, and its replacement. */
 const RETIRED_COPY: Record<string, string> = {
-  "Your First Step To Help Protect Your Savings":
-    "Your First Step Toward Owning Physical Gold & Silver",
+  "Your First Step To Help Protect Your Savings": APPROVED_HERO_HEADLINE,
+  "Your First Step Toward Owning Physical Gold & Silver": APPROVED_HERO_HEADLINE,
   "If you have a 401(k) still sitting with an employer you left years ago, or an IRA you rarely look at, those funds are not locked into the choices you made the day you opened the account. They can hold physical gold and silver.":
     "If you have a 401(k) still sitting with an employer you left years ago, or an IRA you rarely look at, you may have more options than you think, including a tax-advantaged gold IRA that holds physical gold and silver.",
   "Moved directly from one custodian to another, the funds stay tax deferred. No taxes, and no early withdrawal penalty.":

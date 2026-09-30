@@ -125,7 +125,7 @@ Central bank buying can be referenced without a number ("buying gold at a record
 
 ## Fixed by the template (never write these)
 
-- **Hero headline:** "Your First Step Toward Owning Physical Gold & Silver".
+- **Hero headline:** "Your First Step To Help Diversify Your Savings" (approved company copy, exempt from the partner voice rules).
 - **Lead form:** the form labels, the consent text and the mobile call bar.
 - **401(k) section:** it points to a tax-advantaged gold IRA and asking how a direct transfer
   works, with no tax claims.

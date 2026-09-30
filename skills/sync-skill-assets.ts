@@ -9,7 +9,7 @@
  */
 import { writeFileSync } from "fs";
 import { createBasePage } from "@/content/pages/base";
-import { PARTNER_COPY_RULES } from "@/template/compliance";
+import { APPROVED_HERO_HEADLINE, PARTNER_COPY_RULES } from "@/template/compliance";
 import { DEFAULT_SITE_URL, HUBSPOT_PORTAL_ID, RESERVED_SLUGS } from "@/template/constants";
 import { KIT_OPTIONS } from "@/template/kits";
 import { HERO_BACKGROUNDS, THEME_PRESETS } from "@/template/theme";
@@ -26,5 +26,6 @@ write("rules.json", {
   hubspotPortalId: HUBSPOT_PORTAL_ID,
   reservedSlugs: [...RESERVED_SLUGS].sort(),
   partnerCopyRules: PARTNER_COPY_RULES.map((r) => ({ pattern: r.re.source, why: r.why })),
+  approvedHeroHeadline: APPROVED_HERO_HEADLINE,
 });
 console.log("Synced skill assets from app code.");
