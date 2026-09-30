@@ -1,5 +1,6 @@
 import { createBasePage } from "@/content/pages/base";
 import { APPROVED_HERO_HEADLINE } from "@/template/compliance";
+import { AML_URL, GOOGLE_REVIEWS_URL, PRIVACY_URL, TERMS_URL } from "@/template/constants";
 import { parseKifloCode } from "@/template/kiflo";
 import { KIT_OPTIONS } from "@/template/kits";
 import { DEFAULT_DISCLOSURES, RETIRED_FOOTER_COPY, SECTIONS } from "@/template/registry";
@@ -29,7 +30,14 @@ export function migrate(input: PageConfig): PageConfig {
     ...p,
     version: 1,
     vanityDomain: p.vanityDomain ?? "",
-    brand: { ...base.brand, ...p.brand },
+    // RGG's legal links are fixed: saved pages always get the current ones.
+    brand: {
+      ...base.brand,
+      ...p.brand,
+      privacyUrl: PRIVACY_URL,
+      termsUrl: TERMS_URL,
+      amlUrl: AML_URL,
+    },
     theme: { ...base.theme, ...p.theme, preset: p.theme?.preset ?? "custom" },
     tracking,
     seo: tokenizeAll({ ...base.seo, ...p.seo }),
@@ -62,6 +70,9 @@ const RETIRED_COPY: Record<string, string> = {
     "*Bonus silver starts at qualifying purchases of $50,000 in Revelation Gold Group premium coins, with 10% at $100,000 or more. Eligible products and expiration terms apply. Cannot be combined with other offers. Not financial advice.",
 };
 const RETIRED_OFFER_EYEBROW = /^plus!?\s*if you take action now\s*(…|\.{3})?$/i;
+const RETIRED_GOOGLE_URLS = new Set([
+  "https://www.google.com/maps/search/?api=1&query=Revelation%20Gold%20Group%20Beverly%20Hills",
+]);
 const upgradeText = (t: string) => RETIRED_COPY[t.trim()] ?? t;
 
 /** Early pages stored the literal placeholder in SEO text instead of the {partner} token. */
@@ -81,6 +92,12 @@ const OLD_STEWARD_BUTTONS = new Set(["get my free guide"]);
 function upgradeSection(s: Section): Section {
   switch (s.type) {
     case "why": {
+      // The Google badge links to RGG's Google reviews (the old link was a generic map search).
+      const badges = s.props.badges.map((b) =>
+        b.kind === "google" && (!b.url.trim() || RETIRED_GOOGLE_URLS.has(b.url.trim()))
+          ? { ...b, url: GOOGLE_REVIEWS_URL }
+          : b,
+      );
       // "Why I Believe" is one paragraph.
       let paras = s.props.paragraphs.map((x) => x.trim()).filter(Boolean);
       if (paras.length > 1) paras = [paras.join(" ")];
@@ -90,8 +107,9 @@ function upgradeSection(s: Section): Section {
       );
       const changed =
         fixed.length !== s.props.paragraphs.length ||
-        fixed.some((x, i) => x !== s.props.paragraphs[i]);
-      return changed ? { ...s, props: { ...s.props, paragraphs: fixed } } : s;
+        fixed.some((x, i) => x !== s.props.paragraphs[i]) ||
+        badges.some((b, i) => b !== s.props.badges[i]);
+      return changed ? { ...s, props: { ...s.props, paragraphs: fixed, badges } } : s;
     }
     case "kit": {
       // Biblical Stewardship Kit wording for the Faithful Steward guide.

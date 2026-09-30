@@ -2,6 +2,14 @@
  * Values that are the same on every partner page. Change them here, once.
  */
 
+/**
+ * RGG's legal and review links. The footer always uses these, whatever a page has saved.
+ */
+export const PRIVACY_URL = "https://revelationgoldgroup.com/policy";
+export const TERMS_URL = "https://revelationgoldgroup.com/terms-of-service";
+export const AML_URL = "https://revelationgoldgroup.com/aml";
+export const GOOGLE_REVIEWS_URL = "https://share.google/1ILQvMVNRAhpqzvpg";
+
 /** RGG's Kiflo account. The Kiflo snippet runs on every public page with this key. */
 export const KIFLO_API_KEY = "5c0ef1cb-8acb-4782-858e-42e2fc672de4";
 

@@ -18,7 +18,7 @@
     "addressMapUrl": "https://maps.google.com/?q=9440+Santa+Monica+Blvd+Suite+301+Beverly+Hills+CA+90210",
     "privacyUrl": "https://revelationgoldgroup.com/policy",
     "termsUrl": "https://revelationgoldgroup.com/terms-of-service",
-    "amlUrl": "https://www.taxfreegoldira.com/aml-policy-anti-money-laundering",
+    "amlUrl": "https://revelationgoldgroup.com/aml",
     "copyrightYear": "2026"
   },
   "theme": {
@@ -136,7 +136,7 @@
           },
           {
             "kind": "google",
-            "url": "https://www.google.com/maps/search/?api=1&query=Revelation%20Gold%20Group%20Beverly%20Hills",
+            "url": "https://share.google/1ILQvMVNRAhpqzvpg",
             "label": "256 Google Reviews",
             "value": "4.9"
           },

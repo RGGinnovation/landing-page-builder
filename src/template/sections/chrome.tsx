@@ -1,3 +1,4 @@
+import { AML_URL, PRIVACY_URL, TERMS_URL } from "../constants";
 import { PhoneIcon } from "../icons";
 import { R, telHref, useFill, useRender } from "../rich";
 import type { CallbarProps, FooterProps, TopbarProps } from "../types";
@@ -69,21 +70,15 @@ export function Footer({ sid, props }: P<FooterProps>) {
           <span>
             &copy; {brand.copyrightYear} {brand.rggName}. All rights reserved.
           </span>
-          {brand.privacyUrl && (
-            <a href={brand.privacyUrl} target="_blank" rel="noopener">
-              Privacy Policy
-            </a>
-          )}
-          {brand.termsUrl && (
-            <a href={brand.termsUrl} target="_blank" rel="noopener">
-              Terms &amp; Conditions
-            </a>
-          )}
-          {brand.amlUrl && (
-            <a href={brand.amlUrl} target="_blank" rel="noopener">
-              AML Policy
-            </a>
-          )}
+          <a href={PRIVACY_URL} target="_blank" rel="noopener">
+            Privacy Policy
+          </a>
+          <a href={TERMS_URL} target="_blank" rel="noopener">
+            Terms of Service
+          </a>
+          <a href={AML_URL} target="_blank" rel="noopener">
+            AML Policy
+          </a>
         </p>
       </div>
     </footer>

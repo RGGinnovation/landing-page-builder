@@ -1,6 +1,7 @@
 import type { ComponentType } from "react";
 
 import { APPROVED_HERO_HEADLINE } from "./compliance";
+import { GOOGLE_REVIEWS_URL } from "./constants";
 import { RICH_HELP, type Field } from "./fields";
 import { DEFAULT_KIT } from "./kits";
 import {
@@ -475,7 +476,7 @@ export const DEFAULT_BADGES = [
   },
   {
     kind: "google" as const,
-    url: "https://www.google.com/maps/search/?api=1&query=Revelation%20Gold%20Group%20Beverly%20Hills",
+    url: GOOGLE_REVIEWS_URL,
     label: "256 Google Reviews",
     value: "4.9",
   },

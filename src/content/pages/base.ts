@@ -1,4 +1,4 @@
-import { HUBSPOT_PORTAL_ID } from "@/template/constants";
+import { AML_URL, HUBSPOT_PORTAL_ID, PRIVACY_URL, TERMS_URL } from "@/template/constants";
 import { DEFAULT_KIT } from "@/template/kits";
 import { createSection } from "@/template/registry";
 import { DEFAULT_PRESET } from "@/template/theme";
@@ -45,9 +45,9 @@ export function createBasePage(overrides?: Partial<Pick<PageConfig, "slug" | "na
       address: "9440 Santa Monica Blvd, Suite 301, Beverly Hills, CA 90210",
       addressMapUrl:
         "https://maps.google.com/?q=9440+Santa+Monica+Blvd+Suite+301+Beverly+Hills+CA+90210",
-      privacyUrl: "https://revelationgoldgroup.com/policy",
-      termsUrl: "https://revelationgoldgroup.com/terms-of-service",
-      amlUrl: "https://www.taxfreegoldira.com/aml-policy-anti-money-laundering",
+      privacyUrl: PRIVACY_URL,
+      termsUrl: TERMS_URL,
+      amlUrl: AML_URL,
       copyrightYear: "2026",
     },
     theme: {
