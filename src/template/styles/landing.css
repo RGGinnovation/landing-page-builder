@@ -1622,48 +1622,78 @@
   color: rgba(255, 255, 255, 0.55);
 }
 
-/* ============ HERO: BRIGHT, SHARP, HIGH CONTRAST (September 2026) ============
-   A light slate studio backdrop instead of the deep brand color, no colored glow, crisp
-   high-resolution backgrounds (their fade is built into the image), one clean shadow on the
-   portrait, and a soft slate panel behind the form so every label keeps strong contrast. */
-.lp .hero {
-  background: radial-gradient(95% 90% at 28% 42%, #75818c 0%, #57626c 45%, #3f4850 100%);
+/* ============ HERO: LIGHT MODE, SHARP, HIGH CONTRAST (September 2026) ============
+   A flat light background with dark text: no fog, no gradients, no dark panels, no colored
+   glow. The flag or sunrise art (high resolution, fade built in) sits only behind the portrait
+   and fades out before the form. The thank-you page keeps its own portrait styles. */
+.lp .hero:not(.ty-portrait) {
+  background: #f4f5f7;
 }
-.lp .hero .hero-rays {
-  height: 66%;
-  -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 18%, #000 100%);
-  mask-image: linear-gradient(180deg, transparent 0, #000 18%, #000 100%);
+.lp .hero:not(.ty-portrait) .hero-rays {
+  right: auto;
+  width: 60%;
+  height: 72%;
+  -webkit-mask-image:
+    linear-gradient(90deg, #000 62%, transparent 100%),
+    linear-gradient(180deg, transparent 0, #000 22%);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(90deg, #000 62%, transparent 100%),
+    linear-gradient(180deg, transparent 0, #000 22%);
+  mask-composite: intersect;
 }
-.lp .hero .hero-vig {
-  background: linear-gradient(
-    90deg,
-    rgba(47, 55, 62, 0) 44%,
-    rgba(47, 55, 62, 0.62) 58%,
-    rgba(47, 55, 62, 0.78) 100%
-  );
+.lp .hero:not(.ty-portrait) .hero-vig {
+  display: none;
 }
-.lp .hero-figure img {
-  filter: drop-shadow(0 16px 30px rgba(22, 27, 32, 0.3));
+.lp .hero:not(.ty-portrait) .hero-figure img {
+  filter: drop-shadow(0 12px 24px rgba(20, 24, 30, 0.2));
 }
-.lp .hero-form h1 {
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.22);
+.lp .hero:not(.ty-portrait) .hero-form h1 {
+  color: var(--ink);
+  text-shadow: none;
+}
+.lp .hero:not(.ty-portrait) .fld label {
+  color: #2b2f3a;
+  text-shadow: none;
+}
+.lp .hero:not(.ty-portrait) .fld label .req {
+  color: var(--accent-ink);
+}
+.lp .hero:not(.ty-portrait) .fld input {
+  border-color: #c9ced8;
+}
+.lp .hero:not(.ty-portrait) .fld .msg {
+  color: #b3261e;
+}
+.lp .hero:not(.ty-portrait) .fld.is-err input {
+  border-color: #d93025;
+  box-shadow: 0 0 0 3px rgba(217, 48, 37, 0.18);
+}
+.lp .hero:not(.ty-portrait) .formnote {
+  background: #fdecea;
+  border-color: #f1b0a8;
+  color: #8a1c12;
+}
+.lp .hero:not(.ty-portrait) .formnote a,
+.lp .hero:not(.ty-portrait) .fine a {
+  color: #2b2f3a;
+}
+.lp .hero:not(.ty-portrait) .fine {
+  color: #5b6275;
 }
 @media (max-width: 900px) {
-  /* Stacked: the background art sits behind the portrait, the form sits on clean slate. */
-  .lp .hero {
-    background: #4a545d;
-  }
-  .lp .hero .hero-rays {
+  /* Stacked: the art sits behind the portrait only, the form sits on the plain light background. */
+  .lp .hero:not(.ty-portrait) .hero-rays {
     top: 0;
     bottom: auto;
+    width: 100%;
     height: 270px;
     -webkit-mask-image: linear-gradient(180deg, #000 55%, transparent 100%);
+    -webkit-mask-composite: source-over;
     mask-image: linear-gradient(180deg, #000 55%, transparent 100%);
+    mask-composite: add;
   }
-  .lp .hero .hero-vig {
-    background: none;
-  }
-  .lp .hero-figure {
+  .lp .hero:not(.ty-portrait) .hero-figure {
     background: none;
   }
 }

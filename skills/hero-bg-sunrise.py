@@ -7,7 +7,7 @@ W, H = OW * S, OH * S
 yy, xx = np.mgrid[0:H, 0:W].astype(np.float32)
 xn, yn = xx / W, yy / H
 def hexc(h): return np.array([int(h[i:i+2], 16) for i in (1, 3, 5)], np.float32) / 255
-top, mid, low = hexc("#5B6B7A"), hexc("#A9B7C2"), hexc("#F3D9B5")
+top, mid, low = hexc("#DCE3EA"), hexc("#E9EDF1"), hexc("#F8E4C8")
 horizon = 0.70
 t = np.clip(yn / horizon, 0, 1)
 def sm(x): return x * x * (3 - 2 * x)
@@ -36,9 +36,9 @@ def ridge(base, amp, freq, phase, color):
         pts.append((i, y * H))
     pts.append((W, H))
     d.polygon(pts, fill=color)
-ridge(horizon + 0.02, 0.025, 1.3, 0.1, (140, 150, 160))
-ridge(horizon + 0.09, 0.030, 0.9, 0.55, (98, 109, 120))
-ridge(horizon + 0.17, 0.028, 0.7, 0.2, (70, 80, 90))
+ridge(horizon + 0.02, 0.025, 1.3, 0.1, (196, 204, 212))
+ridge(horizon + 0.09, 0.030, 0.9, 0.55, (166, 176, 187))
+ridge(horizon + 0.17, 0.028, 0.7, 0.2, (134, 145, 157))
 img = img.resize((OW, OH), Image.LANCZOS)
 arr = np.asarray(img).astype(np.float32)
 arr += np.random.default_rng(3).normal(0, 0.8, arr.shape)  # dither, no banding

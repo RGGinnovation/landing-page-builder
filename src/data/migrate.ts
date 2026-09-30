@@ -76,6 +76,9 @@ const RETIRED_COPY: Record<string, string> = {
     "*Bonus silver starts at qualifying purchases of $50,000 in Revelation Gold Group premium coins, with 10% at $100,000 or more. Eligible products and expiration terms apply. Cannot be combined with other offers. Not financial advice.",
 };
 const RETIRED_OFFER_EYEBROW = /^plus!?\s*if you take action now\s*(…|\.{3})?$/i;
+const KIT_IMAGE_UPDATES: Record<string, string> = {
+  "/assets/rgg/kit-wealth-guide.webp": "/assets/rgg/kit-wealth-guide-v2.webp",
+};
 const HD_HERO_BG: Record<string, string> = {
   "/assets/rgg/hero-bg-flag.webp": "/assets/rgg/hero-bg-flag-hd.webp",
   "/assets/rgg/hero-bg-sunrise.webp": "/assets/rgg/hero-bg-sunrise-hd.webp",
@@ -122,6 +125,9 @@ function upgradeSection(s: Section): Section {
       return changed ? { ...s, props: { ...s.props, paragraphs: fixed, badges } } : s;
     }
     case "kit": {
+      // Retired guide images point at their current versions.
+      const image = KIT_IMAGE_UPDATES[s.props.image];
+      if (image) return upgradeSection({ ...s, props: { ...s.props, image } });
       // Biblical Stewardship Kit wording for the Faithful Steward guide.
       if (s.props.image !== STEWARD.src) return s;
       const props = { ...s.props };

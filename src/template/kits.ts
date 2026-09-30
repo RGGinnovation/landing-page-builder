@@ -30,7 +30,7 @@ export const KIT_OPTIONS: KitOption[] = [
   {
     id: "wealth-guide",
     label: "2026 Wealth Protection Guide (Faithful Steward bonus)",
-    src: "/assets/rgg/kit-wealth-guide.webp",
+    src: "/assets/rgg/kit-wealth-guide-v2.webp",
     alt: "The 2026 Wealth Protection Guide and Magazine, with The Faithful Steward guide as a bonus",
     width: 2000,
     height: 1333,
