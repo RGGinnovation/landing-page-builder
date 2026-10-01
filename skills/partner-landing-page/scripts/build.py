@@ -48,6 +48,38 @@ FAITH_WORDS = re.compile(
     re.I,
 )
 PRODUCT_NAMES = re.compile(r"Wealth Protection (Guide|Magazine)", re.I)
+
+# Words that never appear in partner copy (on top of the app's rules in rules.json): they
+# imply advice, a benefit, an endorsement relationship we cannot state, or a fact nobody checked.
+SKILL_BANNED = [
+    (re.compile(r"\bsupport\w*", re.I), "never use 'support' in any form"),
+    (re.compile(r"\brecommend\w*", re.I), "a recommendation is advice to the reader"),
+    (re.compile(r"\binvest\w*", re.I), "investment language reads as investment advice"),
+    (re.compile(r"\bsponsor\w*", re.I), "misstates the relationship: the partner is a referral partner"),
+    (re.compile(r"\b(best|top[- ]rated|leading|number one|#1|most (trusted|reputable|honest)|unmatched|unbeatable)\b", re.I), "unverifiable superlative"),
+    (re.compile(r"\b(thousands|hundreds|millions) of\b", re.I), "unverified count"),
+    (re.compile(r"\b(all over the country|across (the country|america)|nationwide|coast to coast)\b", re.I), "unverified reach claim"),
+    (re.compile(r"\b(proven|always|never lose|no[- ]brainer|act now|don'?t wait|before it'?s too late|limited time)\b", re.I), "hype or pressure"),
+    (re.compile(r"\b(crash|collapse|crisis)\s+(is|will|coming|ahead)\b|\bwhen the (dollar|market) (crashes|collapses)\b", re.I), "fear or prediction"),
+]
+
+# First person experiences and actions. Each one must be a sourced fact the partner confirmed
+# (a claim with kind "experience" whose phrase is in the copy). Otherwise it is a line we made
+# up on their behalf. Beliefs ("I believe", "to me") and the partnership itself ("I partnered
+# with Revelation Gold Group") are not experiences.
+EXPERIENCE = re.compile(
+    r"\bI(?:'ve| have| had|'d| also)?\s+(?:been\s+|always\s+|personally\s+|finally\s+)?"
+    r"(?:own|owned|buy|buying|bought|hold|holding|held|keep|keeping|kept|put|moved|rolled|"
+    r"purchas\w*|stack\w*|collect\w*|chose|choose|choosing|picked|pick|met|visited|toured|"
+    r"called|talked|spoke|asked|researched|checked|vetted|compared|trusted|did my homework|"
+    r"did the homework|use|used|opened|funded|transferred|switched)\b"
+    r"|\b(?:my|our)\s+(?:own\s+)?(?:family'?s?|wife'?s?|husband'?s?|kids'?|children'?s?|grandkids'?|"
+    r"grandchildren'?s?|savings|retirement|IRA|401\(k\)|portfolio|account|metals|gold|silver|coins|nest egg)\b"
+    r"|\bwe\s+(?:own|owned|bought|buy|hold|keep|chose|choose|put|moved)\b"
+    r"|\bchoice I(?:'ve| have)? made\b|\bI(?:'ve| have)? made (?:a|the|that) (?:personal )?(?:choice|decision)\b"
+    r"|\b(?:nobody|no one|they)\s+(?:pushed|pressured|rushed|treated|helped|answered|walked|showed|took care of)\s+(?:me|us)\b",
+    re.I,
+)
 DASHES = re.compile("[—–]")
 
 REQUIRED = [
@@ -265,8 +297,8 @@ def build_page(f):
         section(page, "why")["props"]["paragraphs"] = [f["whyParagraph"].strip()]
 
     reasons = section(page, "reasons")["props"]
-    if f.get("reasonsHeadline"):
-        reasons["headline"] = f["reasonsHeadline"]
+    # A belief, not an action: "I Choose" would claim something the partner may not do.
+    reasons["headline"] = f.get("reasonsHeadline") or "3 Reasons I Believe in\nGold & Silver"
     if f.get("reasons"):
         reasons["items"] = [r.strip() for r in f["reasons"] if r.strip()]
     reasons["source"] = f.get("reasonsSource", "") or ""
@@ -332,8 +364,10 @@ def check(kit, page, guide):
     voice = [("quote", f.get("quote")), ("whyParagraph", f.get("whyParagraph"))]
     voice += [(f"reasons[{i + 1}]", r) for i, r in enumerate(f.get("reasons") or [])]
     voice += [(k, f.get(k)) for k in (
-        "thankYouHeadline", "thankYouMessage", "thankYouNote", "seoDescription", "photoAlt",
-        "callbandHeadline", "callbandSubline")]
+        "thankYouHeadline", "thankYouMessage", "thankYouNote", "thankYouGreeting",
+        "thankYouGreetingNamed", "seoDescription", "photoAlt", "callbandHeadline",
+        "callbandSubline", "signatureRole")]
+    voice.append(("reasonsHeadline", section(page, "reasons")["props"]["headline"]))
     hero_headline = section(page, "hero")["props"]["headline"]
     if hero_headline.strip() != APPROVED_HERO:  # the approved template headline is company copy
         voice.append(("hero headline", hero_headline))
@@ -344,7 +378,33 @@ def check(kit, page, guide):
         for rx, why in COPY_RULES:
             m = rx.search(plain)
             if m:
-                E(f"{key}: \"{m.group(0)}\" is flagged ({why}). Rewrite as the partner's own opinion or choice, with no implied return or advice.")
+                E(f"{key}: \"{m.group(0)}\" is flagged ({why}). Rewrite as the partner's own opinion or belief, with no implied return or advice.")
+        for rx, why in SKILL_BANNED:
+            m = rx.search(plain)
+            if m:
+                E(f"{key}: \"{m.group(0)}\" is not allowed ({why}). Rewrite it.")
+
+    # Truth: every first person experience or action is a sourced fact the partner confirmed.
+    experiences = [c for c in (kit.get("claims") or []) if (c.get("kind") or "fact") == "experience"]
+    for key, text in voice:
+        if not text:
+            continue
+        plain = text.replace("**", "")
+        for m in EXPERIENCE.finditer(plain):
+            covered = any(
+                (c.get("phrase") or "").replace("**", "").lower() in plain.lower()
+                and m.group(0).lower() in (c.get("phrase") or "").replace("**", "").lower()
+                and c.get("source")
+                for c in experiences
+            )
+            if not covered:
+                E(
+                    f"{key}: \"{m.group(0)}\" states something the partner did, owns or experienced. "
+                    "Keep it only if the partner confirmed it (their own public words or a HubSpot note): "
+                    "add a claim with kind \"experience\", the exact phrase from the copy and the source. "
+                    "Otherwise rewrite it as a belief (\"I believe\", \"to me\") or as the partnership fact "
+                    "(\"I partnered with Revelation Gold Group\")."
+                )
 
     q = f.get("quote") or ""
     if q and not 25 <= words(q) <= 45:
@@ -353,8 +413,8 @@ def check(kit, page, guide):
         E("quote: remove the quote marks (the page adds them).")
     why = f.get("whyParagraph") or ""
     if why:
-        if not 100 <= words(why) <= 170:
-            W(f"whyParagraph is {words(why)} words (target 110 to 160).")
+        if not 80 <= words(why) <= 150:
+            W(f"whyParagraph is {words(why)} words (target 80 to 150).")
         for fact in TRUST_FACTS + ["**Revelation Gold Group**"]:
             if fact not in why:
                 E(f"whyParagraph must include {fact} exactly as written.")
@@ -382,8 +442,6 @@ def check(kit, page, guide):
             token = m.group(0)
             if token.lower() not in ledger.lower() and not (m.group(1) and token in ledger):
                 W(f"{key} states \"{token}\" but no claim or figure mentions it. Add the claim with its source, or remove it.")
-    if re.search(r"\bI(?:'ve| have)? (?:own|bought|buy|hold|have held|have owned)\b[^.]*\b(gold|silver|metal)", " ".join([q, why] + rs), re.I) and not re.search(r"\b(own|bought|buy|hold)\w*\b.*\b(gold|silver|metal)", ledger, re.I):
-        W("The copy says the partner owns or buys metals, but no claim sources it. Source it or frame it as a belief and add a to-do.")
 
     faith_forward = bool(partner.get("faithForward"))
     partner_voice = " ".join([q, why] + rs)
@@ -434,7 +492,7 @@ def check(kit, page, guide):
     if not f.get("kifloCode"):
         T("Kiflo referral code: enter it in Lead form & tracking (the team adds this).")
     T(f"Kiflo: the partner's link must target {SITE}/{slug} or Kiflo drops every visit and lead.")
-    T("Partner approval: the quote and Why I Believe paragraph are drafts in the partner's voice (FTC endorsement rules). Get written approval before publishing.")
+    T("Partner approval: the quote, Why I Believe, 3 Reasons and thank-you lines are drafts in the partner's voice (FTC endorsement rules: the partner must genuinely hold every opinion). Send them the sheet and get written approval before publishing.")
     T("Perishable: verify the BBB rating, Google rating and review count, and any figure in 3 Reasons, before launch.")
     if page["vanityDomain"] and not f.get("vanityDomainConfirmed"):
         T(f"Vanity domain {page['vanityDomain']} is proposed. Confirm it is registered, then 301 redirect it to {SITE}/{slug}.")

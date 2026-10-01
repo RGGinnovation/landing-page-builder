@@ -39,7 +39,11 @@ deliverables. A complete worked example, with real verified data, is
   "fields": { /* every key in field-spec.md */ },
 
   "rationale": { "slug": "", "guide": "", "themePreset": "", "heroBackground": "", "thankYouStyle": "" },
-  "claims":  [{ "text": "personal fact used in the copy", "source": "url or HubSpot note + date" }],
+  // Every fact about the partner used in the copy. kind "experience" = something they did,
+  // own or experienced (bought silver, chose RGG): the source must be the partner's own words
+  // or a HubSpot note of what they told us, and "phrase" is the exact words used in the copy.
+  "claims":  [{ "kind": "fact | experience", "text": "the fact", "phrase": "exact words in the copy",
+               "usedIn": "quote | whyParagraph | reasons[2] | ...", "source": "url or HubSpot note + date" }],
   "figures": [{ "text": "the number", "source": "named source", "checked": "YYYY-MM-DD" }],
   "sources": [{ "url": "", "usedFor": "" }],
   "blocked": ["hosts that would not load"],

@@ -43,7 +43,7 @@ by:
 
 | Field | key | Rule |
 | --- | --- | --- |
-| Quote | `quote` | 1 or 2 sentences, 25 to 45 words, first person, no quote marks. Their own belief, ending on why they partnered with Revelation Gold Group. A personal fact in it (e.g. "buying silver since 2008") must be in `claims` with a source. |
+| Quote | `quote` | 1 or 2 sentences, 25 to 45 words, first person, no quote marks. Their own belief, ending on the partnership: "That's why I partnered with Revelation Gold Group." If they have said something on topic in public, build it from their own words. Anything they did or own (e.g. "buying silver since 2008") must be a confirmed `experience` claim with a source. |
 | Signature name | `signatureName` | Their personal name, which renders in a script font: "Pete Kaliner". |
 | Title under the signature | `signatureRole` | "Role, Organization": "Host, The Pete Kaliner Show", "Founder, A Sea of Red". Check it against the official source. If they hold several roles, use the public-facing one this audience knows them by (their show, book or brand), not an RGG title from HubSpot. Avoid a politically charged organization unless it is central to how they introduce themselves, and add a to-do when roles conflict. |
 
@@ -52,16 +52,20 @@ by:
 | Field | key | Rule |
 | --- | --- | --- |
 | Headline | (fixed) | "Why I Believe in / Revelation Gold Group". |
-| Paragraph | `whyParagraph` | One paragraph of 110 to 160 words, first person, in their voice. `**bold**` is the only formatting. |
+| Paragraph | `whyParagraph` | One paragraph of 80 to 150 words, first person, in their voice. `**bold**` is the only formatting. |
 
 Write it in this order:
 1. **Opener:** in their register, addressed to their audience ("Dude Nation, ...", "If you're
-   like most Flames fans I know, ..."). It names a feeling, never a promise.
-2. **Personal choice:** owning physical gold and silver is a choice they made (only if a source says they own metals; otherwise frame it as a belief, "I believe in owning something real", and add a to-do to confirm), tied to their
-   own identity or mission. Never what metals do. Example: "I'm a lowercase-L libertarian,
-   and I don't trust the people spending my money. I've bought silver since the 2008 crash
-   ... I picked **Revelation Gold Group**."
-3. **Vetting:** they met the team, asked hard questions, and felt no pressure.
+   like most Flames fans I know, ..."). It names a feeling or a concern, never a promise.
+2. **Their belief, tied to who they are:** what they believe, in their own frame (liberty,
+   faith, family, self-reliance). Example: "I'm a lowercase-L libertarian, and I don't trust the
+   people spending my money." Add something they did or own only if they confirmed it ("I've
+   bought silver since the 2008 crash", a HubSpot note in their own words), as an `experience`
+   claim. Never what metals do.
+3. **The partnership:** "That's why I partnered with **Revelation Gold Group**." This is the
+   one relationship fact that is always true. Never invent how they chose RGG: no "I did my
+   homework", "I met the team", "I asked every question", "nobody pushed me", unless the partner
+   said it.
 4. **Trust facts, exactly as written:**
    - `**Revelation Gold Group**`
    - `**BBB Accredited Business with an A+ rating**`
@@ -69,7 +73,8 @@ Write it in this order:
    - verified reviews on Trustpilot
 
    The ratings are perishable, and the kit adds a to-do to verify them.
-5. **Close:** "Now they want to help you."
+5. **Close:** an invitation to the free guide, in their voice ("Start with their free guide.").
+   No reach claims ("families all over the country"), no counts, no "they want to help you".
 
 Describe Revelation Gold Group as "faith-driven" only when the partner is faith-forward.
 
@@ -77,8 +82,8 @@ Describe Revelation Gold Group as "faith-driven" only when the partner is faith-
 
 | Field | key | Rule |
 | --- | --- | --- |
-| Headline | `reasonsHeadline` | "3 Reasons I Choose\nGold & Silver". |
-| Reasons | `reasons` (exactly 3) | 1 or 2 sentences each, first person. Pattern: a fact or observation from their world, then their own belief or choice. Example: "I have watched gas and groceries climb, and holding physical gold and silver is a personal choice I made to diversify my family's savings." Themes: national debt, inflation, central bank gold buying, dollar purchasing power, physical versus paper. Their angle comes first: policy, faith, family, sport or business. |
+| Headline | `reasonsHeadline` | Leave it out: the script uses "3 Reasons I Believe in\nGold & Silver". Never "I Choose" (an action the partner may not take). |
+| Reasons | `reasons` (exactly 3) | 1 or 2 sentences each, first person. Pattern: a fact or observation from their world, then their own belief. Example: "Gas and groceries keep climbing, and I believe a dollar saved today buys less every year." Use "I believe", "to me", "I'd rather". An action ("I keep part of my savings in metal") only as a confirmed `experience` claim. Themes: national debt, inflation, central bank gold buying, dollar purchasing power, physical versus paper. Their angle comes first: policy, faith, family, sport or business. |
 | Source line | `reasonsSource` | "Source: U.S. Treasury, Debt to the Penny, September 2026." Required whenever a reason has a number. Leave it blank when none does. |
 
 Central bank buying can be referenced without a number ("buying gold at a record pace").

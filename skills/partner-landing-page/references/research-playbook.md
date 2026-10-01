@@ -60,7 +60,9 @@ Capture:
    - Nadia's prospect profiles use six sections: About, Shows, Social Media, Audience, Where Do
      We Fit, Relevant Links. They are the best single source.
    - Meeting notes hold facts the partner told us (e.g. "has bought silver since the 2008
-     crash").
+     crash"). These are the only source, besides the partner's own public words, for anything
+     the copy says they did or own. Record each one with its date, as close to their words as
+     the note allows. If nothing says they own metals, the copy does not say it.
    - Notes also hold guidance for us (e.g. "let faith come from him").
 4. Company record: search once. If it exists, read the `kiflo_*` properties. Many partners
    have none, and that is normal.

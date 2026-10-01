@@ -1,7 +1,7 @@
 {
   "format": "rgg-partner-landing-page",
   "formatVersion": 3,
-  "generatedAt": "2026-09-29T17:18:26Z",
+  "generatedAt": "2026-10-01T13:58:00Z",
   "input": {
     "link": "https://thepetekalinershow.com",
     "name": "Pete Kaliner"
@@ -25,7 +25,7 @@
       "Partner logo: none found. Upload a light or white logo in Logo & photo.",
       "Kiflo referral code: enter it in Lead form & tracking (the team adds this).",
       "Kiflo: the partner's link must target https://partner.revelationgoldgroup.com/petekaliner or Kiflo drops every visit and lead.",
-      "Partner approval: the quote and Why I Believe paragraph are drafts in the partner's voice (FTC endorsement rules). Get written approval before publishing.",
+      "Partner approval: the quote, Why I Believe, 3 Reasons and thank-you lines are drafts in the partner's voice (FTC endorsement rules: the partner must genuinely hold every opinion). Send them the sheet and get written approval before publishing.",
       "Perishable: verify the BBB rating, Google rating and review count, and any figure in 3 Reasons, before launch.",
       "Brand colors: read Pete's logo and site colors and set brandAccent and brandBand."
     ]
@@ -220,12 +220,32 @@
   },
   "claims": [
     {
+      "kind": "experience",
       "text": "Pete has bought silver since the 2008 crash",
-      "source": "HubSpot note, 2026-09-08"
+      "phrase": "I've been buying silver since the 2008 crash",
+      "usedIn": "quote",
+      "source": "HubSpot note, 2026-09-08 (Pete's own account)"
     },
     {
+      "kind": "experience",
+      "text": "Pete has bought silver since the 2008 crash",
+      "phrase": "I've bought silver since the 2008 crash",
+      "usedIn": "whyParagraph",
+      "source": "HubSpot note, 2026-09-08 (Pete's own account)"
+    },
+    {
+      "kind": "fact",
       "text": "Pete calls himself a lowercase-L libertarian",
+      "phrase": "I'm a lowercase-L libertarian",
+      "usedIn": "whyParagraph",
       "source": "HubSpot note, 2026-08-20; mountainx.com"
+    },
+    {
+      "kind": "fact",
+      "text": "Pete is a Revelation Gold Group referral partner",
+      "phrase": "I partnered with Revelation Gold Group",
+      "usedIn": "quote",
+      "source": "HubSpot lead status: Partner"
     }
   ],
   "figures": [
@@ -263,15 +283,14 @@
     "photoAlt": "Pete Kaliner, host of The Pete Kaliner Show on WBT",
     "kifloCode": "",
     "kifloCodeConfirmed": false,
-    "quote": "I've been buying silver since the 2008 crash, because I'd rather hold something real than trust the people spending my money. When I finally picked a gold and silver company, I picked Revelation Gold Group.",
+    "quote": "I've been buying silver since the 2008 crash, because I'd rather hold something real than trust the people spending my money. That's why I partnered with Revelation Gold Group.",
     "signatureName": "Pete Kaliner",
     "signatureRole": "Host, The Pete Kaliner Show",
-    "whyParagraph": "I'm a lowercase-L libertarian, and I don't trust the people spending my money. I've bought silver since the 2008 crash because that's what I believe in, and when I picked a company to buy from, I picked **Revelation Gold Group**. I did my homework. I met the team and asked every question I'd want you to ask. They answered all of them in plain English, and nobody pushed me toward a decision. A **BBB Accredited Business with an A+ rating**, a **4.9 star Google rating across 256 reviews**, and verified reviews on **Trustpilot**. They have helped families all over the country. Now they want to help you.",
-    "reasonsHeadline": "3 Reasons I Choose\nGold & Silver",
+    "whyParagraph": "I'm a lowercase-L libertarian, and I don't trust the people spending my money. I've bought silver since the 2008 crash because I believe in owning something real, and that's why I partnered with **Revelation Gold Group**. They explain gold and silver in plain English, and the guide is free with nothing to buy. A **BBB Accredited Business with an A+ rating**, a **4.9 star Google rating across 256 reviews**, and verified reviews on **Trustpilot**. If you want to understand your options before anybody asks you for a dime, start with their free guide.",
     "reasons": [
       "The national debt has blown past **$40 trillion**, and I don't see anyone in Washington with a plan to pay it down.",
-      "I believe every dollar they print makes the ones in my wallet worth a little less. That's why I choose to keep part of what I've earned in physical metal.",
-      "I like things I can hold. A paper promise depends on somebody else keeping their word, and physical gold and silver don't."
+      "I believe every dollar they print makes the ones in my wallet worth a little less, and I'd rather have part of what I've earned in something physical.",
+      "To me, a paper promise depends on somebody else keeping their word. Physical gold and silver don't."
     ],
     "reasonsSource": "Source: U.S. Treasury, Debt to the Penny, September 2026.",
     "guide": "wealth-guide",
@@ -281,7 +300,7 @@
     "thankYouHeadline": "Your kit is on its way.",
     "seoDescription": "Pete Kaliner Show listeners can request the free 2026 Wealth Protection Guide from Revelation Gold Group. A plain English look at gold and silver. Nothing to buy.",
     "callbandHeadline": "Got a question first?",
-    "callbandSubline": "Talk to a real person, not a sales script.",
+    "callbandSubline": "Talk to a real person at Revelation Gold Group.",
     "thankYouNote": "Questions? A Revelation Gold Group specialist can walk you through it, with nothing to buy.",
     "hubspotFormGuid": "afd0ae01-271d-4d04-a56e-460b83f43bc5"
   },
@@ -392,7 +411,7 @@
         "id": "quote-2",
         "type": "quote",
         "props": {
-          "quote": "I've been buying silver since the 2008 crash, because I'd rather hold something real than trust the people spending my money. When I finally picked a gold and silver company, I picked Revelation Gold Group.",
+          "quote": "I've been buying silver since the 2008 crash, because I'd rather hold something real than trust the people spending my money. That's why I partnered with Revelation Gold Group.",
           "name": "Pete Kaliner",
           "role": "Host, The Pete Kaliner Show"
         }
@@ -402,7 +421,7 @@
         "type": "callband",
         "props": {
           "headline": "Got a question first?",
-          "subline": "Talk to a real person, not a sales script.",
+          "subline": "Talk to a real person at Revelation Gold Group.",
           "buttonLabel": "Call {phone}"
         }
       },
@@ -412,7 +431,7 @@
         "props": {
           "headline": "Why I Believe in\nRevelation Gold Group",
           "paragraphs": [
-            "I'm a lowercase-L libertarian, and I don't trust the people spending my money. I've bought silver since the 2008 crash because that's what I believe in, and when I picked a company to buy from, I picked **Revelation Gold Group**. I did my homework. I met the team and asked every question I'd want you to ask. They answered all of them in plain English, and nobody pushed me toward a decision. A **BBB Accredited Business with an A+ rating**, a **4.9 star Google rating across 256 reviews**, and verified reviews on **Trustpilot**. They have helped families all over the country. Now they want to help you."
+            "I'm a lowercase-L libertarian, and I don't trust the people spending my money. I've bought silver since the 2008 crash because I believe in owning something real, and that's why I partnered with **Revelation Gold Group**. They explain gold and silver in plain English, and the guide is free with nothing to buy. A **BBB Accredited Business with an A+ rating**, a **4.9 star Google rating across 256 reviews**, and verified reviews on **Trustpilot**. If you want to understand your options before anybody asks you for a dime, start with their free guide."
           ],
           "badges": [
             {
@@ -466,11 +485,11 @@
         "id": "reasons-6",
         "type": "reasons",
         "props": {
-          "headline": "3 Reasons I Choose\nGold & Silver",
+          "headline": "3 Reasons I Believe in\nGold & Silver",
           "items": [
             "The national debt has blown past **$40 trillion**, and I don't see anyone in Washington with a plan to pay it down.",
-            "I believe every dollar they print makes the ones in my wallet worth a little less. That's why I choose to keep part of what I've earned in physical metal.",
-            "I like things I can hold. A paper promise depends on somebody else keeping their word, and physical gold and silver don't."
+            "I believe every dollar they print makes the ones in my wallet worth a little less, and I'd rather have part of what I've earned in something physical.",
+            "To me, a paper promise depends on somebody else keeping their word. Physical gold and silver don't."
           ],
           "source": "Source: U.S. Treasury, Debt to the Penny, September 2026.",
           "sourceAlign": "left",
